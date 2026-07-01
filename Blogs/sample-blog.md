@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # Unleashing Machine Learning in Atmospheric Science
 
 An introductory look at how we use Explainable AI to understand Aerosol-Cloud-Meteoration-Precipitation interactions.
