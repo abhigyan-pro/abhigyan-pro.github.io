@@ -410,6 +410,9 @@ section {
 .portfolios .portfolio-item {
   position: relative;
   border-radius: 15px;
+  /* Add these two lines */
+  display: flex;
+  flex-direction: column;
 }
 .portfolios .portfolio-item img {
   width: 100%;
@@ -959,6 +962,19 @@ section {
   .main-title h2 .bg-text {
     font-size: 4rem;
   }
+}
+
+/* Styling for the publication title */
+.publication-title {
+    padding: 15px 0 5px 0;
+    text-align: center;
+}
+
+.publication-title h4 {
+    font-size: 1.1rem;
+    color: var(--color-white); /* Adjusts to your site theme */
+    margin: 0;
+    font-weight: 500;
 }
 
 /*# sourceMappingURL=styles.css.map */
