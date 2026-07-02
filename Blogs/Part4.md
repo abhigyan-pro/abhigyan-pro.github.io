@@ -98,7 +98,7 @@ This means you are now inside your isolated environment. Any package you install
 
 ---
 
-## Step 4 — Installing Packages
+## Step 4 — Installing Packages (also called Libraries)
 
 ### `conda install` vs `pip install`
 
@@ -127,6 +127,8 @@ conda config --set channel_priority strict
 You only need to do this once — it applies to all environments.
 
 ### Install numpy
+
+NumPy is a Python package that provides support for arrays and mathematical operations. It is one of the core libraries used in data science and scientific computing.
 
 ```bash
 conda install numpy
@@ -234,6 +236,7 @@ Install both:
 ```bash
 conda install jupyterlab ipykernel
 ```
+Type `y` when prompted.
 
 Register your environment as a Jupyter kernel:
 
@@ -254,7 +257,7 @@ jupyter lab
 JupyterLab will open in your browser automatically. If it doesn't, copy the URL from the terminal — it will look like:
 
 ```
-http://localhost:8888/lab
+http://localhost:8888/lab?token= ...... copy the entire line
 ```
 
 and paste it into your browser.
