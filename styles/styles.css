@@ -547,6 +547,22 @@ section {
   font-weight: 500;
   margin-bottom: 0.8rem;
 }
+.gallery-entry-location {
+  display: block;
+  color: var(--color-secondary);
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.gallery-entry-location i {
+  color: var(--color-secondary);
+  margin-right: 0.6rem;
+}
+.gallery-entry-location:hover {
+  opacity: 0.75;
+}
 .gallery-entry-date i {
   color: var(--color-secondary);
   margin-right: 0.6rem;
