@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding, IE compatibility & responsive viewport -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+
+    <!-- Local stylesheet -->
     <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Google Fonts preconnect (perf hint) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font Awesome icon library (CDN) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Poppins font (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="main-content">
+
+    <!-- ============================================================
+         HEADER / HERO SECTION
+    ============================================================= -->
     <header class="container header active" id="home">
         <div class="header-content">
             <div class="left-header">
@@ -36,6 +49,7 @@
                         <span class="btn-icon"><i class="fas fa-download"></i></span>
                     </a>
                 </div>
+                <!-- Social links: GitHub, LinkedIn, Google Scholar -->
                 <div class="home-sci" style="display: flex; gap: 1.5rem; margin-top: 1.5rem; margin-left: 2.5rem; font-size: 1.8rem;">
                     <a href="https://github.com/abhigyan-pro" target="_blank" style="color: var(--color-grey-2); transition: all .4s ease-in-out;"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/abhigyan-chakraborty/" target="_blank" style="color: var(--color-grey-2); transition: all .4s ease-in-out;"><i class="fab fa-linkedin"></i></a>
@@ -44,7 +58,12 @@
             </div>
         </div>
     </header>
+
     <main>
+
+        <!-- ============================================================
+             ABOUT SECTION
+        ============================================================= -->
         <section class="container about" id="about">
             <div class="main-title">
                 <h2>About <span>me</span></h2>
@@ -63,6 +82,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Legacy "My Skills" progress-bar markup — kept for reference, currently disabled -->
             <!-- <div class="about-stats">
                 <h4 class="stat-title">My Skills</h4>
                 <div class="progress-bars">
@@ -122,6 +143,8 @@
                     </div>
                 </div>
             </div> -->
+
+            <!-- Active "My Skills" markup (simple list, replaces the legacy progress bars above) -->
             <div class="about-stats">
                 <h4 class="stat-title">My Skills</h4>
                 <div class="skills-list" style="display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap; text-transform: uppercase; font-weight: 600; font-size: 1.2rem; color: var(--color-grey-2);">
@@ -130,6 +153,8 @@
                     <p>High Performance Computing</p>
                 </div>
             </div>
+
+            <!-- Career / education timeline -->
             <h4 class="stat-title">My Timeline</h4>
             <div class="timeline">
                 <div class="timeline-item">
@@ -174,6 +199,10 @@
                 </div>
             </div>
         </section>
+
+        <!-- ============================================================
+             PORTFOLIO / PUBLICATIONS SECTION
+        ============================================================= -->
         <section class="container" id="portfolio">
             <div class="main-title">
                 <h2>My <span>Publications</span></h2>
@@ -200,12 +229,17 @@
                 </div>
             </div>
         </section>
+
+        <!-- ============================================================
+             BLOGS SECTION
+        ============================================================= -->
         <section class="container" id="blogs">
                 <div class="main-title">
                     <h2>My <span>Blogs</span></h2>
                 </div>
                 <div class="blogs">
                     
+                    <!-- Blog post: Preface -->
                     <div class="blog" onclick="window.open('Blogs/Preface.html', '_blank')" style="cursor: pointer;">
                         <img src="img/blog1.png" alt="Blog Title">
                         <div class="blog-text">
@@ -218,6 +252,7 @@
                         </div>
                     </div>
 
+                    <!-- Blog post: Part 1 -->
                     <div class="blog" onclick="window.open('Blogs/Part1.html', '_blank')" style="cursor: pointer;">
                         <img src="img/blog1.png" alt="Blog Title">
                         <div class="blog-text">
@@ -231,6 +266,7 @@
                         </div>
                     </div>
 
+                    <!-- Blog post: Part 2 -->
                     <div class="blog" onclick="window.open('Blogs/Part2.html', '_blank')" style="cursor: pointer;">
                         <img src="img/blog1.png" alt="Blog Title">
                         <div class="blog-text">
@@ -243,6 +279,7 @@
                         </div>
                     </div> 
 
+                    <!-- Blog post: Part 3 -->
                     <div class="blog" onclick="window.open('Blogs/Part3.html', '_blank')" style="cursor: pointer;">
                         <img src="img/blog1.png" alt="Blog Title">
                         <div class="blog-text">
@@ -255,6 +292,7 @@
                         </div>
                     </div> 
 
+                    <!-- Blog post: Part 4 -->
                     <div class="blog" onclick="window.open('Blogs/Part4.html', '_blank')" style="cursor: pointer;">
                         <img src="img/blog1.png" alt="Blog Title">
                         <div class="blog-text">
@@ -268,6 +306,7 @@
                         </div>
                     </div> 
 
+                    <!-- Blog post: Part 5 -->
                     <div class="blog" onclick="window.open('Blogs/Part5.html', '_blank')" style="cursor: pointer;">
                         <img src="img/blog1.png" alt="Blog Title">
                         <div class="blog-text">
@@ -284,6 +323,10 @@
                     
                 </div>
             </section>
+
+        <!-- ============================================================
+             CONTACT SECTION
+        ============================================================= -->
         <section class="container contact" id="contact">
             <div class="main-title">
                 <h2>Contact <span>Me</span></h2>
@@ -300,6 +343,7 @@
                     </div>
                 </div>
                 
+                <!-- Social links: LinkedIn, GitHub, Google Scholar -->
                 <div class="contact-icons" style="margin-top: 2rem; display: flex; gap: 1.5rem; font-size: 2rem;">
                     <div class="contact-icon">
                         <a href="https://www.linkedin.com/in/abhigyan-chakraborty/" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -318,6 +362,9 @@
         </section>
     </main>
 
+    <!-- ============================================================
+         FIXED NAVIGATION CONTROLS (side dots linking to sections)
+    ============================================================= -->
     <div class="controls">
         <div class="control active-btn" data-id="home" >
             <i class="fas fa-home"></i>
@@ -335,9 +382,13 @@
             <i class="fas fa-envelope-open"></i>
         </div>
     </div>
+
+    <!-- Dark/light theme toggle button -->
     <div class="theme-btn">
         <i class="fas fa-adjust"></i>
     </div>
+
+    <!-- Main JavaScript (nav behavior, theme toggle, etc.) -->
     <script src="app.js"></script>
 </body>
 </html>
