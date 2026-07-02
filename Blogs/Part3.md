@@ -94,11 +94,13 @@ You first saw this prompt at the end of Part 2. Now we'll understand what you ca
 ```bash
 pwd
 ```
+`pwd` means present working directory. Shows the path of the folder where you are currectly located
 
+if you are inside your `/home` directory, then if you run `pwd`. It should show something like
 Output:
 
 ```
-/home/abhigyan
+/home/abhigyan   
 ```
 
 This is your Linux home directory. Same as `~`. You saw this briefly in Part 2 — now we'll use it actively.
@@ -118,6 +120,14 @@ ls -a
 ```
 
 Shows hidden files too — files starting with `.` are hidden by default. Your Conda configuration lives in one of these hidden files.
+
+---
+
+### Create a folder
+
+```bash
+mkdir projects
+```
 
 ---
 
@@ -141,14 +151,13 @@ cd ~
 
 ---
 
-### Create a folder
+### Create a file
 
 ```bash
-mkdir projects
+touch file.txt
 ```
 
 ---
-
 ### Copy a file
 
 ```bash
@@ -158,17 +167,17 @@ cp file.txt backup.txt
 Creates a copy named `backup.txt`.
 
 ```bash
-cp file.txt Documents/file.txt
+cp file.txt ~/Projects2/file.txt
 ```
 
-Copies into a folder.
+Copies into a folder. Assuming you created a folder Projects2 seperately.
 
 ---
 
 ### Move or rename a file
 
 ```bash
-mv file.txt Documents/file.txt
+mv file.txt ~/Projects2/file2.txt
 ```
 
 Moves a file.
@@ -209,11 +218,11 @@ cd ~
 ```
 
 ```bash
-mkdir projects
+mkdir project_1
 ```
 
 ```bash
-cd projects
+cd project_1
 ```
 
 ```bash
@@ -223,7 +232,7 @@ pwd
 Output:
 
 ```
-/home/abhigyan/projects
+/home/abhigyan/project_1
 ```
 
 This is where all your code will live from now on. When we create Python environments and write scripts in the coming parts, everything starts here.
@@ -265,6 +274,6 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 - Understood every part of the terminal prompt
 - Used `pwd`, `ls`, `cd`, `mkdir`, `cp`, `mv`
 - Understood the code/data split: `/home` for code, `/mnt` for data
-- Created your `~/projects` folder
+- Created your `~/project_1` folder
 
 **Next:** [Part 4 — Managing Python Environments with Conda](#)
