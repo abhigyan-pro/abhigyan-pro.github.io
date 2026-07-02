@@ -541,7 +541,6 @@ section {
   line-height: 2rem;
   color: var(--color-grey-2);
   margin-bottom: 1rem;
-  max-width: 900px;
 }
 .gallery-entry-date {
   color: var(--color-grey-2);
@@ -574,7 +573,7 @@ section {
   height: 220px;
   object-fit: cover;
   border-radius: 10px;
-  filter: grayscale(100%);
+  filter: grayscale(0%);
   transition: all 0.4s ease-in-out;
 }
 .gallery-photos img:hover {
