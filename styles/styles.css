@@ -541,27 +541,12 @@ section {
   line-height: 2rem;
   color: var(--color-grey-2);
   margin-bottom: 1rem;
+  max-width: 900px;
 }
 .gallery-entry-date {
   color: var(--color-grey-2);
   font-weight: 500;
   margin-bottom: 0.8rem;
-}
-.gallery-entry-location {
-  display: block;
-  color: var(--color-secondary);
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-.gallery-entry-location i {
-  color: var(--color-secondary);
-  margin-right: 0.6rem;
-}
-.gallery-entry-location:hover {
-  opacity: 0.75;
 }
 .gallery-entry-date i {
   color: var(--color-secondary);
@@ -589,7 +574,7 @@ section {
   height: 220px;
   object-fit: cover;
   border-radius: 10px;
-  filter: grayscale(0%);
+  filter: grayscale(100%);
   transition: all 0.4s ease-in-out;
 }
 .gallery-photos img:hover {
