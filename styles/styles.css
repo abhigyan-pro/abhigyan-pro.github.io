@@ -6,16 +6,16 @@
 }
 
 :root {
-  --color-primary: #8b8b8b;
+  --color-primary: #000000;
   --color-secondary: #ffffff;
-  --color-white: #000000;
+  --color-white: #056f77;
   --color-black: #000;
   --color-grey0: #ffffff;
   --color-grey-1: #ffffff;
   --color-grey-2: #ffffff;
-  --color-grey-3: #6c7983;
+  --color-grey-3: #25c6d128;
   --color-grey-4: #000000;
-  --color-grey-5: #39cabee8;
+  --color-grey-5: #5c07ac2d;
   --color-grey-6: #000000;
   --br-sm-2: 14px;
   --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
@@ -23,7 +23,7 @@
 
 .light-mode {
   --color-primary: #FFFFFF;
-  --color-secondary: #39cabee8;
+  --color-secondary: #056f77;
   --color-white: #000000;
   --color-black: #000;
   --color-grey0: #f8f8f8;
@@ -504,7 +504,7 @@ section {
   object-fit: cover;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  filter: grayscale(100%);
+  filter: grayscale(0%);
   transition: all 0.4s ease-in-out;
 }
 .blogs .blog .blog-text {
