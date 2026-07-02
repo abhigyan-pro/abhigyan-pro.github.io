@@ -241,7 +241,7 @@ This is where all your code will live from now on. When we create Python environ
 
 ## Step 7 — Verify Your Data Location
 
-Your data folder already exists — it's on your Windows drive. You access it from Ubuntu like this:
+**If you are on WSL2:** Your Windows drives are mounted inside Linux. Access them like this:
 
 ```bash
 ls /mnt/d/
@@ -249,7 +249,9 @@ ls /mnt/d/
 
 Replace `d` with whichever drive letter you use for storage.
 
-You don't need to create anything here. Just confirm you can see your Windows files from Ubuntu.
+**If you are on native Linux:** Your data lives on a separate drive or folder on your Linux filesystem. Use `ls` to navigate to wherever you store your data.
+
+You don't need to create anything here. Just confirm you can access your storage location from the terminal.
 
 ---
 

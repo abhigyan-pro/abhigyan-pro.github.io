@@ -4,8 +4,10 @@
 ---
 
 # Preface
-
+## "This series builds a Python development environment on Linux. If you're on Windows, Parts 2 and the first two steps of Part 3 walk you through setting up Ubuntu inside Windows using WSL2. Once that's done, everything from Step 3 of Part 3 onwards to Part 12 of the series is identical — whether you're on WSL2 or a native Linux system."
 ![Modern Python Development Stack](../img/blog1.png)
+
+
 
 There are countless tutorials that show you how to install Python, WSL, Ubuntu, Miniconda, or VS Code.
 
