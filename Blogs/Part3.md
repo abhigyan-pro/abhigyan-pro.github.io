@@ -85,6 +85,13 @@ When Ubuntu opens, you'll see something like:
 
 You first saw this prompt at the end of Part 2. Now we'll understand what you can do with it.
 
+Additional side note:
+```bash
+The program running inside your terminal is called a "shell". On Ubuntu, the default shell is "bash" (Bourne Again Shell). When you type a command and press Enter, bash is what reads and executes it.
+
+You will see "bash" mentioned often in documentation and tutorials — it simply means the command-line environment you are already using.
+```
+
 ---
 
 ## Step 4 — Basic Navigation
@@ -278,4 +285,4 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 - Understood the code/data split: `/home` for code, `/mnt` for data
 - Created your `~/project_1` folder
 
-**Next:** [Part 4 — Managing Python Environments with Conda](#)
+**Next:** [Part 4 — Managing Python Environments with Conda](https://abhigyan-pro.github.io/Blogs/Part4.html)

@@ -183,6 +183,7 @@ touch first_script.py
 ```
 
 Open it in a terminal text editor:
+"We'll use `nano` — a simple terminal text editor — to write our script directly in the terminal." (More about `nano` would be discussed in part 6 of this blog series.)
 
 ```bash
 nano first_script.py
@@ -322,4 +323,4 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 - Ran your first Python code in both a script and a notebook
 - Set up JupyterLab
 
-**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](#)
+**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](https://abhigyan-pro.github.io/Blogs/Part5.html)
