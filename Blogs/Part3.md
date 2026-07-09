@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Part 3 — Using Ubuntu on Windows: Terminal Basics and File Navigation
 
 *Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 3 of 12*

@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Part 4 — Managing Python Projects with Conda Environments
 
 *Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 4 of 12*

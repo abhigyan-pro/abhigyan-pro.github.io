@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Part 6 — Linux Essentials for Python Developers
 
 *Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 6 of 12*

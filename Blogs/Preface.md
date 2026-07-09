@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Python Development for Research and Scientific Computing
 ## A Beginner's Series
 

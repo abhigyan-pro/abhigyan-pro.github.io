@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Understanding the Modern Python Development Stack
 
 *Python Development for Research and Scientific Computing — Part 1 of 12*
