@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 You've been building `project_1` throughout this series. So far, the focus has been on tools — installing, configuring, connecting. But as your projects grow, how you organize them matters as much as the code itself.
@@ -25,9 +27,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -36,7 +42,7 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- `~/project_1` set up with Git and GitHub ([Parts 3–7](#))
+- `~/project_1` set up with Git and GitHub ([Parts 3–7](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
 ---
 
@@ -293,4 +299,4 @@ If your research involves atmospheric or climate data specifically, Project Pyth
 - Configured `.gitignore` to protect large files from GitHub
 - Got a map of domain-specific scientific data formats
 
-**Next:** [Part 9 — Enabling GPU Computing in WSL with CUDA](#)
+**Next:** [Part 9 — Enabling GPU Computing in WSL with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)

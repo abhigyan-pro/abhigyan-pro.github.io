@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 This part is different from the others.
@@ -21,9 +23,13 @@ That's what this part does. You won't build a complete setup here. You'll learn 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -32,8 +38,8 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- Comfortable with the terminal ([Part 3](#))
-- `~/project_1` with `env_project1` set up ([Part 4](#))
+- Comfortable with the terminal ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
+- `~/project_1` with `env_project1` set up ([Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
 
 ---
 
@@ -457,4 +463,4 @@ When you do get HPC access, this is a solid beginner tutorial for using SLURM on
 - Understood what HPC systems are and how they differ from local machines
 - Learned SLURM job submission and software modules
 
-**Next:** [Part 7 — Git and GitHub from WSL](#)
+**Next:** [Part 7 — Git and GitHub from WSL](https://abhigyan-pro.github.io/Blogs/Part7.html)

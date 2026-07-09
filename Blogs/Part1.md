@@ -2,6 +2,10 @@
 
 *Python Development for Research and Scientific Computing — Part 1 of 12*
 
+---
+
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 In this article, we'll understand the development environment we'll build throughout this series.
@@ -19,38 +23,21 @@ By the end, you'll know:
 
 ---
 
-## Using This Series
+## Using This Article
 
-Each article is designed to be followed **step by step**.
+If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you encounter an error, **don't immediately search for a different tutorial or start changing commands.**
+> I am following this article: [paste this article's link]
+>
+> I am on Step [X].
+>
+> I did: [describe what you did]
+>
+> I got: [paste the exact error or describe what happened]
+>
+> Help me troubleshoot.
 
-Instead:
-
-1. Copy the link to the article you're following.
-2. Open your preferred AI assistant.
-
-   * ChatGPT
-   * Claude
-   * Gemini
-   * Grok
-   * or another assistant
-3. Tell it:
-
-   * which article you're following,
-   * which step you're on,
-   * the command you ran, and
-   * the exact error message.
-
-This gives the AI the context needed to troubleshoot your issue while keeping you on the same workflow.
-
-If you're curious about:
-
-* why a command is used,
-* what a particular option means, or
-* how something works internally,
-
-ask your AI assistant while continuing with the article.
+To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
 
 > **Think of this series as the roadmap and your AI assistant as your learning companion.**
 
@@ -210,8 +197,6 @@ Together, they create a development environment that is widely used in software 
 
 Now that you understand the overall development stack, it's time to build it.
 
-**Next Article:** *Building Your Python Development Environment*
-
 In the next article, we'll install:
 
 * WSL2
@@ -219,3 +204,5 @@ In the next article, we'll install:
 * Miniconda
 
 and verify that everything is working correctly before moving on.
+
+**Next:** [Part 2 — Building Your Python Development Environment](https://abhigyan-pro.github.io/Blogs/Part2.html)

@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 In Part 3, we created `~/project_1` — a folder for our first project. But a folder alone is not enough. Every Python project also needs its own environment — a controlled space where you install only the packages that project needs.
@@ -24,9 +26,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -35,8 +41,8 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- WSL2 or native Linux with Miniconda installed ([Part 2](#))
-- `~/project_1` folder created ([Part 3](#))
+- WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
+- `~/project_1` folder created ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
 ---
 
@@ -375,4 +381,4 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 - Ran your first Python code in both a script and a notebook
 - Set up JupyterLab
 
-**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](#)
+**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](https://abhigyan-pro.github.io/Blogs/Part5.html)

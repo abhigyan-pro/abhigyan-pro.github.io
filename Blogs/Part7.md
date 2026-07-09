@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 You've been writing code. It works. You change something — now it doesn't. You don't remember what you changed.
@@ -36,9 +38,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -47,8 +53,8 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- WSL2 or native Linux with Miniconda installed ([Part 2](#))
-- `~/project_1` folder with files created ([Parts 3–5](#))
+- WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
+- `~/project_1` folder with files created ([Parts 3–5](https://abhigyan-pro.github.io/Blogs/Part3.html))
 - A GitHub account — we'll create one in Step 1
 
 ---
@@ -61,7 +67,7 @@ Choose your username carefully — it will be visible on every repository you cr
 
 ---
 
-## Step 2 — Install Git in your system
+## Step 2 — Install Git
 
 Open your terminal and type:
 
@@ -386,4 +392,4 @@ These topics go deep. When you're ready to explore them, the following resources
 - Learned the everyday Git workflow
 - Got a map of what else Git and GitHub can do
 
-**Next:** [Part 8 — Project Organization and Scientific Data](#)
+**Next:** [Part 8 — Project Organization and Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)

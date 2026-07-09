@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 Writing code that works on your machine is only half the job. Reproducible research means someone else — or your future self six months from now — can take your project, set it up, and get the same results.
@@ -25,9 +27,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -36,9 +42,9 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- `~/project_1` set up with Git and GitHub ([Parts 3–7](#))
-- Project structure created ([Part 8](#))
-- `env_project1` Conda environment ([Part 4](#))
+- `~/project_1` set up with Git and GitHub ([Parts 3–7](https://abhigyan-pro.github.io/Blogs/Part3.html))
+- Project structure created ([Part 8](https://abhigyan-pro.github.io/Blogs/Part8.html))
+- `env_project1` Conda environment ([Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
 
 ---
 
@@ -509,4 +515,4 @@ Push code, not outputs. Results are reproducible from code — they don't need v
 - Understood what Docker is and when it matters
 - Applied long-term project best practices
 
-**Next:** [Part 12 — Contributing to Open Science](#)
+**Next:** [Part 12 — Contributing to Open Science](https://abhigyan-pro.github.io/Blogs/Part12.html)

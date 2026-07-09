@@ -2,6 +2,10 @@
 
 *Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 2 of 12*
 
+---
+
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 In this article, we'll build the foundation of our Python development environment.
@@ -13,25 +17,21 @@ By the end, you'll have:
 - Miniconda installed.
 - A working Ubuntu terminal ready for development.
 
-## Using This Series
+## Using This Article
 
-Each article is designed to be followed step by step.
+If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you encounter an error, don't immediately search for a different tutorial or start changing commands.
+> I am following this article: [paste this article's link]
+>
+> I am on Step [X].
+>
+> I did: [describe what you did]
+>
+> I got: [paste the exact error or describe what happened]
+>
+> Help me troubleshoot.
 
-Instead:
-
-1. Copy the link to the article you're following.
-2. Open your preferred AI assistant (ChatGPT, Claude, Gemini, Grok, or another).
-3. Tell it:
-   - which article you're following,
-   - which step you're on,
-   - the command you ran, and
-   - the exact error message.
-
-This gives the AI the context needed to troubleshoot your issue while keeping you on the same workflow.
-
-If you're curious about why a command is used, what a particular option means, or how something works internally, ask your AI assistant while continuing with the article.
+To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
 
 Think of this series as the roadmap and your AI assistant as your learning companion.
 
@@ -255,3 +255,5 @@ You now have:
 - Miniconda
 
 installed and ready to use.
+
+**Next:** [Part 3 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part3.html)

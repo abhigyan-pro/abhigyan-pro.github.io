@@ -3,6 +3,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 # Preface
 ## "This series builds a Python development environment on Linux. If you're on Windows, Parts 2 and the first two steps of Part 3 walk you through setting up Ubuntu inside Windows using WSL2. Once that's done, everything from Step 3 of Part 3 onwards to Part 12 of the series is identical — whether you're on WSL2 or a native Linux system."
 ![Modern Python Development Stack](../img/blog1.png)
@@ -200,7 +202,7 @@ Learn how to:
 
 In the first article, we'll understand the development stack we'll build throughout this series and why each component has an important role.
 
-➡️ **Continue to Part 1: Understanding the Modern Python Development Stack**
+**Next:** [Part 1 — Understanding the Modern Python Development Stack](https://abhigyan-pro.github.io/Blogs/Part1.html)
 
 ---
 

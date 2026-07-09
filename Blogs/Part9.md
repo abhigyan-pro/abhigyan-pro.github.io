@@ -1,6 +1,10 @@
 # Part 9 — Enabling GPU Computing in WSL with CUDA
 *Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 9 of 12*
 
+---
+
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 This part is only relevant if your computer has an NVIDIA GPU. If you have an AMD or Intel GPU, or no dedicated GPU, skip to Part 10 — GPU setup for those is a different process entirely and beyond the scope of this series.
@@ -31,14 +35,22 @@ Training a deep learning model that takes days on a CPU can take hours on a GPU.
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-> I am following this article: [paste this article's link] I am on Step [X]. I did: [describe what you did] I got: [paste the exact error or describe what happened] Help me troubleshoot.
+> I am following this article: [paste this article's link]
+>
+> I am on Step [X].
+>
+> I did: [describe what you did]
+>
+> I got: [paste the exact error or describe what happened]
+>
+> Help me troubleshoot.
 
 To go deeper on any step: "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
 ## Prerequisites
 
-- WSL2 and Ubuntu installed (Part 2), or native Linux
-- Miniconda and env_project1 set up (Part 4)
+- WSL2 and Ubuntu installed [Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html), or native Linux
+- Miniconda and env_project1 set up [Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html)
 - An NVIDIA GPU
 
 ## How GPU Access Works: WSL vs Native Linux
@@ -199,4 +211,4 @@ In Part 10, we'll use this number as an upper bound when installing PyTorch and 
 - Avoided a system CUDA Toolkit conflict before it could happen
 - Learned what to expect in Part 10 if TensorFlow doesn't find its GPU libraries right away — so it reads as a normal step, not an error
 
-**Next: Part 10 — Installing PyTorch and TensorFlow in WSL**
+**Next:** [Part 10 — Installing PyTorch and TensorFlow in WSL](https://abhigyan-pro.github.io/Blogs/Part10.html)

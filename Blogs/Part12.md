@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 You've built a working Python development environment, organized your projects, managed dependencies, and learned version control. The final step is sharing that work — responsibly, clearly, and in a way that others can actually use.
@@ -25,9 +27,13 @@ By the end, you'll understand:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+
 > I am on Step [X].
+
 > I did: [describe what you did]
+
 > I got: [paste the exact error or describe what happened]
+
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*

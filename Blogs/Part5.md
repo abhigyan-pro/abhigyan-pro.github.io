@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 In Part 4, we ran Python code in both a `.py` script and a `.ipynb` notebook using JupyterLab. In this part, we'll set up VS Code — a single environment where you can work with both file types, alongside your terminal, Git, and debugger.
@@ -22,9 +24,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -33,8 +39,8 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- WSL2 or native Linux with Miniconda installed ([Part 2](#))
-- `~/project_1` with `env_project1`, `first_script.py`, and a `.ipynb` notebook ([Part 4](#))
+- WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
+- `~/project_1` with `env_project1`, `first_script.py`, and a `.ipynb` notebook ([Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
 
 ---
 
@@ -245,4 +251,4 @@ Same result as Part 4 — the environment, the code, and the output are identica
 - Selected `env_project1` as your interpreter and kernel
 - Ran `first_script.py` and your notebook inside VS Code
 
-**Next:** [Part 6 — Linux Essentials for Python Developers](#)
+**Next:** [Part 6 — Linux Essentials for Python Developers](https://abhigyan-pro.github.io/Blogs/Part6.html)

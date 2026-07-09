@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 In Part 9, we set up GPU access — and flagged one thing to expect here in Part 10: TensorFlow's pip-bundled CUDA libraries sometimes need one extra step to be found on WSL. In this part, we'll install the two most widely used deep learning frameworks — PyTorch and TensorFlow — each in its own dedicated Conda environment, verify that both can see and use your GPU, and walk through that extra step if you need it.
@@ -22,9 +24,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -33,8 +39,8 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- GPU access verified ([Part 9](#))
-- Miniconda installed ([Part 2](#))
+- GPU access verified ([Part 9](https://abhigyan-pro.github.io/Blogs/Part9.html))
+- Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 - Know the maximum CUDA version your driver supports — run this if you're unsure:
 
 ```bash
@@ -449,4 +455,4 @@ instead of `tensorflow[and-cuda]`.
 - Verified GPU detection and acceleration for both frameworks
 - Resolved the WSL library-path heads-up from Part 9, if you needed to — and scoped the fix to just the environment that needed it
 
-**Next:** [Part 11 — Building Reproducible Python Workflows](#)
+**Next:** [Part 11 — Building Reproducible Python Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)

@@ -4,6 +4,8 @@
 
 ---
 
+Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+
 ## Objective
 
 In Part 2, we installed WSL2, Ubuntu, and Miniconda. We also noted that projects should live in your Linux home directory — but didn't create that structure yet.
@@ -24,9 +26,13 @@ By the end, you'll have:
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
 > I am following this article: [paste this article's link]
+>
 > I am on Step [X].
+>
 > I did: [describe what you did]
+>
 > I got: [paste the exact error or describe what happened]
+>
 > Help me troubleshoot.
 
 To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
@@ -35,7 +41,7 @@ To go deeper on any step: *"I am following [link]. In Step X it says to run [com
 
 ## Prerequisites
 
-- WSL2, Ubuntu, and Miniconda installed ([Part 2](#))
+- WSL2, Ubuntu, and Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 - Windows Terminal installed
 
 ---
@@ -82,11 +88,8 @@ When Ubuntu opens, you'll see something like:
 You first saw this prompt at the end of Part 2. Now we'll understand what you can do with it.
 
 Additional side note:
-```bash
-The program running inside your terminal is called a "shell". On Ubuntu, the default shell is "bash" (Bourne Again Shell). When you type a command and press Enter, bash is what reads and executes it.
-
-You will see "bash" mentioned often in documentation and tutorials — it simply means the command-line environment you are already using.
-```
+- The program running inside your terminal is called a **shell**. On Ubuntu, the default shell is **bash** (Bourne Again Shell). When you type a command and press Enter, bash is what reads and executes it.
+- You'll see "bash" mentioned often in documentation and tutorials — it simply means the command-line environment you're already using.
 
 ---
 
