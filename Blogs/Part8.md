@@ -1,6 +1,6 @@
 # Part 8 — Project Organization and Scientific Data
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 8 of 12*
+*Building a Research Computing Environment — Part 8 of 12*
 
 ---
 

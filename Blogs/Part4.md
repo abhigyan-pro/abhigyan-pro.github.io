@@ -1,6 +1,6 @@
-# Part 4 — Managing Python Projects with Conda Environments
+# Part 4 — Managing Research Projects with Conda Environments
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 4 of 12*
+*Building a Research Computing Environment — Part 4 of 12*
 
 ---
 
@@ -381,4 +381,4 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 - Ran your first Python code in both a script and a notebook
 - Set up JupyterLab
 
-**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](https://abhigyan-pro.github.io/Blogs/Part5.html)
+**Next:** [Part 5 — Setting Up VS Code for Research Computing](https://abhigyan-pro.github.io/Blogs/Part5.html)

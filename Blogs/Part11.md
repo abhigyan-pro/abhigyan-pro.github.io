@@ -1,6 +1,6 @@
-# Part 11 — Building Reproducible Python Workflows
+# Part 11 — Building Reproducible Research Workflows
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 11 of 12*
+*Building a Research Computing Environment — Part 11 of 12*
 
 ---
 

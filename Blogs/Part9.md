@@ -1,5 +1,6 @@
-# Part 9 — Enabling GPU Computing in WSL with CUDA
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 9 of 12*
+# Part 9 — Enabling GPU Computing in WSL and Linux with CUDA
+
+*Building a Research Computing Environment — Part 9 of 12*
 
 ---
 
@@ -211,4 +212,4 @@ In Part 10, we'll use this number as an upper bound when installing PyTorch and 
 - Avoided a system CUDA Toolkit conflict before it could happen
 - Learned what to expect in Part 10 if TensorFlow doesn't find its GPU libraries right away — so it reads as a normal step, not an error
 
-**Next:** [Part 10 — Installing PyTorch and TensorFlow in WSL](https://abhigyan-pro.github.io/Blogs/Part10.html)
+**Next:** [Part 10 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part10.html)

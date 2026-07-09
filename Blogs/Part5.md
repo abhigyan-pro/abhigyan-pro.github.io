@@ -1,6 +1,6 @@
-# Part 5 — Setting Up VS Code for Python Development
+# Part 5 — Setting Up VS Code for Research Computing
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 5 of 12*
+*Building a Research Computing Environment — Part 5 of 12*
 
 ---
 
@@ -251,4 +251,4 @@ Same result as Part 4 — the environment, the code, and the output are identica
 - Selected `env_project1` as your interpreter and kernel
 - Ran `first_script.py` and your notebook inside VS Code
 
-**Next:** [Part 6 — Linux Essentials for Python Developers](https://abhigyan-pro.github.io/Blogs/Part6.html)
+**Next:** [Part 6 — Linux Essentials for Researchers](https://abhigyan-pro.github.io/Blogs/Part6.html)

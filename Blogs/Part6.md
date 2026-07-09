@@ -1,6 +1,6 @@
-# Part 6 — Linux Essentials for Python Developers
+# Part 6 — Linux Essentials for Researchers
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 6 of 12*
+*Building a Research Computing Environment — Part 6 of 12*
 
 ---
 

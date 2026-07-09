@@ -1,13 +1,13 @@
-# Python Development for Research and Scientific Computing
-## A Beginner's Series
+# The Research Computing Environment
+## A Practical Guide for Researchers and Scientists
 
 ---
 
 Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
 
 # Preface
-## "This series builds a Python development environment on Linux. If you're on Windows, Parts 2 and the first two steps of Part 3 walk you through setting up Ubuntu inside Windows using WSL2. Once that's done, everything from Step 3 of Part 3 onwards to Part 12 of the series is identical — whether you're on WSL2 or a native Linux system."
-![Modern Python Development Stack](../img/blog1.png)
+## "This series builds a research computing environment on Linux, using Python as the working language. If you're on Windows, Parts 2 and the first two steps of Part 3 walk you through setting up Ubuntu inside Windows using WSL2. Once that's done, everything from Step 3 of Part 3 onwards to Part 12 of the series is identical — whether you're on WSL2 or a native Linux system."
+![Modern Research Computing Stack](../img/blog1.png)
 
 
 
@@ -50,36 +50,19 @@ Each article has a single objective, allowing you to learn one concept at a time
 
 ---
 
-# Using This Series
+If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-Each article is designed to be followed **step by step**.
+> I am following this article: [paste this article's link]
+>
+> I am on Step [X].
+>
+> I did: [describe what you did]
+>
+> I got: [paste the exact error or describe what happened]
+>
+> Help me troubleshoot.
 
-If you encounter an error, **don't immediately search for a different tutorial or start changing commands.**
-
-Instead:
-
-1. Copy the link to the article you're following.
-2. Open your preferred AI assistant.
-   - ChatGPT
-   - Claude
-   - Gemini
-   - Grok
-   - or another assistant
-3. Tell it:
-   - which article you're following
-   - which step you're on
-   - the command you ran
-   - the exact error message
-
-This gives the AI enough context to troubleshoot your issue while keeping you on the same workflow.
-
-If you're curious about:
-
-- why a command is used,
-- what a particular option means,
-- or how something works internally,
-
-ask your AI assistant while continuing with the article.
+To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
 
 > **Think of this series as the roadmap and your AI assistant as your learning companion.**
 
@@ -107,28 +90,28 @@ More importantly, you'll understand **how these tools fit together** and **why t
 
 | Part | Topic |
 |------|-------|
-| **Part 1** | Understanding the Modern Python Development Stack |
-| **Part 2** | Building Your Python Development Environment |
+| **Part 1** | Understanding the Modern Research Computing Stack |
+| **Part 2** | Building Your Research Computing Environment |
 | **Part 3** | Using Ubuntu on Windows |
-| **Part 4** | Managing Python Projects with Conda Environments |
-| **Part 5** | Setting Up VS Code for Python Development with WSL |
-| **Part 6** | Linux Essentials for Python Developers |
+| **Part 4** | Managing Research Projects with Conda Environments |
+| **Part 5** | Setting Up VS Code for Research Computing |
+| **Part 6** | Linux Essentials for Researchers |
 | **Part 7** | Git and GitHub from WSL |
 | **Part 8** | Project Organization and Scientific Data |
 | **Part 9** | Enabling GPU Computing in WSL with CUDA |
 | **Part 10** | Installing PyTorch and TensorFlow |
-| **Part 11** | Building Reproducible Python Workflows |
+| **Part 11** | Building Reproducible Research Workflows |
 | **Part 12** | Contributing to Open Science |
 
 ---
 
-## Part 1 — Understanding the Modern Python Development Stack
+## Part 1 — Understanding the Modern Research Computing Stack
 
 Understand the development environment before installing anything.
 
 ---
 
-## Part 2 — Building Your Python Development Environment
+## Part 2 — Building Your Research Computing Environment
 
 Install WSL2, Ubuntu, and Miniconda.
 
@@ -140,21 +123,21 @@ Become comfortable using the Linux terminal and filesystem.
 
 ---
 
-## Part 4 — Managing Python Projects with Conda Environments
+## Part 4 — Managing Research Projects with Conda Environments
 
 Learn Python environments, packages, package managers, and Jupyter.
 
 ---
 
-## Part 5 — Setting Up VS Code for Python Development with WSL
+## Part 5 — Setting Up VS Code for Research Computing
 
 Connect VS Code to WSL and run your first Python program and notebook.
 
 ---
 
-## Part 6 — Linux Essentials for Python Developers
+## Part 6 — Linux Essentials for Researchers
 
-Learn the Linux skills you'll use throughout your development journey.
+Learn the Linux skills you'll use throughout your research journey.
 
 ---
 
@@ -182,7 +165,7 @@ Set up a deep learning environment.
 
 ---
 
-## Part 11 — Building Reproducible Python Workflows
+## Part 11 — Building Reproducible Research Workflows
 
 Learn how to build projects that are easy to reproduce, share, and maintain.
 
@@ -202,7 +185,7 @@ Learn how to:
 
 In the first article, we'll understand the development stack we'll build throughout this series and why each component has an important role.
 
-**Next:** [Part 1 — Understanding the Modern Python Development Stack](https://abhigyan-pro.github.io/Blogs/Part1.html)
+**Next:** [Part 1 — Understanding the Modern Research Computing Stack](https://abhigyan-pro.github.io/Blogs/Part1.html)
 
 ---
 

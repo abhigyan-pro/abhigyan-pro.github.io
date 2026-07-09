@@ -1,6 +1,6 @@
 # Part 12 — Contributing to Open Science
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 12 of 12*
+*Building a Research Computing Environment — Part 12 of 12*
 
 ---
 

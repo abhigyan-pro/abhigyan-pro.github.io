@@ -1,6 +1,6 @@
-# Understanding the Modern Python Development Stack
+# Understanding the Modern Research Computing Stack
 
-*Python Development for Research and Scientific Computing — Part 1 of 12*
+*Building a Research Computing Environment — Part 1 of 12*
 
 ---
 
@@ -205,4 +205,4 @@ In the next article, we'll install:
 
 and verify that everything is working correctly before moving on.
 
-**Next:** [Part 2 — Building Your Python Development Environment](https://abhigyan-pro.github.io/Blogs/Part2.html)
+**Next:** [Part 2 — Building Your Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Part2.html)

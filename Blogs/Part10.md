@@ -1,6 +1,6 @@
 # Part 10 — Installing PyTorch and TensorFlow
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 10 of 12*
+*Building a Research Computing Environment — Part 10 of 12*
 
 ---
 
@@ -455,4 +455,4 @@ instead of `tensorflow[and-cuda]`.
 - Verified GPU detection and acceleration for both frameworks
 - Resolved the WSL library-path heads-up from Part 9, if you needed to — and scoped the fix to just the environment that needed it
 
-**Next:** [Part 11 — Building Reproducible Python Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
+**Next:** [Part 11 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)

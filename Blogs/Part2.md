@@ -1,6 +1,6 @@
-# Building Your Python Development Environment: Installing WSL2, Ubuntu, and Miniconda
+# Building Your Research Computing Environment: Installing WSL2, Ubuntu, and Miniconda
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 2 of 12*
+*Building a Research Computing Environment — Part 2 of 12*
 
 ---
 

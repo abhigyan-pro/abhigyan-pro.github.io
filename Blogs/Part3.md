@@ -1,6 +1,6 @@
-# Part 3 — Using Ubuntu on Windows: Terminal Basics and File Navigation
+# Part 3 — Terminal Basics and File Navigation
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 3 of 12*
+*Building a Research Computing Environment — Part 3 of 12*
 
 ---
 
@@ -288,4 +288,4 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 Software Carpentry has a free, beginner-friendly course that complements this part well:
 [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
 
-**Next:** [Part 4 — Managing Python Environments with Conda](https://abhigyan-pro.github.io/Blogs/Part4.html)
+**Next:** [Part 4 — Managing Research Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part4.html)

@@ -1,6 +1,6 @@
-# Part 7 — Git and GitHub from WSL
+# Part 7 — Git and GitHub
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 7 of 12*
+*Building a Research Computing Environment — Part 7 of 12*
 
 ---
 
