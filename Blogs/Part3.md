@@ -281,4 +281,8 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 - Understood the code/data split: `/home` for code, `/mnt` for data
 - Created your `~/project_1` folder
 
+## Want to go deeper on Linux and terminal basics?
+Software Carpentry has a free, beginner-friendly course that complements this part well:
+[The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
+
 **Next:** [Part 4 — Managing Python Environments with Conda](https://abhigyan-pro.github.io/Blogs/Part4.html)

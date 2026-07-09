@@ -428,6 +428,11 @@ Removes it.
 
 On many HPC systems you'll still use Conda inside your job scripts — load a base Python module first, then activate your Conda environment.
 
+## Further reading:
+For a more comprehensive Linux command reference, Software Carpentry's Unix Shell course covers these topics in depth with exercises:
+[The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
+
+
 ### Don't Have HPC Access Yet?
 
 You can practice SLURM locally on your own Ubuntu machine or WSL. This tutorial walks through setting up a single-node SLURM instance:

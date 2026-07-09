@@ -77,8 +77,10 @@ cd ~/project_1
 Create an environment named `env_project1` with Python 3.11:
 
 ```bash
-conda create -n env_project1 python=3.11
+conda create -n env_project1 python=3.11 pip
 ```
+
+> **Note:** Always include `pip` explicitly when creating an environment. Unlike the defaults channel, conda-forge doesn't bundle pip automatically with Python — skip it, and later `pip install` commands will fail with errors like `pip3: command not found` or `No module named pip`.
 
 Conda will show a list of packages to install. Type `y` and press Enter.
 
@@ -98,7 +100,56 @@ This means you are now inside your isolated environment. Any package you install
 
 ---
 
-## Step 4 — Installing Packages (also called Libraries)
+## Step 4 — Managing Your Environments
+
+Before we install anything, a few commands worth knowing now that you have your first environment.
+
+**List all environments:**
+
+```bash
+conda env list
+```
+
+Output:
+
+```
+# conda environments:
+#
+base                  *  ~/miniconda3
+env_project1             ~/miniconda3/envs/env_project1
+```
+
+The `*` shows your currently active environment.
+
+**Where environments are stored:**
+
+Each environment lives inside `~/miniconda3/envs/`. You never need to go there directly — Conda manages it for you. But knowing this helps when you're wondering where your packages actually live.
+
+**Deactivate an environment:**
+
+```bash
+conda deactivate
+```
+
+Switches you back to `(base)`. Always deactivate before deleting an environment.
+
+**Delete an environment:**
+
+```bash
+conda env remove -n env_project1
+```
+
+This permanently deletes the environment and all packages inside it. Don't run this now — we'll need `env_project1` for the rest of the series.
+
+---
+
+## Step 5 — Installing Packages (also called Libraries)
+
+Make sure `env_project1` is active before installing anything:
+
+```bash
+conda activate env_project1
+```
 
 ### `conda install` vs `pip install`
 
@@ -113,7 +164,7 @@ There are two ways to install packages:
 
 **Rule of thumb:** always try `conda install` first. Use `pip install` only if the package is not available through Conda.
 
-### The `conda-forge` channel
+### The `conda-forge` Channel
 
 Conda packages are hosted in **channels** — think of them as app stores. The default Conda channel has many packages, but `conda-forge` is a community-maintained channel with significantly more packages and more up-to-date versions.
 
@@ -146,7 +197,7 @@ You should see a version number printed.
 
 ---
 
-## Step 5 — Two Ways to Write Python: `.py` and `.ipynb`
+## Step 6 — Two Ways to Write Python: `.py` and `.ipynb`
 
 Before writing any code, it helps to understand the two file types you'll use throughout this series.
 
@@ -172,7 +223,7 @@ Both are valid. Most research workflows use both — notebooks for exploration, 
 
 ---
 
-## Step 6 — Run Your First `.py` Script
+## Step 7 — Run Your First `.py` Script
 
 Make sure you are in `~/project_1` with `env_project1` active.
 
@@ -182,8 +233,7 @@ Create a file:
 touch first_script.py
 ```
 
-Open it in a terminal text editor:
-"We'll use `nano` — a simple terminal text editor — to write our script directly in the terminal." (More about `nano` would be discussed in part 6 of this blog series.)
+Open it in a terminal text editor. We'll use `nano` — a simple terminal text editor — to write our script directly in the terminal. (More about `nano` in Part 6.)
 
 ```bash
 nano first_script.py
@@ -218,7 +268,7 @@ Sum: 15
 
 ---
 
-## Step 7 — What is Jupyter Notebook and JupyterLab?
+## Step 8 — What is Jupyter Notebook and JupyterLab?
 
 **Jupyter Notebook** is the original browser-based interface for `.ipynb` files. You write code in cells, run them one at a time, and see output immediately below.
 
@@ -228,7 +278,7 @@ For this series, we use **JupyterLab**.
 
 ---
 
-## Step 8 — Install JupyterLab and ipykernel
+## Step 9 — Install JupyterLab and ipykernel
 
 `ipykernel` is what connects your Conda environment to JupyterLab. Without it, JupyterLab won't see `env_project1` as an available kernel.
 
@@ -237,6 +287,7 @@ Install both:
 ```bash
 conda install jupyterlab ipykernel
 ```
+
 Type `y` when prompted.
 
 Register your environment as a Jupyter kernel:
@@ -247,7 +298,7 @@ python -m ipykernel install --user --name env_project1 --display-name "Python (e
 
 ---
 
-## Step 9 — Run Your First `.ipynb` Notebook
+## Step 10 — Run Your First `.ipynb` Notebook
 
 Launch JupyterLab:
 
@@ -294,7 +345,7 @@ To stop JupyterLab, go back to the terminal and press `Ctrl+C`.
 
 ---
 
-## Step 10 — Why Use an IDE Like VS Code?
+## Step 11 — Why Use an IDE Like VS Code?
 
 JupyterLab is a capable environment. For notebooks and interactive work, it works well on its own.
 
@@ -317,10 +368,11 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 
 - Understood what packages and virtual environments are
 - Created Conda environment `env_project1`
+- Learned to list, deactivate, and delete Conda environments
 - Learned `conda install` vs `pip install` and set up `conda-forge`
 - Installed numpy
 - Understood the difference between `.py` and `.ipynb`
 - Ran your first Python code in both a script and a notebook
 - Set up JupyterLab
 
-**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](https://abhigyan-pro.github.io/Blogs/Part5.html)
+**Next:** [Part 5 — Setting Up VS Code for Python Development with WSL](#)
