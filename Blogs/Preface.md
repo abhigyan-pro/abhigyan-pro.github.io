@@ -1,4 +1,4 @@
-# The Research Computing Environment
+# Building a Research Computing Environment
 ## A Practical Guide for Researchers and Scientists
 
 ---

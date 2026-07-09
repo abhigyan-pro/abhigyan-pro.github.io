@@ -1,4 +1,4 @@
-# Part 8 — Project Organization and Scientific Data
+# Part 8 — Project Organization and managing Scientific Data
 
 *Building a Research Computing Environment — Part 8 of 12*
 

@@ -1,4 +1,4 @@
-# Part 6 — Linux Essentials for Researchers
+# Part 6 — Linux Essentials
 
 *Building a Research Computing Environment — Part 6 of 12*
 

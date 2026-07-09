@@ -1,4 +1,4 @@
-# Part 5 — Setting Up VS Code for Research Computing
+# Part 5 — Setting Up VS Code
 
 *Building a Research Computing Environment — Part 5 of 12*
 

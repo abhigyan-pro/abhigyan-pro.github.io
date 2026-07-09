@@ -1,4 +1,4 @@
-# Part 4 — Managing Research Projects with Conda Environments
+# Part 4 — Managing Projects with Conda Environments
 
 *Building a Research Computing Environment — Part 4 of 12*
 

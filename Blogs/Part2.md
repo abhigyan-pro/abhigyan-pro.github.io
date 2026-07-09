@@ -1,4 +1,4 @@
-# Building Your Research Computing Environment: Installing WSL2, Ubuntu, and Miniconda
+# Installing WSL2, Ubuntu, and Miniconda
 
 *Building a Research Computing Environment — Part 2 of 12*
 
