@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Part 5 — Setting Up VS Code for Python Development
 
 *Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 5 of 12*

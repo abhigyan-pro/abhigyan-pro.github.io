@@ -1,6 +1,10 @@
+---
+layout: default
+---
+
 # Understanding the Modern Python Development Stack
 
-*Python Development with WSL, Ubuntu, Miniconda, and VS Code — Part 1 of 12*
+*Python Development for Research and Scientific Computing — Part 1 of 12*
 
 ## Objective
 

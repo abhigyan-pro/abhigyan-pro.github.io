@@ -1,4 +1,8 @@
-# Python Development with WSL2, Ubuntu, Miniconda, and VS Code
+---
+layout: default
+---
+
+# Python Development for Research and Scientific Computing
 ## A Beginner's Series
 
 ---
