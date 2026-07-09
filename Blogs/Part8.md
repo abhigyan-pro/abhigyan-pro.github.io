@@ -299,4 +299,4 @@ If your research involves atmospheric or climate data specifically, Project Pyth
 - Configured `.gitignore` to protect large files from GitHub
 - Got a map of domain-specific scientific data formats
 
-**Next:** [Part 9 — Enabling GPU Computing in WSL with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
+**Next:** [Part 9 — Enabling GPU Computing in WSL and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)

@@ -251,4 +251,4 @@ Same result as Part 4 — the environment, the code, and the output are identica
 - Selected `env_project1` as your interpreter and kernel
 - Ran `first_script.py` and your notebook inside VS Code
 
-**Next:** [Part 6 — Linux Essentials for Researchers](https://abhigyan-pro.github.io/Blogs/Part6.html)
+**Next:** [Part 6 — Linux Essentials](https://abhigyan-pro.github.io/Blogs/Part6.html)

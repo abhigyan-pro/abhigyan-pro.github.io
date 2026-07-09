@@ -392,4 +392,4 @@ These topics go deep. When you're ready to explore them, the following resources
 - Learned the everyday Git workflow
 - Got a map of what else Git and GitHub can do
 
-**Next:** [Part 8 — Project Organization and Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
+**Next:** [Part 8 — Project Organization and managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)

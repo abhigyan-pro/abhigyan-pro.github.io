@@ -381,4 +381,4 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 - Ran your first Python code in both a script and a notebook
 - Set up JupyterLab
 
-**Next:** [Part 5 — Setting Up VS Code for Research Computing](https://abhigyan-pro.github.io/Blogs/Part5.html)
+**Next:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)

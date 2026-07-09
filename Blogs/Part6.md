@@ -463,4 +463,4 @@ When you do get HPC access, this is a solid beginner tutorial for using SLURM on
 - Understood what HPC systems are and how they differ from local machines
 - Learned SLURM job submission and software modules
 
-**Next:** [Part 7 — Git and GitHub from WSL](https://abhigyan-pro.github.io/Blogs/Part7.html)
+**Next:** [Part 7 — Git and GitHub](https://abhigyan-pro.github.io/Blogs/Part7.html)
