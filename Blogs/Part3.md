@@ -90,7 +90,7 @@ A new Ubuntu tab opens. You can run multiple tabs at the same time — useful wh
 
 When Ubuntu opens, you'll see something like:
 
-```
+```bash
 (base) abhigyan@DESKTOP-XXXX:~$
 ```
 

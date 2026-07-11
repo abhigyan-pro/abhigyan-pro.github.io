@@ -80,7 +80,7 @@ A Windows Terminal window should now open.
 
 Run:
 
-```
+```bash
 wsl --list --online
 ```
 
@@ -92,7 +92,7 @@ For this series, we'll use: `Ubuntu-24.04`
 
 Run:
 
-```
+```bash
 wsl --install -d Ubuntu-24.04
 ```
 
@@ -110,7 +110,7 @@ Open Ubuntu from the Start Menu.
 
 If you don't see it yet, open Windows Terminal and run:
 
-```
+```bash
 wsl -d Ubuntu-24.04
 ```
 
@@ -133,13 +133,13 @@ Press Enter after typing the password.
 
 Run:
 
-```
+```bash
 sudo apt update
 ```
 
 Then:
 
-```
+```bash
 sudo apt upgrade -y
 ```
 
@@ -149,7 +149,7 @@ Ubuntu may ask for the password you created.
 
 Run:
 
-```
+```bash
 sudo apt install -y wget curl git build-essential ca-certificates
 ```
 
@@ -159,13 +159,13 @@ These utilities are commonly required by development tools.
 
 Move to your home directory:
 
-```
+```bash
 cd ~
 ```
 
 Download Miniconda:
 
-```
+```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
@@ -173,7 +173,7 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 Run:
 
-```
+```bash
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
@@ -194,19 +194,19 @@ You should now see `(base)` at the beginning of the terminal prompt.
 
 Run:
 
-```
+```bash
 conda --version
 ```
 
 Then:
 
-```
+```bash
 python --version
 ```
 
 Then:
 
-```
+```bash
 pip --version
 ```
 
@@ -228,13 +228,13 @@ or simply `~`.
 
 To return here at any time:
 
-```
+```bash
 cd ~
 ```
 
 To see your current location:
 
-```
+```bash
 pwd
 ```
 

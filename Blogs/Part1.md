@@ -89,7 +89,7 @@ Instead, we'll keep Windows while gradually learning Linux using WSL2.
 
 By the end of this series, your setup will look like this:
 
-```text
+```bash
                              Windows 11
                                  │
                     ┌────────────┴────────────┐
@@ -164,7 +164,7 @@ Although VS Code runs on Windows, it can connect directly to Ubuntu through WSL.
 
 The workflow we'll build looks like this:
 
-```text
+```bash
                         Ubuntu Terminal
                                │
                                ▼
