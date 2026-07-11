@@ -4,11 +4,17 @@
 ---
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/" title="LinkedIn">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
     <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
   </a>
   &nbsp;&nbsp;
-  <a href="https://abhigyan-pro.github.io/" title="Website">
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
     <img src="../img/website.svg" alt="Website" width="24" height="24">
   </a>
 </p>
