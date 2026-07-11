@@ -1,7 +1,8 @@
 # Enabling GPU Computing in WSL and Linux with CUDA
 ### Building a Research Computing Environment — Part 9 of 12
 
-<p align="center">
+Follow me :
+<p align="left">
   <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
      target="_blank"
      rel="noopener noreferrer"
@@ -14,6 +15,13 @@
      rel="noopener noreferrer"
      title="Website">
     <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/#blogs"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Blogs">
+    <img src="../img/Blog.svg" alt="Website" width="24" height="24">
   </a>
 </p>
 
