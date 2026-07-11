@@ -3,7 +3,15 @@
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/" title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/" title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 # Preface
 ## "This series builds a research computing environment on Linux, using Python as the working language. If you're on Windows, Parts 2 and the first two steps of Part 3 walk you through setting up Ubuntu inside Windows using WSL2. Once that's done, everything from Step 3 of Part 3 onwards to Part 12 of the series is identical — whether you're on WSL2 or a native Linux system."
