@@ -1,5 +1,6 @@
-# Git and GitHub
-### Building a Research Computing Environment — Part 7 of 12
+# Project Organization and Managing Scientific Data
+### Phase 2: The Research Infrastructure — Part 3
+(Part 7 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,383 +30,152 @@ Follow me :
 
 ## Quick Summary
 
-This article installs and configures Git, connects your machine to GitHub over SSH, and pushes `project_1` as your first repository. It closes with the everyday four-command Git workflow you'll use from here on, plus a map of what else Git and GitHub offer — branching, pull requests, forking, Issues, and Actions.
+This article establishes a reusable project structure for research code, sets the rule that raw data is never modified, and separates data storage from code storage entirely. It also covers naming conventions, writing a README, what belongs on GitHub versus what doesn't, and where research data can live — locally, in the cloud, or published with a citable DOI.
 
 ---
 
 ## Objective
 
-You've been writing code. It works. You change something — now it doesn't. You don't remember what you changed.
+You've been building `project_1` throughout this series. So far, the focus has been on tools — installing, configuring, connecting. But as your projects grow, how you organize them matters as much as the code itself.
 
-Sound familiar?
-
-Now imagine two people editing the same script. Who has the latest version? What did the other person change? How do you combine your work without overwriting each other?
-
-These are not hypothetical problems. Every researcher who writes code eventually faces them.
-
-**Git** is the solution. It tracks every change you make to your code — who changed what, when, and why. You can go back to any previous version at any point.
-
-**GitHub** is where you store that history online — making your code accessible from anywhere, shareable with collaborators, and safe from your hard drive failing.
-
-Most researchers learn Python, learn data analysis, learn machine learning — but never learn Git. Then they join a lab, start collaborating, or try to share their work, and suddenly everything feels chaotic.
-
-This part fixes that.
+A well-organized project is easier to understand, easier to share, and easier to come back to after six months away.
 
 By the end, you'll have:
-
-- Git installed and configured
-- A GitHub account connected via SSH
-- `project_1` pushed to GitHub as your first repository
-- A working understanding of what else Git and GitHub can do
+- A standard project structure you can reuse across all your work
+- A clear strategy for managing datasets
+- An understanding of local and cloud storage options for research data
 
 ---
 
 ## Content
 
-### Getting Unstuck
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
+  To go deeper on any step:
 
-To go deeper on any step:
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
-
-Think of this series as the roadmap and your AI assistant as your learning companion.
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
 ### Prerequisites
 
-- WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
-- `~/project_1` folder with files created ([Parts 3–5](https://abhigyan-pro.github.io/Blogs/Part3.html))
-- A GitHub account — we'll create one in Step 1
+- `~/project_1` set up with Git and GitHub ([Part 2, 5, 6](https://abhigyan-pro.github.io/Blogs/Part2.html))
 
-### Step 1 — Create a GitHub Account
+### Step 1 — Why Project Organization Matters
 
-Go to [https://github.com](https://github.com) and sign up for a free account.
+Imagine coming back to a project after six months. Files named `script_final_v3_FINAL.py`. Data mixed in with code. No README. No idea which script to run first.
 
-Choose your username carefully — it will be visible on every repository you create and every contribution you make. Many researchers use their real name or a close variation.
+This is more common than it should be — especially in research, where the pressure is to get results, not to organize files. Good organization costs almost nothing upfront and saves enormous time later.
 
-### Step 2 — Install Git
+### Step 2 — A Standard Project Structure
 
-Open your terminal and type:
+Here is a structure that works for most research projects:
 
-```bash
-sudo apt update
+```text
+project_1/
+├── notebooks/        ← .ipynb files for exploration
+├── scripts/          ← .py files for automation and pipelines
+├── results/
+│   ├── figures/      ← plots and visualizations
+│   └── outputs/      ← model outputs, tables, summaries
+├── environment.yml   ← Conda environment definition
+├── .gitignore        ← files Git should ignore
+└── README.md         ← what this project is and how to use it
 ```
 
-```bash
-sudo apt install git
-```
+**The key principle:** separate your inputs (data), your process (notebooks and scripts), and your outputs (results).
 
-Verify:
-
-```bash
-git --version
-```
-
-You should see a version number printed.
-
-### Step 3 — Configure Git
-
-Tell Git who you are. This information is attached to every commit you make.
-
-```bash
-git config --global user.name "Your Name"
-```
-
-```bash
-git config --global user.email "your_email@example.com"
-```
-
-Use the same email address you used for your GitHub account.
-
-Set VS Code as your default Git editor:
-
-```bash
-git config --global core.editor "code --wait"
-```
-
-Verify your configuration:
-
-```bash
-git config --list
-```
-
-### Step 4 — Generate an SSH Key for GitHub
-
-In Part 6, we generated an SSH key to connect to remote servers. Here we generate a separate key specifically for GitHub — this is cleaner practice and keeps your keys organized.
-
-```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
-```
-
-When asked where to save it:
-
-```
-Enter file in which to save the key (~/.ssh/id_ed25519):
-```
-
-Type a new name to avoid overwriting your existing key:
-
-```
-~/.ssh/id_ed25519_github
-```
-
-Press Enter. When asked for a passphrase, press Enter twice to skip.
-
-Set correct permissions:
-
-```bash
-chmod 600 ~/.ssh/id_ed25519_github
-```
-
-### Step 5 — Add the SSH Key to GitHub
-
-Copy your public key:
-
-```bash
-cat ~/.ssh/id_ed25519_github.pub
-```
-
-This prints a long string starting with `ssh-ed25519`. Copy the entire output.
-
-Now add it to GitHub:
-
-1. Go to [https://github.com/settings/keys](https://github.com/settings/keys)
-2. Click **New SSH key**
-3. Give it a title — something like `WSL Ubuntu` or `My Laptop`
-4. Paste your public key into the **Key** field
-5. Click **Add SSH key**
-
-### Step 6 — Configure SSH to Use Your GitHub Key
-
-Tell SSH which key to use when connecting to GitHub:
-
-```bash
-nano ~/.ssh/config
-```
-
-Add these lines:
-
-```
-Host github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519_github
-```
-
-Save and exit (`Ctrl+X`, `Y`, `Enter`).
-
-Test the connection:
-
-```bash
-ssh -T git@github.com
-```
-
-You should see:
-
-```
-Hi abhigyan! You've successfully authenticated, but GitHub does not provide shell access.
-```
-
-### Step 7 — Create a Repository on GitHub
-
-1. Go to [https://github.com/new](https://github.com/new)
-2. Name it `project_1`
-3. Leave it **Public** for now
-4. Leave all three options unchecked for now:
-   - **Add a README** — a file describing your project. We'll add this manually later.
-   - **Add .gitignore** — tells Git which files to ignore. We'll create this manually in Step 8.
-   - **Add a license** — defines how others can use your code. We'll cover this in Part 12 when we discuss Open Science.
-5. Click **Create repository**
-
-GitHub will create a repository with a default branch called `main`. Think of a branch as the main timeline of your code — every commit you make gets added to it. `main` is where your stable, working code lives.
-
-GitHub will show you a page with setup instructions. You don't need to follow those — we'll do it our way below.
-
-### Step 8 — Push `project_1` to GitHub
-
-Navigate to your project folder:
-
+Create this structure:
 ```bash
 cd ~/project_1
+mkdir -p notebooks scripts results/figures results/outputs
+touch README.md
 ```
 
-Initialize Git in this folder:
+### Step 3 — The Raw Data Rule
 
+**Never modify raw data. Ever.**
+
+Your raw data folder is read-only in practice — you load from it, you never write to it. If you need to clean or transform data, save the result to a separate processed folder.
+
+### Step 4 — Where Data Lives
+
+We follow this split:
+- **Code → `/home/yourusername/projects/`**
+- **Data → `/mnt/d/` (or whichever Windows drive you use)**
+
+Keep data outside `project_1` because it is often large, doesn't need version control, and is shared across projects.
+
+Create this on your Windows drive (or Linux equivalent):
 ```bash
-git init
+mkdir -p /mnt/d/datasets/project_1/raw
+mkdir -p /mnt/d/datasets/project_1/processed
 ```
 
-This creates a hidden `.git` folder — Git will now track every change inside `project_1`.
+### Step 5 — Naming Conventions
 
-Tell Git which files to track. First, create a `.gitignore` file to exclude files you don't want tracked:
-`.gitignore` is a file that tells Git which files to skip — temporary files, compiled code, and notebook checkpoints that don't need to be tracked.
+- **Files**: Use lowercase, underscores, and be descriptive (e.g., `clean_temperature_data.py`).
+- **Folders**: Short and lowercase (e.g., `scripts/`).
+- **Data files**: Include dates (`temperature_2024_01_raw.csv`) and versions (`v2.csv`).
+- **Notebooks**: Number them to show order (`01_explore.ipynb`).
 
+### Step 6 — README.md
+
+A README is the front door of your project. Open and fill it in:
 ```bash
-nano .gitignore
+cd ~/project_1
+nano README.md
 ```
 
-Add these lines:
+Include sections for: What this is, Data location, How to run, Environment setup, and Results.
 
-```
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
-```
+### Step 7 — What Goes on GitHub and What Doesn't
 
-Save and exit (`ctrl+X`, `Y`, `Enter`).
+GitHub is for code — not data.
 
-Stage all your files:
+- **Push**: Scripts, notebooks, README, `.gitignore`, environment files, small plots.
+- **Do not push**: Data files, large output files, model weights, or any file over a few MB.
 
+Add large items to `.gitignore`:
 ```bash
-git add .
+nano ~/project_1/.gitignore
 ```
 
-`git add .` tells Git: *"include everything in the current folder in the next snapshot."*
+### Step 8 — Storage Recommendations
 
-Make your first commit:
+- **Local Storage**: Your primary working storage (`~/project_1/` for code, `/mnt/d/datasets/` for data).
+- **Cloud Storage**: Google Drive for sharing/backups; AWS S3 for large datasets; **Zenodo** for publishing datasets permanently with a citable DOI.
 
-```bash
-git commit -m "Initial commit: project_1 setup"
-```
+### Step 9 — Domain-Specific File Formats
 
-A commit is a saved snapshot of your code at this moment. The message describes what changed.
-
-Connect your local folder to the GitHub repository you just created:
-
-```bash
-git remote add origin git@github.com:yourusername/project_1.git
-```
-
-Replace `yourusername` with your actual GitHub username.
-
-`origin` is just a nickname for your GitHub repository's address. Instead of typing the full URL every time, Git uses `origin` as a shorthand. You could name it anything, but `origin` is the universal convention — you'll see it everywhere.
-
-Push your code to GitHub:
-
-```bash
-git branch -M main
-git push -u origin main
-```
-This sets your local branch name to `main` — matching what GitHub expects by default.
-The `-u` flag sets a permanent link between your local `main` branch and GitHub. You only need this the first time. From now on, `git push` alone is enough — Git already knows where to send your code.
-
-Go to `https://github.com/yourusername/project_1` — you'll see your files there.
-
-**Congratulations, you just made your first commit to GitHub!!**
-
-### Step 9 — The Everyday Git Workflow
-
-From now on, every time you make changes to your project, this is the workflow:
-
-**Check what has changed:**
-
-```bash
-git status
-```
-
-**Stage the changes:**
-
-```bash
-git add .
-```
-
-Or stage a specific file:
-
-```bash
-git add first_script.py
-```
-
-**Commit the changes:**
-
-```bash
-git commit -m "Describe what you changed"
-```
-
-**Push to GitHub:**
-
-```bash
-git push
-```
-
-That's it. Four commands you'll use every day.
-
-### Step 10 — Cloning a Repository
-
-If you want to download someone else's project — or your own from a different machine:
-
-```bash
-git clone git@github.com:yourusername/project_1.git
-```
-
-This creates a local copy of the repository with the full history included.
-
-### Step 11 — What Else Exists in Git and GitHub
-
-You now know enough to use Git for your own projects. But Git and GitHub have much more — here's the map so you know what's out there when you need it.
-
-**Branching** — Instead of editing your main code directly, you create a separate branch to try something new. If it works, you merge it back. If it doesn't, you discard it. Your main code is never touched.
-
-```bash
-git branch new-feature
-git checkout new-feature
-```
-
-**Pull Requests** — On GitHub, when you want to merge a branch into the main code — especially in a team — you open a Pull Request. Others can review your changes, leave comments, and approve before anything is merged.
-
-**Forking** — Copy someone else's public repository to your own GitHub account. You can freely experiment with it without affecting the original. This is how open-source contributions often start.
-
-**GitHub Issues** — A built-in system for tracking bugs, feature requests, and tasks in a repository. Think of it as a to-do list attached to your code.
-
-**GitHub Actions** — Automate tasks whenever you push code — run tests, build documentation, deploy your project. Used extensively in professional workflows.
-
-**git pull** — The opposite of `git push`. Fetches changes from GitHub and applies them to your local copy. Essential when collaborating with others.
-
-```bash
-git pull
-```
-
-**git log** — See the full history of commits in your repository.
-
-```bash
-git log --oneline
-```
+If your research involves scientific data, you'll likely encounter formats like **netCDF**, **HDF5**, and **GRIB**. These require specific libraries like `xarray` or `h5py`. For geoscientific workflows, explore [Project Pythia](https://projectpythia.org).
 
 ---
 
 ## What's Next
 
 **What You've Done:**
+- Built a standard research project structure
+- Applied the raw data rule and data-code separation
+- Configured `.gitignore` and README best practices
+- Learned about storage tiers and scientific data formats
 
-- Installed and configured Git
-- Created a GitHub account
-- Generated an SSH key for GitHub and connected it
-- Created your first GitHub repository
-- Pushed `project_1` to GitHub
-- Learned the everyday Git workflow
-- Got a map of what else Git and GitHub can do
-
-**Additional Resources and Self Study Materials:**
-
-These topics go deep. When you're ready to explore them, the following resources are excellent starting points:
-
-- [Project Pythia](https://foundations.projectpythia.org/foundations/getting-started-github/)
-- [Version Control with Git — Software Carpentry](https://swcarpentry.github.io/git-novice/) — a beginner-friendly full course on Git fundamentals
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Docs](https://docs.github.com)
-
-**Next:** [Part 8 — Project Organization and managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
+**Next:** [Part 8 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
 |
-**Previous:** [Part 6 — Linux Essentials](https://abhigyan-pro.github.io/Blogs/Part6.html)
+**Previous:** [Part 6 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part7.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

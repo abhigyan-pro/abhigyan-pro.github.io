@@ -1,5 +1,6 @@
-# Enabling GPU Computing in WSL and Linux with CUDA
-### Building a Research Computing Environment — Part 9 of 12
+# Installing PyTorch and TensorFlow
+### Phase 3: High-Performance Computing — Part 2
+(Part 9 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,230 +30,268 @@ Follow me :
 
 ## Quick Summary
 
-This article installs and verifies NVIDIA drivers so your GPU is accessible from Ubuntu — one path for WSL users, one for native Linux users — and deliberately skips a system-wide CUDA Toolkit install to avoid conflicts with the pip-bundled CUDA libraries Part 10 will install. It closes with a heads-up on one extra step TensorFlow on WSL sometimes needs, so it doesn't read as an error when it happens.
+This article installs PyTorch and TensorFlow, each in its own dedicated Conda environment, using pip so both frameworks bundle their own CUDA and cuDNN libraries. You'll verify GPU detection for both, benchmark CPU vs GPU speed with a matrix multiplication test, and — if needed — resolve the WSL library-path issue flagged back in Part 9.
 
 ---
 
 ## Objective
 
-This part is only relevant if your computer has an NVIDIA GPU. If you have an AMD or Intel GPU, or no dedicated GPU, skip to Part 10 — GPU setup for those is a different process entirely and beyond the scope of this series.
-
-Not sure if you have an NVIDIA GPU? On Windows, open Device Manager → Display Adapters. If you see an NVIDIA card listed, you're good to proceed.
-
-This part is split into two sections — one for WSL users and one for native Linux users. Jump to the section that applies to you:
-
-- WSL users → [WSL Users](#wsl-users)
-- Native Linux users → [Native Linux Users](#native-linux-users)
-
-Both sections end at [Before You Proceed to Part 10](#before-you-proceed-to-part-10) — which applies to everyone.
+In Part 9, we set up GPU access — and flagged one thing to expect here in Part 10: TensorFlow's pip-bundled CUDA libraries sometimes need one extra step to be found on WSL. In this part, we'll install PyTorch and TensorFlow, verify that both can see and use your GPU, and walk through that extra step if you need it.
 
 By the end, you'll have:
-
-- NVIDIA drivers installed and up to date
-- GPU access verified and ready for Part 10
-- No conflicting CUDA installs to trip you up later
-- A heads-up on one extra step Part 10 may ask you to do — so it doesn't feel like something went wrong when it happens
+- A dedicated Conda environment with PyTorch installed
+- A dedicated Conda environment with TensorFlow installed
+- GPU acceleration verified for both
+- A clear picture of when to use which framework
 
 ---
 
 ## Content
 
-### Why GPU Matters for Research and ML
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-A CPU (your computer's main processor) is designed to handle a few complex tasks at a time. A GPU was originally built for graphics — rendering thousands of pixels simultaneously. That same ability to run thousands of small operations in parallel makes GPUs exceptionally powerful for machine learning, numerical simulations, and scientific computing.
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-Training a deep learning model that takes days on a CPU can take hours on a GPU. For researchers working with large datasets or complex models, GPU access is not a luxury — it's a practical necessity.
+  To go deeper on any step:
 
-### Getting Unstuck
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
-
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
-
-To go deeper on any step:
-
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
-
-Think of this series as the roadmap and your AI assistant as your learning companion.
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
 ### Prerequisites
 
-- WSL2 and Ubuntu installed [Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html), or native Linux
-- Miniconda and env_project1 set up [Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html)
-- An NVIDIA GPU
+- GPU access verified ([Part 9](https://abhigyan-pro.github.io/Blogs/Part9.html))
+- Miniconda installed ([Part 1](https://abhigyan-pro.github.io/Blogs/Part1.html))
+- Know the maximum CUDA version your driver supports (run `nvidia-smi` if unsure).
 
-### How GPU Access Works: WSL vs Native Linux
+### PyTorch vs TensorFlow — A Brief Overview
+Both are open-source deep learning frameworks running on GPU. **PyTorch** (Meta) is flexible and dominant in research, while **TensorFlow** (Google) is more structured and common in production.
 
-Before touching anything, it helps to understand how GPU access works differently on WSL and native Linux — and a design decision this article makes for both.
+### Why Two Separate Environments?
+PyTorch and TensorFlow can conflict regarding CUDA library or dependency versions. Installing each in its own Conda environment keeps them isolated and stable.
 
-**WSL:** Your GPU is managed entirely by Windows. You install the NVIDIA driver on Windows once, and WSL automatically inherits GPU access. You never install drivers inside Ubuntu on WSL — attempting to do so will break things.
+### Why We Use pip for Both Frameworks
+We use `pip` because it installs the latest versions directly from PyPI and bundles the required CUDA/cuDNN libraries automatically, removing the need for a system-wide CUDA Toolkit.
 
-**Native Linux:** Your GPU is managed by Linux directly. You install the NVIDIA driver on the Linux system itself.
+---
 
-**A note on the CUDA Toolkit:** You might expect the next step to be installing the CUDA Toolkit system-wide (via `apt`). This article skips that deliberately. In Part 10, we install PyTorch and TensorFlow using their GPU-enabled pip packages, which bundle their own CUDA and cuDNN libraries — no system-wide toolkit required. Installing a separate system CUDA Toolkit *alongside* these pip packages is a common source of hard-to-debug conflicts (mismatched library versions shadowing each other via `LD_LIBRARY_PATH`), so we avoid it entirely unless you have a specific reason to need `nvcc` (the CUDA compiler) for compiling custom CUDA C++ code — which most PyTorch/TensorFlow users never do.
+## Section 1 — Installing PyTorch
 
-Once your driver is verified, everything from Part 10 onwards is identical for both WSL and native Linux.
+<details>
+  <summary><strong>💡Expand for details</strong></summary>
 
-### WSL Users
+  #### Step 1 — Create a Dedicated Environment
+  ```bash
+  conda create -n env_pytorch python=3.11 pip
+  conda activate env_pytorch
+  ```
 
-#### Step 1 — Install or Update NVIDIA Drivers on Windows
+  #### Step 2 — Get the Correct Install Command
+  Visit [pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) and generate your command using the **Pip** package option and your `nvidia-smi` reported CUDA version.
 
-CUDA support on WSL comes entirely from your Windows NVIDIA driver. If your driver is up to date, WSL already has what it needs.
+  Run the generated command (example):
+  ```bash
+  pip3 install torch torchvision --index-url [https://download.pytorch.org/whl/cu132](https://download.pytorch.org/whl/cu132)
+  ```
 
-Check your current driver version:
+  #### Step 3 — Register the Kernel
+  ```bash
+  conda install ipykernel
+  python -m ipykernel install --user --name env_pytorch --display-name "Python (env_pytorch)"
+  ```
 
-1. Right-click the desktop → NVIDIA Control Panel
-2. Click Help → System Information
-3. Note the Driver Version shown
+  #### Step 4 — Verify PyTorch Installation
+  Verify version: `python -c "import torch; print(torch.__version__)"`.
+  Verify GPU: `python -c "import torch; print(torch.cuda.is_available())"`.
 
-Update to the latest driver:
+</details>
 
-1. Go to https://www.nvidia.com/drivers
-2. Select your GPU model, OS (Windows), and click Search
-3. Download and run the installer
-4. During installation select Express Installation
-5. Restart your computer after installation
+---
 
-#### Step 2 — Verify GPU Access Inside WSL
+## Section 2 — Installing TensorFlow
 
-Open your Ubuntu terminal and run:
+<details>
+  <summary><strong>💡Expand for details</strong></summary>
 
-```bash
-nvidia-smi
+  #### Step 1 — Create a Dedicated Environment
+  ```bash
+  conda create -n env_tensorflow python=3.11 pip
+  conda activate env_tensorflow
+  ```
+
+  #### Step 2 — Install TensorFlow
+  Ensure pip is current, then install with GPU support:
+  ```bash
+  pip install --upgrade pip
+  pip install tensorflow[and-cuda]
+  ```
+
+  #### Step 3 — Confirm the CUDA Packages
+  Ensure the NVIDIA packages landed:
+  ```bash
+  pip list | grep -i nvidia
+  ```
+  If empty, reinstall using `pip install --force-reinstall "tensorflow[and-cuda]"` or pin to a specific version if needed.
+
+  #### Step 4 — Register the Kernel
+  ```bash
+  conda install ipykernel
+  python -m ipykernel install --user --name env_tensorflow --display-name "Python (env_tensorflow)"
+  ```
+
+  #### Step 5 — Verify Installation and WSL Pathing
+  Verify: `python -c "import tensorflow as tf; print(tf.__version__)"`.
+  GPU Check: `python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"`.
+
+  *If empty on WSL or Linux, fix the library path:* 
+  1. Find the location: `pip show nvidia-cudnn-cu12`.
+  2. Identify the `nvidia` path: `/home/<user>/miniconda3/envs/env_tensorflow/lib/python3.11/site-packages/nvidia`.
+  3. Apply the library path fix and make it permanent for this environment only.** Rather than adding this to `~/.bashrc` (which would apply it globally, even to environments that don't need it), scope it to `env_tensorflow` using conda's activation hooks:
+
+  ```bash
+  mkdir -p $(conda info --base)/envs/env_tensorflow/etc/conda/activate.d
+  cat > $(conda info --base)/envs/env_tensorflow/etc/conda/activate.d/env_vars.sh << 'EOF'
+  NVIDIA_BASE=/home/<your-user>/miniconda3/envs/env_tensorflow/lib/python3.11/site-packages/nvidia
+  export LD_LIBRARY_PATH=$(find "$NVIDIA_BASE" -maxdepth 2 -type d -name lib | tr '\n' ':')$LD_LIBRARY_PATH
+  EOF
+  ```
+  Then reactivate the environment to pick it up:
+
+  ```bash
+  conda deactivate
+  conda activate env_tensorflow
+  ```
+
+  From now on, every time you activate `env_tensorflow`, this path is set automatically — no need to repeat the fix.
+
+  **If you're still seeing an empty list after this:**
+
+  1. Confirm `nvidia-smi` still runs cleanly and shows your GPU.
+  2. Check `~/.bashrc` for a leftover `LD_LIBRARY_PATH=/usr/local/cuda/lib64` line from an older system CUDA Toolkit install — this can conflict with the path you just set.
+  3. Use the ChatAI prompt at the top of this article — paste your `nvidia-smi` output and the output of the GPU detection command — to troubleshoot further.
+
+</details>
+
+---
+
+## Section 3 — Verifying GPU Acceleration
+
+Create and run these files to compare CPU vs GPU performance.
+
+## **PyTorch Benchmark (`pytorch_project.py`)**:
+
+<details>
+  <summary><strong>💡Expand for details</strong></summary>
+
+  In Terminal:
+  ```bash
+  conda activate env_pytorch
+  nano pytorch_project.py
+  ```
+  Paste the following:
+  ```python
+  import torch
+  import time
+  size = 10000
+  # CPU
+  a_cpu = torch.randn(size, size)
+  b_cpu = torch.randn(size, size)
+  start = time.time()
+  c_cpu = torch.matmul(a_cpu, b_cpu)
+  cpu_time = time.time() - start
+  print(f"CPU time: {cpu_time:.4f} seconds")
+  # GPU
+  a_gpu = a_cpu.cuda()
+  b_gpu = b_cpu.cuda()
+  torch.cuda.synchronize()
+  start = time.time()
+  c_gpu = torch.matmul(a_gpu, b_gpu)
+  torch.cuda.synchronize()[]
+  gpu_time = time.time() - start
+  print(f"GPU time: {gpu_time:.4f} seconds")
+  print(f"Speedup: {cpu_time / gpu_time:.1f}x")
+  ```
+  Then (`ctrl+X`, `Y`, `Enter`).
+  Run the code:
+
+  ```bash
+  python pytorch_project.py
+  ```
+</details>
+
+---
+
+## **TensorFlow Benchmark (`tensorflow_project.py`)**:
+
+<details>
+  <summary><strong>💡Expand for details</strong></summary>
+
+  In Terminal:
+  ```bash
+  conda activate env_tensorflow
+  nano tensorflow_project.py
+  ```
+  Paste the following:
+  ```python
+  import tensorflow as tf
+  import time
+  size = 10000
+  # CPU
+  with tf.device('/CPU:0'):
+      a_cpu = tf.random.normal([size, size])
+      b_cpu = tf.random.normal([size, size])
+      start = time.time()
+      c_cpu = tf.matmul(a_cpu, b_cpu)
+      cpu_time = time.time() - start
+      print(f"CPU time: {cpu_time:.4f} seconds")
+  # GPU
+  with tf.device('/GPU:0'):
+      a_gpu = tf.random.normal([size, size])
+      b_gpu = tf.random.normal([size, size])
+      start = time.time()
+      c_gpu = tf.matmul(a_gpu, b_gpu)
+      gpu_time = time.time() - start
+      print(f"GPU time: {gpu_time:.4f} seconds")
+      print(f"Speedup: {cpu_time / gpu_time:.1f}x")
 ```
+  Then (`ctrl+X`, `Y`, `Enter`).
+  Run the code:
 
-You should see a table showing your GPU name, driver version, and CUDA version. For example:
+  ```bash
+  python tensorflow_project.py
+  ```
+</details>
 
-```
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 545.xx       Driver Version: 545.xx    CUDA Version: 12.x       |
-+-----------------------------------------------------------------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|===============================+======================+======================|
-|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0 Off |                  N/A |
-```
+---
 
-If you see this, your GPU is accessible from WSL. Move to Step 3.
-
-If you get `command not found`, your driver may need updating — go back to Step 1.
-
-**About the CUDA Version shown here:** this is the *maximum* CUDA version your driver supports — not a toolkit you've installed. In Part 10, when you install PyTorch and TensorFlow's GPU-enabled pip packages, you'll want to make sure the CUDA version those packages target is at or below this number.
-
-#### Step 3 — Set the WSL GPU Library Path
-
-WSL exposes the GPU driver interface through a small set of libraries that live outside your Ubuntu filesystem, at `/usr/lib/wsl/lib`. PyTorch and TensorFlow's pip packages don't know to look there by default, so we add it to your library path once, here.
-
-Open your `.bashrc`:
-
-```bash
-nano ~/.bashrc
-```
-
-Add this line at the bottom:
-
-```bash
-export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
-```
-
-Save and exit (`Ctrl+X`, `Y`, `Enter`). Apply the change:
-
-```bash
-source ~/.bashrc
-```
-
-That's it for driver-level setup. Before you move on, read the heads-up below — it'll save you a confusing moment in Part 10.
-
-#### Step 4 — A Heads-Up About Part 10 (read this before moving on)
-
-In Part 10, you'll install TensorFlow with:
-
-```bash
-pip install tensorflow[and-cuda]
-```
-
-This bundles CUDA and cuDNN as pip packages, installed directly inside that conda environment's `site-packages/nvidia/` folder, rather than in a system-wide location.
-
-Most of the time, TensorFlow finds these automatically and everything just works. But on WSL, it's common — not a sign you did something wrong — for TensorFlow to fail to locate them on its own, even with a clean setup and nothing else installed. You'll know this is happening if `tf.config.list_physical_devices('GPU')` returns an empty list `[]`, often alongside a warning that says `Cannot dlopen some GPU libraries`.
-
-If you hit this, it isn't a driver problem, and it isn't something you misconfigured — it's just this one pip package's library discovery being unreliable on WSL. Part 10 shows you exactly how to check for it and fix it with one extra `LD_LIBRARY_PATH` export, scoped just to that conda environment. Think of it as a normal, expected extra step for TensorFlow on WSL — not a troubleshooting detour.
-
-(PyTorch is generally more reliable here and usually doesn't need this extra step, but the same fix applies if you ever see the same symptom there.)
-
-Skip to [Before You Proceed to Part 10](#before-you-proceed-to-part-10).
-
-### Native Linux Users
-
-#### Step 1 — Install NVIDIA Drivers
-
-On native Linux, driver installation varies depending on your GPU model, Linux distribution, and desktop environment. A single set of commands that works for everyone doesn't exist here.
-
-The most reliable approach is to follow NVIDIA's official documentation directly:
-
-- [NVIDIA CUDA Installation Guide for Linux](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/)
-
-For a beginner-friendly walkthrough specific to Ubuntu, this guide is widely recommended:
-
-- [How to install NVIDIA drivers on Ubuntu — Lambda Labs](https://lambdalabs.com/)
-
-You only need the **driver** here — not the CUDA Toolkit. As with WSL, PyTorch and TensorFlow's GPU pip packages in Part 10 bundle their own CUDA and cuDNN libraries, so a separate system-wide toolkit isn't necessary unless you specifically plan to compile custom CUDA C++ code with `nvcc`.
-
-#### Step 2 — Verify GPU Access
-
-Once the driver is installed, verify it:
-
-```bash
-nvidia-smi
-```
-
-This should print your GPU name, driver version, and supported CUDA version without errors — no separate toolkit verification needed.
-
-Native Linux installs are generally less prone to the pip-bundled library discovery issue described above, since there's no WSL translation layer involved — but if you do see an empty GPU list in Part 10, the same fix applies.
-
-### Before You Proceed to Part 10
-
-This section applies to everyone — WSL and native Linux users.
-
-Run this to confirm your driver and note the maximum CUDA version it supports:
-
-```bash
-nvidia-smi
-```
-
-Look at the top-right of the output, e.g.:
-
-```
-CUDA Version: 12.x
-```
-
-In Part 10, we'll use this number as an upper bound when installing PyTorch and TensorFlow's GPU-enabled pip packages — the CUDA version those packages target needs to be at or below what your driver supports. If there's a mismatch, we'll handle it there; it's a straightforward adjustment.
-
-**A quick note if you've followed older tutorials:** many guides (including an earlier version of this one) have you install the CUDA Toolkit via `apt` and export `LD_LIBRARY_PATH=/usr/local/cuda/lib64`. If you've done this in the past, it's worth checking your `~/.bashrc` for those lines and removing them — they can silently conflict with the pip-installed CUDA libraries PyTorch and TensorFlow bring in during Part 10, causing GPU detection to fail with errors like `Cannot dlopen some GPU libraries` even when everything else is set up correctly.
+### CPU-Only Users
+If you lack an NVIDIA GPU, install the CPU-only version:
+- PyTorch: Select "CPU" on the install page.
+- TensorFlow: Use `pip install tensorflow`.
 
 ---
 
 ## What's Next
 
 **What You've Done:**
+- Created isolated environments for PyTorch and TensorFlow
+- Installed via pip to bundle CUDA libraries without system-wide tools
+- Registered kernels and verified GPU performance via benchmarks
 
-- Understood why GPU matters for research and ML
-- Understood how GPU access differs between WSL and native Linux
-- Installed or updated NVIDIA drivers
-- Verified GPU access with `nvidia-smi`
-- Set up WSL's GPU library path (WSL users)
-- Avoided a system CUDA Toolkit conflict before it could happen
-- Learned what to expect in Part 10 if TensorFlow doesn't find its GPU libraries right away — so it reads as a normal step, not an error
-
-**Next:** [Part 10 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part10.html)
+**Next:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
 |
-**Previous:** [Part 8 — Project Organization and Managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
+**Previous:** [Part 9 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

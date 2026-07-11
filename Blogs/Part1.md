@@ -1,5 +1,6 @@
-# Understanding the Modern Research Computing Stack
-### Building a Research Computing Environment — Part 1 of 12
+# Installing WSL2, Ubuntu, and Miniconda
+### Phase 1: The Local Workbench — Part 1
+(Part 1 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,183 +30,270 @@ Follow me :
 
 ## Quick Summary
 
-This article maps out the development stack we'll build across the series — Windows, WSL2, Ubuntu, Miniconda, Conda environments, and VS Code — and explains why each layer is there before we install any of it. No installation happens in this article; that starts in Part 2.
+- This article first shows how to install WSL2 with Ubuntu on a Windows 11 machine.
+- From there, all processes are the same whether you are on WSL2 or a native Linux OS.
+- We will then install Miniconda and verify that each piece is working.
+- It closes by explaining where your Linux files, Windows drives, and future projects actually live.
 
 ---
 
 ## Objective
 
-In this article, we'll understand the development environment we'll build throughout this series.
+In this article, we'll build the foundation of our Python development environment.
 
-By the end, you'll know:
-
-* Why many Python developers work with Linux.
-* Why we're using WSL2 instead of replacing Windows.
-* Why Ubuntu.
-* Why Miniconda.
-* Why VS Code.
-* How all these tools fit together.
-
-> **We won't install anything yet.** That begins in the next article.
+By the end, you'll have:
+- WSL2 installed.
+- Ubuntu installed.
+- Miniconda installed.
+- A working Ubuntu terminal ready for development.
 
 ---
 
 ## Content
 
-### Getting Unstuck
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
+  To go deeper on any step:
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-To go deeper on any step:
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
+### Prerequisites
 
-Think of this series as the roadmap and your AI assistant as your learning companion.
+- Windows 11
+- Administrator access
+- Internet connection
 
-### Why Not Just Install Python on Windows?
+## Install WSL with Ubuntu
 
-If you're learning Python, installing Python directly on Windows is perfectly reasonable.
+<details>
+  <summary><strong>💡 Expand for details</strong></summary>
 
-However, as you move into areas such as:
 
-* Data Science
-* Machine Learning
-* Artificial Intelligence
-* Scientific Computing
-* Research
-* Software Development
+  ### Step 1 — Open Windows Terminal
 
-You'll notice something.
+  1. Open the **Start Menu**.
+  2. Search for **Windows Terminal**.
+  3. Right-click **Windows Terminal**.
+  4. Select **Run as administrator**.
+  5. If prompted by **User Account Control (UAC)**, click **Yes**.
 
-Many tutorials, development tools, cloud platforms, and research environments assume you're working in Linux.
+  A Windows Terminal window should now open.
 
-That doesn't mean Windows is a bad choice.
+  ### Step 2 — View Available Linux Distributions
 
-Instead, we'll keep Windows while gradually learning Linux using WSL2.
+  Run:
+  ```bash
+  wsl --list --online
+  ```
 
-### The Development Stack
+  Choose the Ubuntu version you'd like to install.
 
-By the end of this series, your setup will look like this:
+  For this series, we'll use: `Ubuntu-24.04`
 
-```bash
-                             Windows 11
-                                 │
-                    ┌────────────┴────────────┐
-                    │                         │
-               VS Code                  WSL2 (Linux)
-                                              │
-                                              ▼
-                                           Ubuntu
-                                              │
-                                              ▼
-                                         Miniconda
-                                              │
-                                              ▼
-                                     Conda Environment
-                                              │
-                                              ▼
-                                            Python
-```
+  ### Step 3 — Install Ubuntu
 
-Each layer has a different responsibility. Let's understand them one by one.
+  Run:
+  ```bash
+  wsl --install -d Ubuntu-24.04
+  ```
 
-### Windows
+  Windows will:
+  - Enable WSL.
+  - Download Ubuntu.
+  - Install Ubuntu.
 
-Windows remains your primary operating system.
+  Restart your computer if prompted.
 
-You'll continue using:
+  ### Step 4 — Launch Ubuntu
 
-* File Explorer
-* Web browser
-* Microsoft Office
-* VS Code
+  Open Ubuntu from the Start Menu.
 
-Nothing changes here.
+  If you don't see it yet, open Windows Terminal and run:
+  ```bash
+  wsl -d Ubuntu-24.04
+  ```
 
-### WSL2
+  The first launch may take a minute.
 
-Windows Subsystem for Linux (WSL2) lets Linux run directly inside Windows.
+  ### Step 5 — Create Your Linux User
 
-**Why are we using it?**
+  Ubuntu will ask you to create:
+  - A username
+  - A password
 
-Many Python development tools and servers use Linux. WSL2 allows us to learn and use Linux without replacing Windows or setting up a dual-boot system.
+  Choose any username you'd like.
 
-### Ubuntu
+  While typing your password, nothing will appear on the screen. This is normal.
 
-Ubuntu is the Linux operating system we'll install inside WSL2.
+  Press Enter after typing the password.
 
-**Why Ubuntu?**
+  ### Step 6 — Update Ubuntu
 
-It's one of the most widely used Linux distributions and has excellent documentation and community support. Many tutorials also assume Ubuntu.
+  Run:
+  ```bash
+  sudo apt update
+  ```
 
-### Miniconda
+  Then:
+  ```bash
+  sudo apt upgrade -y
+  ```
 
-Miniconda provides Python and Conda.
+  Ubuntu may ask for the password you created.
 
-**Why Miniconda?**
+  ### Step 7 — Install Basic Utilities
 
-Different projects often require different versions of Python and different packages. Miniconda makes managing these environments straightforward.
+  Run:
+  ```bash
+  sudo apt install -y wget curl git build-essential ca-certificates
+  ```
+  These utilities are commonly required by development tools.
 
-### Conda Environments
+</details>
 
-Instead of installing everything into one Python installation, each project gets its own isolated environment.
+---
 
-This keeps projects independent and reproducible. We'll learn how to create and manage environments later in the series.
+## Install Miniconda (Same process for both WSL2 user and Native Linux user)
 
-### VS Code
+<details>
+  <summary><strong>💡 Expand for details</strong></summary>
 
-VS Code is the editor we'll use throughout this series.
+  ### Step 8 — Download Miniconda
 
-Although VS Code runs on Windows, it can connect directly to Ubuntu through WSL. This gives us the convenience of a graphical editor while running our code inside Linux.
+  Move to your home directory:
+  ```bash
+  cd ~
+  ```
 
-### Putting It All Together
+  Download Miniconda:
+  ```bash
+  wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
+  ```
 
-The workflow we'll build looks like this:
+  ### Step 9 — Install Miniconda
 
-```bash
-                        Ubuntu Terminal
-                               │
-                               ▼
-                        Project Directory
-                               │
-                               ▼
-                        Conda Environment
-                               │
-                               ▼
-                      VS Code (Remote - WSL)
-                               │
-                               ▼
-                   Develop & Execute Python Code
-```
+  Run:
+  ```bash
+  bash Miniconda3-latest-Linux-x86_64.sh
+  ```
 
-Each component has a specific purpose. Together, they create a development environment that is widely used in software development, data science, machine learning, and scientific research.
+  During installation:
+  1. Press Enter to read the license.
+  2. Type `yes` to accept it.
+  3. Press Enter to use the default installation location.
+  4. When asked to initialize Miniconda, type `yes`.
+
+  ### Step 10 — Restart Ubuntu
+
+  Close Ubuntu. Open it again.
+
+  You should now see `(base)` at the beginning of the terminal prompt.
+
+  ### Step 11 — Verify the Installation
+
+  Run:
+  ```bash
+  conda --version
+  ```
+
+  Then:
+  ```bash
+  python --version
+  ```
+
+  Then:
+  ```bash
+  pip --version
+  ```
+  Each command should display a version number.
+
+</details>
+
+---
+
+## Understanding Where Everything Lives
+
+<details>
+  <summary><strong>💡 Expand for details</strong></summary>
+
+  Before moving on, let's understand where your files are stored.
+
+  #### Your Home Directory
+
+  Your Linux home directory is:
+  ```text
+  /home/<your-username>
+  ```
+
+  or simply `~`.
+
+  To return here at any time:
+  ```bash
+  cd ~
+  ```
+
+  To see your current location:
+  ```bash
+  pwd
+  ```
+
+  #### Windows Drives
+
+  Inside Ubuntu, your Windows drives appear under `/mnt`:
+
+  | Windows Drive | WSL Path |
+  |---|---|
+  | C:\ | /mnt/c |
+  | D:\ | /mnt/d |
+  | E:\ | /mnt/e |
+
+
+  #### Where Is Miniconda?
+
+  By default, Miniconda is installed in:
+  ```text
+  ~/miniconda3
+  ```
+
+  #### Where Should You Keep Projects?
+
+  Although you can work inside `/mnt/c` or `/mnt/d`, it's generally recommended to keep Python projects inside your Linux home directory.
+
+  For example:
+  ```text
+  /home/<your-username>/
+  └── projects/
+  ```
+
+  Don't worry — the projects directory doesn't exist yet. We'll create it properly in a later article on Linux essentials for Python developers.
+
+  For now, simply remember that your home directory (`~`) is the recommended place for your future projects.
+
+</details>
 
 ---
 
 ## What's Next
 
-Now that you understand the overall development stack, it's time to build it.
+You now have WSL2, Ubuntu, and Miniconda installed and ready to use.
 
-In the next article, we'll install:
-
-* WSL2
-* Ubuntu
-* Miniconda
-
-and verify that everything is working correctly before moving on.
-
-**Next:** [Part 2  — Installing WSL2 with Ubuntu, and Miniconda](https://abhigyan-pro.github.io/Blogs/Part2.html)
+**Next:** [Part 2 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part2.html)
 |
-**Previous:** [Preface — Building a Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html)
+**Previous:** [Preface — Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

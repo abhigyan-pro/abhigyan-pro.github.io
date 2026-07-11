@@ -1,5 +1,6 @@
-# Installing WSL2 with Ubuntu, and Miniconda
-### Building a Research Computing Environment — Part 2 of 12
+# Terminal Basics and File Navigation
+### Phase 1: The Local Workbench — Part 2
+(Part 2 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,264 +30,266 @@ Follow me :
 
 ## Quick Summary
 
-This article installs the foundation of the stack — WSL2, Ubuntu 24.04, and Miniconda — step by step from a fresh Windows 11 machine, then verifies each piece is working. It closes by explaining where your Linux files, Windows drives, and future projects actually live.
+This article sets Ubuntu as your default terminal, teaches the core navigation commands (`pwd`, `ls`, `cd`, `mkdir`, `cp`, `mv`), and establishes the code-vs-data convention you'll follow for the rest of the series: code lives in `/home`, data lives on your mounted Windows drives (`/mnt`). By the end, you'll have your first project folder created.
 
 ---
 
 ## Objective
 
-In this article, we'll build the foundation of our Python development environment.
+In Part 1, we installed WSL2, Ubuntu, and Miniconda. We also noted that projects should live in your Linux home directory — but didn't create that structure yet.
+
+In this article, we'll get comfortable using Ubuntu and build that structure properly.
 
 By the end, you'll have:
 
-- WSL2 installed.
-- Ubuntu installed.
-- Miniconda installed.
-- A working Ubuntu terminal ready for development.
+- Ubuntu set as your default terminal
+- Confidence navigating the Linux filesystem
+- A clear understanding of where to keep code and where to keep data
+- A projects folder ready for use
 
 ---
 
 ## Content
 
-### Getting Unstuck
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
+  To go deeper on any step:
 
-To go deeper on any step:
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
-
-Think of this series as the roadmap and your AI assistant as your learning companion.
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
 ### Prerequisites
 
-- Windows 11
-- Administrator access
-- Internet connection
+- WSL2, Ubuntu, and Miniconda installed ([Part 1](https://abhigyan-pro.github.io/Blogs/Part1.html))
+- Windows Terminal installed
 
-### Step 1 — Open Windows Terminal
+### Step 1 — Set Ubuntu as Default in Windows Terminal
 
-1. Open the **Start Menu**.
-2. Search for **Windows Terminal**.
-3. Right-click **Windows Terminal**.
-4. Select **Run as administrator**.
-5. If prompted by **User Account Control (UAC)**, click **Yes**.
+Right now, Windows Terminal opens PowerShell by default. We'll change that to Ubuntu so you don't have to switch manually every time.
 
-A Windows Terminal window should now open.
+1. Open **Windows Terminal**
+2. Click the dropdown arrow `∨` next to the `+` tab button
+3. Select **Settings**
+4. Under **Startup**, find **Default profile**
+5. Click the dropdown and select **Ubuntu**
+6. Click **Save**
 
-### Step 2 — View Available Linux Distributions
+From now on, every new Windows Terminal window opens Ubuntu directly.
 
-Run:
+### Step 2 — Open a New Tab
 
-```bash
-wsl --list --online
-```
+Click the `+` button in Windows Terminal.
 
-Choose the Ubuntu version you'd like to install.
+A new Ubuntu tab opens. You can run multiple tabs at the same time — useful when running a script in one tab while working in another.
 
-For this series, we'll use: `Ubuntu-24.04`
+### Step 3 — Understanding the Terminal Prompt
 
-### Step 3 — Install Ubuntu
-
-Run:
+When Ubuntu opens, you'll see something like:
 
 ```bash
-wsl --install -d Ubuntu-24.04
+(base) abhigyan@DESKTOP-XXXX:~$
 ```
 
-Windows will:
+| Part | What it means |
+|------|---------------|
+| `(base)` | The active Conda environment |
+| `abhigyan` | Your Ubuntu username |
+| `DESKTOP-XXXX` | Your Windows machine name |
+| `~` | Your current location (home directory) |
+| `$` | You are a regular user (not admin) |
 
-- Enable WSL.
-- Download Ubuntu.
-- Install Ubuntu.
 
-Restart your computer if prompted.
+You first saw this prompt at the end of Part 1. Now we'll understand what you can do with it.
 
-### Step 4 — Launch Ubuntu
+Additional side note:
+- The program running inside your terminal is called a **shell**. On Ubuntu, the default shell is **bash** (Bourne Again Shell). When you type a command and press Enter, **bash** is what reads and executes it.
+- You'll see "**bash**" mentioned often in documentation and tutorials — it simply means the command-line environment you're already using.
 
-Open Ubuntu from the Start Menu.
+### Step 4 — Basic Navigation
 
-If you don't see it yet, open Windows Terminal and run:
+#### Where am I?
 
 ```bash
-wsl -d Ubuntu-24.04
+pwd
+```
+`pwd` means present working directory. Shows the path of the folder where you are currectly located
+
+if you are inside your `/home` directory, then if you run `pwd`. It should show something like Output:
+```text
+/home/abhigyan   
 ```
 
-The first launch may take a minute.
+This is your Linux home directory. Same as `~`. You saw this briefly in Part 1 — now we'll use it actively.
 
-### Step 5 — Create Your Linux User
+#### What's here?
+- Lists files and folders in your current location.
+```bash
+ls
+```
 
-Ubuntu will ask you to create:
+- Shows hidden files too — files starting with `.` are hidden by default. Your Conda configuration lives in one of these hidden files.
+```bash
+ls -a
+```
 
-- A username
-- A password
-
-Choose any username you'd like.
-
-While typing your password, nothing will appear on the screen. This is normal.
-
-Press Enter after typing the password.
-
-### Step 6 — Update Ubuntu
-
-Run:
+#### Create a folder
 
 ```bash
-sudo apt update
+mkdir projects
 ```
 
-Then:
+#### Move into a folder
 
 ```bash
-sudo apt upgrade -y
+cd projects
 ```
 
-Ubuntu may ask for the password you created.
-
-### Step 7 — Install Basic Utilities
-
-Run:
+Move one level up:
 
 ```bash
-sudo apt install -y wget curl git build-essential ca-certificates
+cd ..
 ```
 
-These utilities are commonly required by development tools.
-
-### Step 8 — Download Miniconda
-
-Move to your home directory:
+Go back to your home directory from anywhere:
 
 ```bash
 cd ~
 ```
 
-Download Miniconda:
+#### Create a file
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+touch file.txt
 ```
 
-### Step 9 — Install Miniconda
-
-Run:
-
+#### Copy a file
+- Creates a copy named `backup.txt`.
 ```bash
-bash Miniconda3-latest-Linux-x86_64.sh
+cp file.txt backup.txt
 ```
 
-During installation:
-
-1. Press Enter to read the license.
-2. Type `yes` to accept it.
-3. Press Enter to use the default installation location.
-4. When asked to initialize Miniconda, type `yes`.
-
-### Step 10 — Restart Ubuntu
-
-Close Ubuntu. Open it again.
-
-You should now see `(base)` at the beginning of the terminal prompt.
-
-### Step 11 — Verify the Installation
-
-Run:
-
+- Copies into a folder. Assuming you created a folder Projects2 seperately.
 ```bash
-conda --version
+cp file.txt ~/Projects2/file.txt
 ```
 
-Then:
-
+#### Move or rename a file
+- Moves a file.
 ```bash
-python --version
+mv file.txt ~/Projects2/file2.txt
 ```
 
-Then:
-
+- Renames a file.
 ```bash
-pip --version
+mv old_name.txt new_name.txt
 ```
 
-Each command should display a version number.
 
-### Understanding Where Everything Lives
 
-Before moving on, let's understand where your files are stored.
+### Step 5 — Where Code Lives and Where Data Lives
 
-#### Your Home Directory
+In Part 1, we established that `/home/yourusername` is your Linux home and `/mnt/c`, `/mnt/d` etc. are your Windows drives mounted inside Linux.
 
-Your Linux home directory is:
+Now we go one step further — this is the rule you'll follow throughout this series:
 
-```
-/home/<your-username>
-```
+**Code and projects → `/home/yourusername/projects/`**
 
-or simply `~`.
+**Data and large files → `/mnt/d/` (or whichever Windows drive you use for storage)**
 
-To return here at any time:
+**Why this split?**
+
+- Your Linux home directory is fast. Git, Conda, and all development tools run significantly slower when your code sits on a Windows drive (`/mnt/c`)
+- Data files — datasets, raw files, model outputs — are often large. Keeping them on your Windows drives (`/mnt/d`) means they're accessible from both Windows and Linux, easy to back up, and don't clutter your Linux environment
+
+Think of it this way: **your Linux home is your workbench. Your Windows drives are your storage shelves.**
+
+### Step 6 — Create Your Project Structure
+
+Run these commands one by one:
 
 ```bash
 cd ~
 ```
 
-To see your current location:
+```bash
+mkdir project_1
+```
+
+```bash
+cd project_1
+```
 
 ```bash
 pwd
 ```
 
-#### Windows Drives
-
-Inside Ubuntu, your Windows drives appear under `/mnt`:
-
-| Windows Drive | WSL Path |
-|---|---|
-| C:\ | /mnt/c |
-| D:\ | /mnt/d |
-| E:\ | /mnt/e |
-
-#### Where Is Miniconda?
-
-By default, Miniconda is installed in:
-
-```
-~/miniconda3
+Output:
+- This is where all your code will live from now on. When we create Python environments and write scripts in the coming parts, everything starts here.
+```text
+/home/abhigyan/project_1
 ```
 
-#### Where Should You Keep Projects?
 
-Although you can work inside `/mnt/c` or `/mnt/d`, it's generally recommended to keep Python projects inside your Linux home directory.
 
-For example:
+### Step 7 — Verify Your Data Location
 
+**If you are on WSL2:** Your Windows drives are mounted inside Linux. Access them like this:
+
+```bash
+ls /mnt/d/
 ```
-/home/<your-username>/
-└── projects/
+
+Replace `d` with whichever drive letter you use for storage.
+
+**If you are on native Linux:** Your data lives on a separate drive or folder on your Linux filesystem. Use `ls` to navigate to wherever you store your data.
+
+You don't need to create anything here. Just confirm you can access your storage location from the terminal.
+
+### Step 8 — Where Software Is Installed
+
+When you install software inside Ubuntu — including Miniconda and all Python packages — it lives inside Linux, not on your Windows drive.
+
+Miniconda lives at:
+
+```bash
+ls ~/miniconda3/
 ```
 
-Don't worry — the projects directory doesn't exist yet. We'll create it properly in a later article on Linux essentials for Python developers.
-
-For now, simply remember that your home directory (`~`) is the recommended place for your future projects.
+You never need to go there directly. But knowing it's inside Linux explains why software installed in Ubuntu is invisible from Windows Explorer — they are separate filesystems.
 
 ---
 
 ## What's Next
 
-You now have WSL2, Ubuntu, and Miniconda installed and ready to use.
+**What You've Done:**
 
-**Next:** [Part 3 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part3.html)
+- Set Ubuntu as the default in Windows Terminal
+- Learned to open new tabs
+- Understood every part of the terminal prompt
+- Used `pwd`, `ls`, `cd`, `mkdir`, `cp`, `mv`
+- Understood the code/data split: `/home` for code, `/mnt` for data
+- Created your `~/project_1` folder
+
+**Want to go deeper on Linux and terminal basics?**
+Software Carpentry has a free, beginner-friendly course that complements this part well: [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
+
+**Next:** [Part 3 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part3.html)
 |
-**Previous:** [Part 1 — Understanding the Modern Research Computing Stack](https://abhigyan-pro.github.io/Blogs/Part1.html)
+**Previous:** [Part 1 — Installing WSL2 with Ubuntu, and Miniconda](https://abhigyan-pro.github.io/Blogs/Part1.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

@@ -272,193 +272,227 @@
              BLOGS SECTION
         ============================================================= -->
         <section class="container" id="blogs">
-                <div class="main-title">
-                    <h2>My <span>Blogs</span></h2>
+            <div class="main-title">
+                <h2>My <span>Blogs</span></h2>
+            </div>
+            
+            <p class="port-text" style="text-align: center; margin-bottom: 3rem;">
+                Here I share tutorials, research insights, and computational workflows. Explore my featured series or browse individual posts below.
+            </p>
+
+            <!-- ============================================================
+                 SERIES 1: RESEARCH COMPUTING ENVIRONMENT (EXPANDABLE)
+            ============================================================= -->
+            <div class="series-wrapper" style="border: 1px solid var(--color-grey-5); border-radius: 15px; margin-bottom: 5rem; overflow: hidden;">
+                
+                <!-- Series Cover (Click to Expand) -->
+                <div class="series-cover" 
+                     onclick="let content = document.getElementById('rce-series-content'); let btn = document.getElementById('rce-series-btn'); if(content.style.display === 'none'){ content.style.display = 'block'; btn.innerHTML = '<i class=\'fas fa-chevron-up\'></i> Collapse Series'; } else { content.style.display = 'none'; btn.innerHTML = '<i class=\'fas fa-chevron-down\'></i> Expand Series'; }" 
+                     style="cursor: pointer; display: flex; flex-direction: column; align-items: center; padding: 3rem 2rem; border-bottom: 1px solid var(--color-grey-5); transition: all .4s ease-in-out;">
+                    
+                    <img src="img/blog1.png" alt="Building a Research Computing Environment" style="width: 100%; max-width: 500px; height: auto; border-radius: 15px; margin-bottom: 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                    
+                    <span style="display: inline-block; padding: 0.5rem 1.5rem; background-color: var(--color-secondary); color: var(--color-white); border-radius: 30px; font-weight: 600; font-size: 1rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+                        12-Part Tutorial Series
+                    </span>
+                    
+                    <h3 style="font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">
+                        Building a Research Computing Environment
+                    </h3>
+                    
+                    <p style="color: var(--color-grey-2); font-size: 1.2rem; max-width: 800px; text-align: center; margin-bottom: 2rem;">
+                        A complete practical guide taking researchers from a blank machine to a fully configured, reproducible, and GPU-enabled open-science workstation.
+                    </p>
+                    
+                    <div id="rce-series-btn" style="font-size: 1.2rem; font-weight: 600; color: var(--color-secondary); display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem 2rem; border: 1px solid var(--color-secondary); border-radius: 30px;">
+                        <i class="fas fa-chevron-down"></i> Expand Series
+                    </div>
                 </div>
+
+                <!-- Hidden Content: The 12 Parts -->
+                <div id="rce-series-content" style="display: none; padding: 3rem 2rem;">
+                    
+                    <!-- ================= PREFACE ================= -->
+                    <div class="blogs">
+                        <div class="blog" onclick="window.open('Blogs/Preface.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Preface.html" target="_blank">Series Preface & Blueprint</a></h4>
+                                <p>An introductory blueprint outlining what you will learn throughout this 12-part guide to building a modern computational research environment.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= PHASE 1 ================= -->
+                    <div style="margin: 4rem 0 2rem; border-bottom: 1px solid var(--color-grey-5); padding-bottom: 1rem;">
+                        <h3 style="text-align: center; font-size: 1.5rem; color: var(--color-grey-1); text-transform: uppercase; letter-spacing: 2px;">
+                            Phase 1: The Local Workbench <span style="font-size: 1.1rem; color: var(--color-grey-3); text-transform: none; letter-spacing: normal;">(Parts 1 – 5)</span>
+                        </h3>
+                    </div>
+                    
+                    <div class="blogs">
+                        <div class="blog" onclick="window.open('Blogs/Part1.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part1.html" target="_blank">1. Understanding the Modern Stack</a></h4>
+                                <p>A conceptual breakdown of the software stack, operating systems, and why Linux serves as the gold standard for scientific computing.</p>
+                            </div>
+                        </div>
+
+                        <div class="blog" onclick="window.open('Blogs/Part2.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part2.html" target="_blank">2. Installing WSL2, Ubuntu & Miniconda</a></h4>
+                                <p>Step-by-step installation of WSL2/Ubuntu on Windows 11, followed by unified Miniconda setup for both WSL2 and native Linux users.</p>
+                            </div>
+                        </div> 
+
+                        <div class="blog" onclick="window.open('Blogs/Part3.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part3.html" target="_blank">3. Terminal Basics & Navigation</a></h4>
+                                <p>Command-line essentials for navigating the Linux filesystem, managing directories, and mastering absolute versus relative file paths.</p>
+                            </div>
+                        </div> 
+
+                        <div class="blog" onclick="window.open('Blogs/Part4.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part4.html" target="_blank">4. Managing Projects with Conda</a></h4>
+                                <p>Isolating Python project dependencies using Miniconda to safely create, activate, and manage dedicated research environments.</p>
+                            </div>
+                        </div> 
+
+                        <div class="blog" onclick="window.open('Blogs/Part5.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part5.html" target="_blank">5. Setting Up VS Code</a></h4>
+                                <p>Configuring Visual Studio Code as your primary editor and seamlessly connecting it to your WSL and Conda environments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= PHASE 2 ================= -->
+                    <div style="margin: 4rem 0 2rem; border-bottom: 1px solid var(--color-grey-5); padding-bottom: 1rem;">
+                        <h3 style="text-align: center; font-size: 1.5rem; color: var(--color-grey-1); text-transform: uppercase; letter-spacing: 2px;">
+                            Phase 2: The Research Infrastructure <span style="font-size: 1.1rem; color: var(--color-grey-3); text-transform: none; letter-spacing: normal;">(Parts 6 – 8)</span>
+                        </h3>
+                    </div>
+
+                    <div class="blogs">
+                        <div class="blog" onclick="window.open('Blogs/Part6.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part6.html" target="_blank">6. Linux Essentials for HPC & Servers</a></h4>
+                                <p>A foundational map for remote servers covering directory permissions, system software management via apt, SSH, and SLURM scheduling.</p>
+                            </div>
+                        </div>
+
+                        <div class="blog" onclick="window.open('Blogs/Part7.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part7.html" target="_blank">7. Git & GitHub for Researchers</a></h4>
+                                <p>Configuring Git, setting up secure SSH authentication for GitHub, and mastering the daily four-command version control workflow.</p>
+                            </div>
+                        </div>
+
+                        <div class="blog" onclick="window.open('Blogs/Part8.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part8.html" target="_blank">8. Organizing Scientific Data</a></h4>
+                                <p>Implementing reusable directory templates, keeping raw data read-only, and explicitly separating codebases from large scientific datasets.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= PHASE 3 ================= -->
+                    <div style="margin: 4rem 0 2rem; border-bottom: 1px solid var(--color-grey-5); padding-bottom: 1rem;">
+                        <h3 style="text-align: center; font-size: 1.5rem; color: var(--color-grey-1); text-transform: uppercase; letter-spacing: 2px;">
+                            Phase 3: High-Performance Computing <span style="font-size: 1.1rem; color: var(--color-grey-3); text-transform: none; letter-spacing: normal;">(Parts 9 – 10)</span>
+                        </h3>
+                    </div>
+
+                    <div class="blogs">
+                        <div class="blog" onclick="window.open('Blogs/Part9.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part9.html" target="_blank">9. Enabling GPU Computing with CUDA</a></h4>
+                                <p>NVIDIA driver configuration for Windows/WSL and native Linux environments, explicitly designed to avoid system-level CUDA Toolkit conflicts.</p>
+                            </div>
+                        </div>
+
+                        <div class="blog" onclick="window.open('Blogs/Part10.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part10.html" target="_blank">10. PyTorch & TensorFlow Setup</a></h4>
+                                <p>Building isolated Conda environments with pip-bundled CUDA packages for deep learning frameworks, complete with GPU benchmarks.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ================= PHASE 4 ================= -->
+                    <div style="margin: 4rem 0 2rem; border-bottom: 1px solid var(--color-grey-5); padding-bottom: 1rem;">
+                        <h3 style="text-align: center; font-size: 1.5rem; color: var(--color-grey-1); text-transform: uppercase; letter-spacing: 2px;">
+                            Phase 4: Open Science <span style="font-size: 1.1rem; color: var(--color-grey-3); text-transform: none; letter-spacing: normal;">(Parts 11 – 12)</span>
+                        </h3>
+                    </div>
+
+                    <div class="blogs">
+                        <div class="blog" onclick="window.open('Blogs/Part11.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part11.html" target="_blank">11. Reproducible Research Workflows</a></h4>
+                                <p>Exporting environment dependencies, decoupling configurations via YAML/dotenv files, and packaging computational workflows with Docker.</p>
+                            </div>
+                        </div>
+
+                        <div class="blog" onclick="window.open('Blogs/Part12.html', '_blank')" style="cursor: pointer;">
+                            <img src="img/blog1.png" alt="Blog Title">
+                            <div class="blog-text">
+                                <h4><a href="Blogs/Part12.html" target="_blank">12. Contributing to Open Science</a></h4>
+                                <p>Applying open-source licenses, minting citable Zenodo DOIs, executing pull requests, and building a public developer portfolio.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- END OF HIDDEN SERIES CONTENT -->
+            </div> <!-- END OF SERIES WRAPPER -->
+
+
+            <!-- ============================================================
+                 OTHER ARTICLES / FUTURE BLOGS
+            ============================================================= -->
+            <div class="other-blogs-wrapper">
+                <div style="margin: 0 0 3rem; text-align: center;">
+                    <h3 style="font-size: 2.2rem; color: var(--color-grey-1); text-transform: uppercase; letter-spacing: 2px;">
+                        Future Series & Articles
+                    </h3>
+                    <p style="color: var(--color-grey-2); font-size: 1.2rem; margin-top: 0.5rem;">
+                        One-off tutorials, research updates, and personal insights.
+                    </p>
+                </div>
+
                 <div class="blogs">
                     
-                    <!-- Blog post: Preface -->
-                    <div class="blog" onclick="window.open('Blogs/Preface.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
+                    <!-- Example Placeholder for a Future Blog -->
+                    <!-- 
+                    <div class="blog" onclick="window.open('#', '_blank')" style="cursor: pointer;">
+                        <img src="img/blog-placeholder.png" alt="Blog Title">
                         <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Preface.html" target="_blank">Building a Research Computing Environment - A Practical Guide for Researchers and Scientists</a>
-                            </h4>
-                            <p>
-                                Preface - What you will learn..!!
-                            </p>
+                            <h4><a href="#" target="_blank">Analyzing Aerosol Data with Python</a></h4>
+                            <p>A deep dive into parsing and visualizing complex meteorological datasets using xarray and cartopy.</p>
                         </div>
                     </div>
+                    -->
 
-                    <!-- Blog post: Part 1 -->
-                    <div class="blog" onclick="window.open('Blogs/Part1.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part1.html" target="_blank">Understanding the Modern Research Computing Stack</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 1 of 12
-                            </p>
-                        </div>
-                    </div>
+                    <p style="width: 100%; text-align: center; font-size: 1.2rem; color: var(--color-grey-3); padding: 2rem 0;">
+                        <em>More articles coming soon...</em>
+                    </p>
 
-                    <!-- Blog post: Part 2 -->
-                    <div class="blog" onclick="window.open('Blogs/Part2.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part2.html" target="_blank">Installing WSL2 with Ubuntu, and Miniconda</a>
-                            </h4>
-                            <p>
-                                Part 2 of 12
-                            </p>
-                        </div>
-                    </div> 
-
-                    <!-- Blog post: Part 3 -->
-                    <div class="blog" onclick="window.open('Blogs/Part3.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part3.html" target="_blank">Terminal Basics and File Navigation</a>
-                            </h4>
-                            <p>
-                                Part 3 of 12
-                            </p>
-                        </div>
-                    </div> 
-
-                    <!-- Blog post: Part 4 -->
-                    <div class="blog" onclick="window.open('Blogs/Part4.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part4.html" target="_blank">Managing Research Projects with Conda Environments</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 4 of 12
-                            </p>
-                        </div>
-                    </div> 
-
-                    <!-- Blog post: Part 5 -->
-                    <div class="blog" onclick="window.open('Blogs/Part5.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part5.html" target="_blank">Setting Up VS Code</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 5 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 6 -->
-                    <div class="blog" onclick="window.open('Blogs/Part6.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part6.html" target="_blank">Linux Essentials</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 6 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 7 -->
-                    <div class="blog" onclick="window.open('Blogs/Part7.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part7.html" target="_blank">Git and GitHub</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 7 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 8 -->
-                    <div class="blog" onclick="window.open('Blogs/Part8.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part8.html" target="_blank">Project Organization and managing Scientific Data</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 8 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 9 -->
-                    <div class="blog" onclick="window.open('Blogs/Part9.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part9.html" target="_blank">Enabling GPU Computing in WSL and Linux with CUDA</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 9 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 10 -->
-                    <div class="blog" onclick="window.open('Blogs/Part10.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part10.html" target="_blank">Installing PyTorch and TensorFlow</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 10 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 11 -->
-                    <div class="blog" onclick="window.open('Blogs/Part11.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part11.html" target="_blank">Building Reproducible Research Workflows</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 11 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Blog post: Part 12 -->
-                    <div class="blog" onclick="window.open('Blogs/Part12.html', '_blank')" style="cursor: pointer;">
-                        <img src="img/blog1.png" alt="Blog Title">
-                        <div class="blog-text">
-                            <h4>
-                                <a href="Blogs/Part12.html" target="_blank">Contributing to Open Science</a>
-                            </h4>
-                            <p>
-                                <br>
-                                Part 12 of 12
-                            </p>
-                        </div>
-                    </div>
-
-                    
                 </div>
-            </section>
+            </div>
+
+        </section>
 
         <!-- ============================================================
              GALLERY SECTION

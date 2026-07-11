@@ -1,5 +1,6 @@
-# Terminal Basics and File Navigation
-### Building a Research Computing Environment — Part 3 of 12
+# Managing Projects with Conda Environments
+### Phase 1: The Local Workbench — Part 3
+(Part 3 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,253 +30,356 @@ Follow me :
 
 ## Quick Summary
 
-This article sets Ubuntu as your default terminal, teaches the core navigation commands (`pwd`, `ls`, `cd`, `mkdir`, `cp`, `mv`), and establishes the code-vs-data convention you'll follow for the rest of the series: code lives in `/home`, data lives on your mounted Windows drives (`/mnt`). By the end, you'll have your first project folder created.
+This article creates an isolated Conda environment (`env_project1`), installs numpy through it, and explains when to use `conda install` vs `pip install`. You'll then run the same piece of Python code two ways — as a `.py` script and inside a JupyterLab `.ipynb` notebook — to see how the two workflows differ.
 
 ---
 
 ## Objective
 
-In Part 2, we installed WSL2, Ubuntu, and Miniconda. We also noted that projects should live in your Linux home directory — but didn't create that structure yet.
+In Part 2, we created `~/project_1` — a folder for our first project. But a folder alone is not enough. Every Python project also needs its own environment — a controlled space where you install only the packages that project needs.
 
-In this article, we'll get comfortable using Ubuntu and build that structure properly.
+In this article, we'll create that environment, install packages, and run our first Python code in both a `.py` and `.ipynb` file.
 
 By the end, you'll have:
 
-- Ubuntu set as your default terminal
-- Confidence navigating the Linux filesystem
-- A clear understanding of where to keep code and where to keep data
-- A projects folder ready for use
+- A Conda environment named `env_project1`
+- numpy installed
+- Run code in both a `.py` script and a `.ipynb` notebook
+- JupyterLab set up and working
 
 ---
 
 ## Content
 
-### Getting Unstuck
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
+  To go deeper on any step:
 
-To go deeper on any step:
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
-
-Think of this series as the roadmap and your AI assistant as your learning companion.
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
 ### Prerequisites
 
-- WSL2, Ubuntu, and Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
-- Windows Terminal installed
+- WSL2 or native Linux with Miniconda installed ([Part 1](https://abhigyan-pro.github.io/Blogs/Part1.html))
+- `~/project_1` folder created ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 
-### Step 1 — Set Ubuntu as Default in Windows Terminal
+### Step 1 — What Are Python Packages?
 
-Right now, Windows Terminal opens PowerShell by default. We'll change that to Ubuntu so you don't have to switch manually every time.
+Python by itself is minimal. Packages are collections of code written by others that you can use in your own projects.
 
-1. Open **Windows Terminal**
-2. Click the dropdown arrow `∨` next to the `+` tab button
-3. Select **Settings**
-4. Under **Startup**, find **Default profile**
-5. Click the dropdown and select **Ubuntu**
-6. Click **Save**
+For example:
+- `numpy` — numerical computing
+- `pandas` — data analysis
+- `matplotlib` — plotting
+- `scikit-learn` — machine learning
 
-From now on, every new Windows Terminal window opens Ubuntu directly.
+Instead of writing everything from scratch, you install a package and use it.
 
-### Step 2 — Open a New Tab
+### Step 2 — Why Virtual Environments?
 
-Click the `+` button in Windows Terminal.
+Imagine two projects:
+- Project A needs numpy version 1.21
+- Project B needs numpy version 2.0
 
-A new Ubuntu tab opens. You can run multiple tabs at the same time — useful when running a script in one tab while working in another.
+If you install both on the same Python, they conflict. Virtual environments solve this — each project gets its own isolated Python with its own packages and versions.
 
-### Step 3 — Understanding the Terminal Prompt
+With Miniconda, these are called **Conda environments**.
 
-When Ubuntu opens, you'll see something like:
+### Step 3 — Create a Conda Environment
 
-```bash
-(base) abhigyan@DESKTOP-XXXX:~$
-```
-
-| Part | What it means |
-|------|---------------|
-| `(base)` | The active Conda environment |
-| `abhigyan` | Your Ubuntu username |
-| `DESKTOP-XXXX` | Your Windows machine name |
-| `~` | Your current location (home directory) |
-| `$` | You are a regular user (not admin) |
-
-You first saw this prompt at the end of Part 2. Now we'll understand what you can do with it.
-
-Additional side note:
-- The program running inside your terminal is called a **shell**. On Ubuntu, the default shell is **bash** (Bourne Again Shell). When you type a command and press Enter, bash is what reads and executes it.
-- You'll see "bash" mentioned often in documentation and tutorials — it simply means the command-line environment you're already using.
-
-### Step 4 — Basic Navigation
-
-#### Where am I?
+Navigate to your project folder:
 
 ```bash
-pwd
-```
-`pwd` means present working directory. Shows the path of the folder where you are currectly located
-
-if you are inside your `/home` directory, then if you run `pwd`. It should show something like
-Output:
-
-```
-/home/abhigyan   
+cd ~/project_1
 ```
 
-This is your Linux home directory. Same as `~`. You saw this briefly in Part 2 — now we'll use it actively.
-
-#### What's here?
+Create an environment named `env_project1` with Python 3.11:
 
 ```bash
-ls
+conda create -n env_project1 python=3.11 pip
 ```
 
-Lists files and folders in your current location.
+> **Note:** Always include `pip` explicitly when creating an environment. Unlike the defaults channel, conda-forge doesn't bundle pip automatically with Python — skip it, and later `pip install` commands will fail with errors like `pip3: command not found` or `No module named pip`.
+
+Conda will show a list of packages to install. Type `y` and press Enter.
+
+Activate the environment:
 
 ```bash
-ls -a
+conda activate env_project1
 ```
 
-Shows hidden files too — files starting with `.` are hidden by default. Your Conda configuration lives in one of these hidden files.
+Your prompt will change from `(base)` to `(env_project1)`:
 
-#### Create a folder
-
-```bash
-mkdir projects
+```text
+(env_project1) abhigyan@DESKTOP-XXXX:~/project_1$
 ```
 
-#### Move into a folder
+This means you are now inside your isolated environment. Any package you install from this point goes into `env_project1` only — not into any other environment.
+
+### Step 4 — Managing Your Environments
+
+Before we install anything, a few commands worth knowing now that you have your first environment.
+
+**List all environments:**
 
 ```bash
-cd projects
-```
-
-Move one level up:
-
-```bash
-cd ..
-```
-
-Go back to your home directory from anywhere:
-
-```bash
-cd ~
-```
-
-#### Create a file
-
-```bash
-touch file.txt
-```
-
-#### Copy a file
-
-```bash
-cp file.txt backup.txt
-```
-
-Creates a copy named `backup.txt`.
-
-```bash
-cp file.txt ~/Projects2/file.txt
-```
-
-Copies into a folder. Assuming you created a folder Projects2 seperately.
-
-#### Move or rename a file
-
-```bash
-mv file.txt ~/Projects2/file2.txt
-```
-
-Moves a file.
-
-```bash
-mv old_name.txt new_name.txt
-```
-
-Renames a file.
-
-### Step 5 — Where Code Lives and Where Data Lives
-
-In Part 2, we established that `/home/yourusername` is your Linux home and `/mnt/c`, `/mnt/d` etc. are your Windows drives mounted inside Linux.
-
-Now we go one step further — this is the rule you'll follow throughout this series:
-
-**Code and projects → `/home/yourusername/projects/`**
-
-**Data and large files → `/mnt/d/` (or whichever Windows drive you use for storage)**
-
-**Why this split?**
-
-- Your Linux home directory is fast. Git, Conda, and all development tools run significantly slower when your code sits on a Windows drive (`/mnt/c`)
-- Data files — datasets, raw files, model outputs — are often large. Keeping them on your Windows drives (`/mnt/d`) means they're accessible from both Windows and Linux, easy to back up, and don't clutter your Linux environment
-
-Think of it this way: **your Linux home is your workbench. Your Windows drives are your storage shelves.**
-
-### Step 6 — Create Your Project Structure
-
-Run these commands one by one:
-
-```bash
-cd ~
-```
-
-```bash
-mkdir project_1
-```
-
-```bash
-cd project_1
-```
-
-```bash
-pwd
+conda env list
 ```
 
 Output:
 
+```text
+# conda environments:
+#
+base                  *  ~/miniconda3
+env_project1             ~/miniconda3/envs/env_project1
 ```
-/home/abhigyan/project_1
-```
 
-This is where all your code will live from now on. When we create Python environments and write scripts in the coming parts, everything starts here.
+The `*` shows your currently active environment.
 
-### Step 7 — Verify Your Data Location
+**Where environments are stored:**
 
-**If you are on WSL2:** Your Windows drives are mounted inside Linux. Access them like this:
+Each environment lives inside `~/miniconda3/envs/`. You never need to go there directly — Conda manages it for you. But knowing this helps when you're wondering where your packages actually live.
+
+**Deactivate an environment:**
 
 ```bash
-ls /mnt/d/
+conda deactivate
 ```
 
-Replace `d` with whichever drive letter you use for storage.
+Switches you back to `(base)`. Always deactivate before deleting an environment.
 
-**If you are on native Linux:** Your data lives on a separate drive or folder on your Linux filesystem. Use `ls` to navigate to wherever you store your data.
-
-You don't need to create anything here. Just confirm you can access your storage location from the terminal.
-
-### Step 8 — Where Software Is Installed
-
-When you install software inside Ubuntu — including Miniconda and all Python packages — it lives inside Linux, not on your Windows drive.
-
-Miniconda lives at:
+**Delete an environment:**
 
 ```bash
-ls ~/miniconda3/
+conda env remove -n env_project1
 ```
 
-You never need to go there directly. But knowing it's inside Linux explains why software installed in Ubuntu is invisible from Windows Explorer — they are separate filesystems.
+This permanently deletes the environment and all packages inside it. Don't run this now — we'll need `env_project1` for the rest of the series.
+
+### Step 5 — Installing Packages (also called Libraries)
+
+Make sure `env_project1` is active before installing anything:
+
+```bash
+conda activate env_project1
+```
+
+#### `conda install` vs `pip install`
+
+There are two ways to install packages:
+
+| | `conda install` | `pip install` |
+|---|---|---|
+| Source | Conda repositories | Python Package Index (PyPI) |
+| Handles non-Python dependencies | Yes | No |
+| Environment safety | Better | Can break Conda environments if overused |
+| When to use | Default choice | When package is not available via Conda |
+
+
+**Rule of thumb:** always try `conda install` first. Use `pip install` only if the package is not available through Conda.
+
+#### The `conda-forge` Channel
+
+Conda packages are hosted in **channels** — think of them as app stores. The default Conda channel has many packages, but `conda-forge` is a community-maintained channel with significantly more packages and more up-to-date versions.
+
+Set `conda-forge` as your default channel:
+
+```bash
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+```
+
+You only need to do this once — it applies to all environments.
+
+#### Install numpy
+
+NumPy is a Python package that provides support for arrays and mathematical operations. It is one of the core libraries used in data science and scientific computing.
+
+```bash
+conda install numpy
+```
+
+Type `y` when prompted.
+
+Verify the installation:
+
+```bash
+python -c "import numpy; print(numpy.__version__)"
+```
+
+You should see a version number printed.
+
+### Step 6 — Two Ways to Write Python: `.py` and `.ipynb`
+
+Before writing any code, it helps to understand the two file types you'll use throughout this series.
+
+#### `.py` — Python Script
+
+A plain text file containing Python code. You run it from the terminal and it executes top to bottom.
+
+Best for:
+- Automation and pipelines
+- Reusable functions and modules
+- Code you want to run repeatedly without interaction
+
+#### `.ipynb` — Jupyter Notebook
+
+A notebook file where code, output, and text live together in cells. You run cells one at a time and see the output immediately below each cell.
+
+Best for:
+- Exploration and analysis
+- Visualising results step by step
+- Sharing work with explanations alongside code
+
+Both are valid. Most research workflows use both — notebooks for exploration, scripts for automation.
+
+### Step 7 — Run Your First `.py` Script
+
+Make sure you are in `~/project_1` with `env_project1` active.
+
+Create a file:
+
+```bash
+touch first_script.py
+```
+
+Open it in a terminal text editor. We'll use `nano` — a simple terminal text editor — to write our script directly in the terminal. (More about `nano` in Part 5).
+
+```bash
+nano first_script.py
+```
+
+Type this code:
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+print("Array:", a)
+print("Mean:", np.mean(a))
+print("Sum:", np.sum(a))
+```
+
+Save and exit: press `Ctrl+X`, then `Y`, then `Enter`.
+
+Run the script:
+
+```bash
+python first_script.py
+```
+
+Expected output:
+
+```text
+Array: [1 2 3 4 5]
+Mean: 3.0
+Sum: 15
+```
+
+### Step 8 — What is Jupyter Notebook and JupyterLab?
+
+**Jupyter Notebook** is the original browser-based interface for `.ipynb` files. You write code in cells, run them one at a time, and see output immediately below.
+
+**JupyterLab** is the modern replacement. It has the same notebook functionality but adds a file browser, terminal, text editor, and multiple tabs — all in one browser window.
+
+For this series, we use **JupyterLab**.
+
+### Step 9 — Install JupyterLab and ipykernel
+
+`ipykernel` is what connects your Conda environment to JupyterLab. Without it, JupyterLab won't see `env_project1` as an available kernel.
+
+Install both:
+
+```bash
+conda install jupyterlab ipykernel
+```
+
+Type `y` when prompted.
+
+Register your environment as a Jupyter kernel:
+
+```bash
+python -m ipykernel install --user --name env_project1 --display-name "Python (env_project1)"
+```
+
+### Step 10 — Run Your First `.ipynb` Notebook
+
+Launch JupyterLab:
+
+```bash
+jupyter lab
+```
+
+JupyterLab will open in your browser automatically. If it doesn't, copy the URL from the terminal — it will look like:
+
+```text
+http://localhost:8888/lab?token= ...... copy the entire line
+```
+
+and paste it into your browser.
+
+In JupyterLab:
+
+1. Click **File → New → Notebook**
+2. Select **Python (env_project1)** as the kernel
+3. In the first cell, type:
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+print("Array:", a)
+print("Mean:", np.mean(a))
+print("Sum:", np.sum(a))
+```
+
+4. Press `Shift+Enter` to run the cell
+
+Expected output:
+
+```text
+Array: [1 2 3 4 5]
+Mean: 3.0
+Sum: 15
+```
+
+Same result as the `.py` script — but this time inside a notebook cell, with output directly below your code.
+
+To stop JupyterLab, go back to the terminal and press `Ctrl+C`.
+
+### Step 11 — Why Use an IDE Like VS Code?
+
+JupyterLab is a capable environment. For notebooks and interactive work, it works well on its own.
+
+But as your projects grow, you'll find yourself needing more:
+
+- **Git integration** — track changes, commit, and push to GitHub without leaving your editor
+- **Debugger** — step through code line by line when something breaks
+- **File management** — navigate your entire project, not just one notebook
+- **Built-in terminal** — run commands alongside your code
+- **Both `.py` and `.ipynb` in one place** — switch between scripts and notebooks seamlessly
+- **Extensions** — linting, formatting, autocomplete, and language support all in one place
+
+JupyterLab is purpose-built for notebooks and interactive computing — and it does that extremely well. An IDE like VS Code goes further by bringing your entire development workflow — code, terminal, Git, debugger, and notebooks — into a single environment. As your projects grow in complexity, having everything in one place makes a real difference.
+
+In Part 4, we'll set up VS Code and connect it to the environment we built here.
 
 ---
 
@@ -283,18 +387,17 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 
 **What You've Done:**
 
-- Set Ubuntu as the default in Windows Terminal
-- Learned to open new tabs
-- Understood every part of the terminal prompt
-- Used `pwd`, `ls`, `cd`, `mkdir`, `cp`, `mv`
-- Understood the code/data split: `/home` for code, `/mnt` for data
-- Created your `~/project_1` folder
+- Understood what packages and virtual environments are
+- Created Conda environment `env_project1`
+- Learned to list, deactivate, and delete Conda environments
+- Learned `conda install` vs `pip install` and set up `conda-forge`
+- Installed numpy
+- Understood the difference between `.py` and `.ipynb`
+- Ran your first Python code in both a script and a notebook
+- Set up JupyterLab
 
-**Want to go deeper on Linux and terminal basics?**
-Software Carpentry has a free, beginner-friendly course that complements this part well: [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
-
-**Next:** [Part 4 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part4.html)
+**Next:** [Part 4 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part4.html)
 |
-**Previous:** [Part 2 — Installing WSL2 with Ubuntu, and Miniconda](https://abhigyan-pro.github.io/Blogs/Part2.html)
+**Previous:** [Part 2 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part2.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

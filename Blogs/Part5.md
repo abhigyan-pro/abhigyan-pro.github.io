@@ -1,5 +1,6 @@
-# Setting Up VS Code
-### Building a Research Computing Environment — Part 5 of 12
+# Linux Essentials for HPC and Remote Servers
+### Phase 2: The Research Infrastructure — Part 1
+(Part 5 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,245 +30,150 @@ Follow me :
 
 ## Quick Summary
 
-This article installs VS Code, connects it to your Ubuntu environment (via Remote WSL on Windows, or natively on Linux), and wires up the Python and Jupyter extensions. You'll then select `env_project1` as your interpreter and kernel, and run both `first_script.py` and your notebook from Part 4 directly inside VS Code — one place for terminal, Git, debugger, scripts, and notebooks.
+Unlike previous parts, this article serves as a map rather than a build tutorial. It covers directory organization, file management, permissions, installing system software with `apt`, environment variables, SSH, and the basics of HPC clusters and SLURM job submission — the concepts researchers need once they move beyond their local machine to remote servers.
 
 ---
 
 ## Objective
 
-In Part 4, we ran Python code in both a `.py` script and a `.ipynb` notebook using JupyterLab. In this part, we'll set up VS Code — a single environment where you can work with both file types, alongside your terminal, Git, and debugger.
+In previous parts, you built a concrete environment on your local machine. Here, the goal is different: this is a **map**. As a researcher, you'll eventually work on remote servers and university HPC (High Performance Computing) clusters. This article provides the foundational knowledge needed to navigate these environments confidently.
 
 By the end, you'll have:
-
-- VS Code installed and configured
-- Python and Jupyter extensions set up
-- `env_project1` connected as your interpreter and kernel
-- Run `first_script.py` and your notebook directly inside VS Code
+- An understanding of directory structures, file management, and permissions.
+- Knowledge of system-level software installation using `apt`.
+- Clarity on environment variables and how to configure them.
+- Familiarity with remote access via SSH and job scheduling via SLURM.
 
 ---
 
 ## Content
 
-### Getting Unstuck
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
+  To go deeper on any step:
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-To go deeper on any step:
-
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
-
-Think of this series as the roadmap and your AI assistant as your learning companion.
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
 ### Prerequisites
 
-- WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
-- `~/project_1` with `env_project1`, `first_script.py`, and a `.ipynb` notebook ([Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
+- Comfortable with the terminal ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
+- `~/project_1` with `env_project1` set up ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
-### Step 1 — Installing VS Code
+### Section 1 — Creating and Organizing Directories
 
-#### Windows (WSL) Users
-
-Go to [https://code.visualstudio.com/](https://code.visualstudio.com/) and click **Download for Windows**.
-
-Run the downloaded file — it will be named something like `VSCodeUserSetup-x64-1.xx.x.exe`.
-
-The installer will walk you through these screens:
-
-1. **License Agreement** — Select **I accept the agreement** → click **Next**
-2. **Select Destination Location** — leave the default path as is → click **Next**
-3. **Select Start Menu Folder** — leave as is → click **Next**
-4. **Select Additional Tasks** — this is the important screen. You will see a list of checkboxes. Make sure these two are checked:
-   - ✅ **Add to PATH** — allows you to type `code .` in the terminal to open VS Code from any folder
-   - ✅ **Open with Code** (under the File Explorer options) — lets you right-click any folder in Windows Explorer and open it in VS Code
-   - Leave everything else as is → click **Next**
-5. **Ready to Install** — click **Install**
-6. **Finish** — leave **Launch Visual Studio Code** checked → click **Finish**
-
-Now open your Ubuntu terminal and verify:
-
+Create nested directories in one command:
 ```bash
-code --version
+mkdir -p ~/project_1/data/raw
+mkdir -p ~/project_1/data/processed
+mkdir -p ~/project_1/scripts
+mkdir -p ~/project_1/results
 ```
 
-You should see a version number. If you get `command not found`, close the terminal completely, reopen it, and try again.
+The `-p` flag creates all parent directories that don't exist yet. 
 
-#### Native Linux Users
-
-Open your terminal and run these commands one by one:
-
+View your structure:
 ```bash
-sudo apt update
+find ~/project_1 -type d
 ```
 
+### Section 2 — Managing Files
+
+Beyond basic navigation, these tools are essential for file management:
+
+- **Delete a file**: `rm file.txt`
+- **Delete a folder**: `rm -rf foldername/` (⚠️ *This is permanent; there is no recycle bin*)
+- **View file contents**: `cat file.txt` or `less file.txt` (press `q` to exit)
+- **Check disk usage**: `du -sh ~/project_1/`
+
+#### Terminal Text Editors
+- **`nano`**: Simple, opens files directly in the terminal; ideal for quick config edits.
+- **`vim`**: More powerful but has a steep learning curve; useful for remote servers.
+
+### Section 3 — File Permissions
+
+Every file and folder in Linux has permissions controlling read, write, and execute access.
+
+Run `ls -l ~/project_1/` to see permissions. Change them with `chmod`:
+- Make a file executable: `chmod +x first_script.py`
+- Restrict file access: `chmod 600 ~/.ssh/id_rsa`
+
+### Section 4 — Installing Software with `apt`
+
+Use `apt` for system-level software, distinct from Python-level packages managed by `conda` or `pip`.
+
+- **Update repositories**: `sudo apt update`
+- **Install Git**: `sudo apt install git`
+- **Install compilers**: `sudo apt install gcc g++ gfortran`
+
+### Section 5 — Environment Variables
+
+Environment variables are configuration values bash reads at startup. 
+- **View variables**: `env` or `echo $PATH`
+- **Create a variable**: `export MY_DATA="/mnt/d/datasets"`
+- **Make permanent**: Add the export line to `~/.bashrc` and run `source ~/.bashrc`
+
+### Section 6 — SSH: Connecting to Remote Machines
+
+SSH lets you control remote machines from your terminal.
+
+1. **Generate SSH key**: `ssh-keygen -t ed25519 -C "email@example.com"`
+2. **Connect**: `ssh username@server_address`
+3. **Copy key**: `ssh-copy-id username@server_address` (enables password-less login)
+4. **Transfer files**: Use `scp` or `rsync -avz` for efficient directory synchronization
+
+### Section 7 — HPC Systems and SLURM
+
+HPC clusters connect hundreds of computers to run massive jobs. Unlike local machines, you submit these jobs to a queue managed by a scheduler like **SLURM**.
+
+A basic SLURM job script (`job.sh`):
 ```bash
-sudo apt install wget gpg
-```
+#!/bin/bash
+#SBATCH --job-name=my_job
+#SBATCH --output=my_job_%j.out
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+#SBATCH --time=02:00:00
 
-```bash
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-```
-
-```bash
-sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-```
-
-```bash
-echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
-```
-
-```bash
-sudo apt update
-```
-
-```bash
-sudo apt install code
-```
-
-Verify:
-
-```bash
-code --version
-```
-
-You should see a version number printed.
-
-### Step 2 — Installing the Remote WSL Extension
-
-> **Windows (WSL) users only. Native Linux users skip to Step 3.**
-
-The Remote WSL extension allows VS Code running on Windows to connect to your Ubuntu environment. Without it, VS Code won't see your Linux files, Conda environments, or packages.
-
-1. Open VS Code
-2. Press `Ctrl+Shift+X` to open the Extensions panel
-3. Search for **Remote - WSL**
-4. Click **Install**
-
-### Step 3 — Installing Python and Jupyter Extensions
-
-Open VS Code. Press `Ctrl+Shift+X` to open the Extensions panel.
-
-Search for and install these two extensions:
-
-- **Python** — by Microsoft
-- **Jupyter** — by Microsoft
-
-These give VS Code the ability to:
-- Run `.py` scripts with a selected Conda interpreter
-- Run `.ipynb` notebooks with a selected Conda kernel
-
-### Step 4 — Opening Your Project in VS Code
-
-Activate your environment and navigate to your project folder in the terminal:
-
-```bash
 conda activate env_project1
+python first_script.py
 ```
 
-```bash
-cd ~/project_1
-```
+- **Submit**: `sbatch job.sh`
+- **Check status**: `squeue -u username`
 
-Open VS Code from the terminal:
-
-```bash
-code .
-```
-
-**WSL users:** VS Code will open on Windows and automatically connect to your Ubuntu environment via the Remote WSL extension. You'll see a green indicator in the bottom-left corner of VS Code showing `WSL: Ubuntu`.
-
-**Native Linux users:** VS Code opens locally with `~/project_1` as the workspace.
-
-From this point, everything is identical for both.
-
-### Step 5 — Selecting a Conda Interpreter for `.py` Files
-
-VS Code needs to know which Python environment to use when running `.py` files.
-
-1. Press `Ctrl+Shift+P` to open the Command Palette
-2. Type **Python: Select Interpreter** and press Enter
-3. You'll see a list of available Python environments
-4. Select **Python (env_project1)**
-
-VS Code will now use `env_project1` when running any `.py` file in this project.
-
-### Step 6 — Running `first_script.py`
-
-In the VS Code file browser on the left, click on `first_script.py` to open it.
-
-To run it:
-- Press `Ctrl+F5`, or
-- Click the **Run** button (▷) in the top-right corner
-
-The output will appear in the **Terminal** panel at the bottom:
-
-```
-Array: [1 2 3 4 5]
-Mean: 3.0
-Sum: 15
-```
-
-Same output as Part 4 — but now running directly inside VS Code.
-
-### Step 7 — Selecting a Jupyter Kernel for `.ipynb` Files
-
-In the VS Code file browser on the left, click on your `.ipynb` notebook to open it.
-
-In the top-right corner of the notebook, you'll see a **kernel selector** showing either a kernel name or **Select Kernel**. Click it.
-
-A dropdown will appear at the top of the screen. Select **Python (env_project1)**.
-
-This connects your notebook to the same Conda environment you've been working in.
-
-### Step 8 — Running Your Notebook in VS Code
-
-With your notebook open and `env_project1` selected as the kernel, you'll see the same cells you wrote in Part 4.
-
-Key notebook controls in VS Code:
-
-| Action | How |
-|--------|-----|
-| Run a cell | `Shift+Enter` or click ▷ next to the cell |
-| Run all cells | Click **Run All** in the top toolbar |
-| Clear output of a cell | Right-click the cell → **Clear Cell Output** |
-| Clear all outputs | Click **Clear All Outputs** in the top toolbar |
-| Restart kernel | Click **Restart** in the top toolbar |
-| Restart and run all | Click **Restart** → **Restart and Run All Cells** |
-
-Run your notebook. Expected output in the first cell:
-
-```
-Array: [1 2 3 4 5]
-Mean: 3.0
-Sum: 15
-```
-
-Same result as Part 4 — the environment, the code, and the output are identical. The difference is you now have your terminal, file browser, Git, and debugger all in the same window.
+On HPC, use the module system to load software: `module avail`, `module load python/3.11`, `module list`.
 
 ---
 
 ## What's Next
 
 **What You've Done:**
+- Organized directories and managed files
+- Understood permissions, system software installation, and environment variables
+- Learned SSH for remote connectivity and SLURM for HPC job submission
 
-- Installed VS Code on Windows (WSL) or Linux
-- Connected VS Code to your Ubuntu environment (WSL users)
-- Installed Python and Jupyter extensions
-- Opened `~/project_1` in VS Code from the terminal
-- Selected `env_project1` as your interpreter and kernel
-- Ran `first_script.py` and your notebook inside VS Code
+**Further reading:**
+- [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
+- [RIT Research Computing — SLURM Quick Start Tutorial](https://research-computing.git-pages.rit.edu/docs/slurm_quick_start_tutorial.html)
 
-**Next:** [Part 6 — Linux Essentials](https://abhigyan-pro.github.io/Blogs/Part6.html)
+**Next:** [Part 7 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part7.html)
 |
-**Previous:** [Part 4 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part4.html)
+**Previous:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

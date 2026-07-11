@@ -1,5 +1,6 @@
-# Managing Projects with Conda Environments
-### Building a Research Computing Environment — Part 4 of 12
+# Setting Up VS Code
+### Phase 1: The Local Workbench — Part 4
+(Part 4 of series [Blueprint for a Modern Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html))
 
 Follow me :
 <p align="left">
@@ -29,353 +30,232 @@ Follow me :
 
 ## Quick Summary
 
-This article creates an isolated Conda environment (`env_project1`), installs numpy through it, and explains when to use `conda install` vs `pip install`. You'll then run the same piece of Python code two ways — as a `.py` script and inside a JupyterLab `.ipynb` notebook — to see how the two workflows differ.
+This article installs VS Code, connects it to your Ubuntu environment (via Remote WSL on Windows, or natively on Linux), and wires up the Python and Jupyter extensions. You'll then select `env_project1` as your interpreter and kernel, and run both `first_script.py` and your notebook from Part 3 directly inside VS Code — one place for terminal, Git, debugger, scripts, and notebooks.
 
 ---
 
 ## Objective
 
-In Part 3, we created `~/project_1` — a folder for our first project. But a folder alone is not enough. Every Python project also needs its own environment — a controlled space where you install only the packages that project needs.
-
-In this article, we'll create that environment, install packages, and run our first Python code in both a `.py` and `.ipynb` file.
+In Part 3, we ran Python code in both a `.py` script and a `.ipynb` notebook using JupyterLab. In this part, we'll set up VS Code — a single environment where you can work with both file types, alongside your terminal, Git, and debugger.
 
 By the end, you'll have:
 
-- A Conda environment named `env_project1`
-- numpy installed
-- Run code in both a `.py` script and a `.ipynb` notebook
-- JupyterLab set up and working
+- VS Code installed and configured
+- Python and Jupyter extensions set up
+- `env_project1` connected as your interpreter and kernel
+- Run `first_script.py` and your notebook directly inside VS Code
 
 ---
 
 ## Content
 
-### Getting Unstuck
+<details>
+  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  
+  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
-If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  > I am following this article: [paste this article's link]
+  >
+  > I am on Step [X].
+  >
+  > I did: [describe what you did]
+  >
+  > I got: [paste the exact error or describe what happened]
+  >
+  > Help me troubleshoot.
 
-> I am following this article: [paste this article's link]
->
-> I am on Step [X].
->
-> I did: [describe what you did]
->
-> I got: [paste the exact error or describe what happened]
->
-> Help me troubleshoot.
+  To go deeper on any step:
 
-To go deeper on any step:
+  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-> "I am following [link]. In Step X it says to run [command] — explain what each part does."
-
-Think of this series as the roadmap and your AI assistant as your learning companion.
+  Think of this series as the roadmap and your AI assistant as your learning companion.
+</details>
 
 ### Prerequisites
 
-- WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
-- `~/project_1` folder created ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
+- WSL2 or native Linux with Miniconda installed ([Part 1](https://abhigyan-pro.github.io/Blogs/Part1.html))
+- `~/project_1` with `env_project1`, `first_script.py`, and a `.ipynb` notebook ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
-### Step 1 — What Are Python Packages?
+### Step 1 — Installing VS Code
 
-Python by itself is minimal. Packages are collections of code written by others that you can use in your own projects.
+#### Windows (WSL) Users
 
-For example:
-- `numpy` — numerical computing
-- `pandas` — data analysis
-- `matplotlib` — plotting
-- `scikit-learn` — machine learning
+Go to [https://code.visualstudio.com/](https://code.visualstudio.com/) and click **Download for Windows**.
 
-Instead of writing everything from scratch, you install a package and use it.
+Run the downloaded file — it will be named something like `VSCodeUserSetup-x64-1.xx.x.exe`.
 
-### Step 2 — Why Virtual Environments?
+The installer will walk you through these screens:
 
-Imagine two projects:
-- Project A needs numpy version 1.21
-- Project B needs numpy version 2.0
+1. **License Agreement** — Select **I accept the agreement** → click **Next**
+2. **Select Destination Location** — leave the default path as is → click **Next**
+3. **Select Start Menu Folder** — leave as is → click **Next**
+4. **Select Additional Tasks** — this is the important screen. You will see a list of checkboxes. Make sure these two are checked:
+   - ✅ **Add to PATH** — allows you to type `code .` in the terminal to open VS Code from any folder
+   - ✅ **Open with Code** (under the File Explorer options) — lets you right-click any folder in Windows Explorer and open it in VS Code
+   - Leave everything else as is → click **Next**
+5. **Ready to Install** — click **Install**
+6. **Finish** — leave **Launch Visual Studio Code** checked → click **Finish**
 
-If you install both on the same Python, they conflict. Virtual environments solve this — each project gets its own isolated Python with its own packages and versions.
+Now open your Ubuntu terminal and verify:
 
-With Miniconda, these are called **Conda environments**.
+```bash
+code --version
+```
 
-### Step 3 — Create a Conda Environment
+You should see a version number. If you get `command not found`, close the terminal completely, reopen it, and try again.
 
-Navigate to your project folder:
+#### Native Linux Users
+
+Open your terminal and run these commands one by one:
+
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt install wget gpg
+```
+
+```bash
+wget -qO- [https://packages.microsoft.com/keys/microsoft.asc](https://packages.microsoft.com/keys/microsoft.asc) | gpg --dearmor > packages.microsoft.gpg
+```
+
+```bash
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+```
+
+```bash
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] [https://packages.microsoft.com/repos/code](https://packages.microsoft.com/repos/code) stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+```
+
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt install code
+```
+
+Verify:
+
+```bash
+code --version
+```
+
+You should see a version number printed.
+
+### Step 2 — Installing the Remote WSL Extension
+
+> **Windows (WSL) users only. Native Linux users skip to Step 3.**
+
+The Remote WSL extension allows VS Code running on Windows to connect to your Ubuntu environment. Without it, VS Code won't see your Linux files, Conda environments, or packages.
+
+1. Open VS Code
+2. Press `Ctrl+Shift+X` to open the Extensions panel
+3. Search for **Remote - WSL**
+4. Click **Install**
+
+### Step 3 — Installing Python and Jupyter Extensions
+
+Open VS Code. Press `Ctrl+Shift+X` to open the Extensions panel.
+
+Search for and install these two extensions:
+
+- **Python** — by Microsoft
+- **Jupyter** — by Microsoft
+
+These give VS Code the ability to:
+- Run `.py` scripts with a selected Conda interpreter
+- Run `.ipynb` notebooks with a selected Conda kernel
+
+### Step 4 — Opening Your Project in VS Code
+
+Activate your environment and navigate to your project folder in the terminal:
+
+```bash
+conda activate env_project1
+```
 
 ```bash
 cd ~/project_1
 ```
 
-Create an environment named `env_project1` with Python 3.11:
+Open VS Code from the terminal:
 
 ```bash
-conda create -n env_project1 python=3.11 pip
+code .
 ```
 
-> **Note:** Always include `pip` explicitly when creating an environment. Unlike the defaults channel, conda-forge doesn't bundle pip automatically with Python — skip it, and later `pip install` commands will fail with errors like `pip3: command not found` or `No module named pip`.
+**WSL users:** VS Code will open on Windows and automatically connect to your Ubuntu environment via the Remote WSL extension. You'll see a green indicator in the bottom-left corner of VS Code showing `WSL: Ubuntu`.
 
-Conda will show a list of packages to install. Type `y` and press Enter.
+**Native Linux users:** VS Code opens locally with `~/project_1` as the workspace.
 
-Activate the environment:
+From this point, everything is identical for both.
 
-```bash
-conda activate env_project1
-```
+### Step 5 — Selecting a Conda Interpreter for `.py` Files
 
-Your prompt will change from `(base)` to `(env_project1)`:
+VS Code needs to know which Python environment to use when running `.py` files.
 
-```
-(env_project1) abhigyan@DESKTOP-XXXX:~/project_1$
-```
+1. Press `Ctrl+Shift+P` to open the Command Palette
+2. Type **Python: Select Interpreter** and press Enter
+3. You'll see a list of available Python environments
+4. Select **Python (env_project1)**
 
-This means you are now inside your isolated environment. Any package you install from this point goes into `env_project1` only — not into any other environment.
+VS Code will now use `env_project1` when running any `.py` file in this project.
 
-### Step 4 — Managing Your Environments
+### Step 6 — Running `first_script.py`
 
-Before we install anything, a few commands worth knowing now that you have your first environment.
+In the VS Code file browser on the left, click on `first_script.py` to open it.
 
-**List all environments:**
+To run it:
+- Press `Ctrl+F5`, or
+- Click the **Run** button (▷) in the top-right corner
 
-```bash
-conda env list
-```
+The output will appear in the **Terminal** panel at the bottom:
 
-Output:
-
-```
-# conda environments:
-#
-base                  *  ~/miniconda3
-env_project1             ~/miniconda3/envs/env_project1
-```
-
-The `*` shows your currently active environment.
-
-**Where environments are stored:**
-
-Each environment lives inside `~/miniconda3/envs/`. You never need to go there directly — Conda manages it for you. But knowing this helps when you're wondering where your packages actually live.
-
-**Deactivate an environment:**
-
-```bash
-conda deactivate
-```
-
-Switches you back to `(base)`. Always deactivate before deleting an environment.
-
-**Delete an environment:**
-
-```bash
-conda env remove -n env_project1
-```
-
-This permanently deletes the environment and all packages inside it. Don't run this now — we'll need `env_project1` for the rest of the series.
-
-### Step 5 — Installing Packages (also called Libraries)
-
-Make sure `env_project1` is active before installing anything:
-
-```bash
-conda activate env_project1
-```
-
-#### `conda install` vs `pip install`
-
-There are two ways to install packages:
-
-| | `conda install` | `pip install` |
-|---|---|---|
-| Source | Conda repositories | Python Package Index (PyPI) |
-| Handles non-Python dependencies | Yes | No |
-| Environment safety | Better | Can break Conda environments if overused |
-| When to use | Default choice | When package is not available via Conda |
-
-**Rule of thumb:** always try `conda install` first. Use `pip install` only if the package is not available through Conda.
-
-#### The `conda-forge` Channel
-
-Conda packages are hosted in **channels** — think of them as app stores. The default Conda channel has many packages, but `conda-forge` is a community-maintained channel with significantly more packages and more up-to-date versions.
-
-Set `conda-forge` as your default channel:
-
-```bash
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-```
-
-You only need to do this once — it applies to all environments.
-
-#### Install numpy
-
-NumPy is a Python package that provides support for arrays and mathematical operations. It is one of the core libraries used in data science and scientific computing.
-
-```bash
-conda install numpy
-```
-
-Type `y` when prompted.
-
-Verify the installation:
-
-```bash
-python -c "import numpy; print(numpy.__version__)"
-```
-
-You should see a version number printed.
-
-### Step 6 — Two Ways to Write Python: `.py` and `.ipynb`
-
-Before writing any code, it helps to understand the two file types you'll use throughout this series.
-
-#### `.py` — Python Script
-
-A plain text file containing Python code. You run it from the terminal and it executes top to bottom.
-
-Best for:
-- Automation and pipelines
-- Reusable functions and modules
-- Code you want to run repeatedly without interaction
-
-#### `.ipynb` — Jupyter Notebook
-
-A notebook file where code, output, and text live together in cells. You run cells one at a time and see the output immediately below each cell.
-
-Best for:
-- Exploration and analysis
-- Visualising results step by step
-- Sharing work with explanations alongside code
-
-Both are valid. Most research workflows use both — notebooks for exploration, scripts for automation.
-
-### Step 7 — Run Your First `.py` Script
-
-Make sure you are in `~/project_1` with `env_project1` active.
-
-Create a file:
-
-```bash
-touch first_script.py
-```
-
-Open it in a terminal text editor. We'll use `nano` — a simple terminal text editor — to write our script directly in the terminal. (More about `nano` in Part 6.)
-
-```bash
-nano first_script.py
-```
-
-Type this code:
-
-```python
-import numpy as np
-
-a = np.array([1, 2, 3, 4, 5])
-print("Array:", a)
-print("Mean:", np.mean(a))
-print("Sum:", np.sum(a))
-```
-
-Save and exit: press `Ctrl+X`, then `Y`, then `Enter`.
-
-Run the script:
-
-```bash
-python first_script.py
-```
-
-Expected output:
-
-```
+```text
 Array: [1 2 3 4 5]
 Mean: 3.0
 Sum: 15
 ```
 
-### Step 8 — What is Jupyter Notebook and JupyterLab?
+Same output as Part 3 — but now running directly inside VS Code.
 
-**Jupyter Notebook** is the original browser-based interface for `.ipynb` files. You write code in cells, run them one at a time, and see output immediately below.
+### Step 7 — Selecting a Jupyter Kernel for `.ipynb` Files
 
-**JupyterLab** is the modern replacement. It has the same notebook functionality but adds a file browser, terminal, text editor, and multiple tabs — all in one browser window.
+In the VS Code file browser on the left, click on your `.ipynb` notebook to open it.
 
-For this series, we use **JupyterLab**.
+In the top-right corner of the notebook, you'll see a **kernel selector** showing either a kernel name or **Select Kernel**. Click it.
 
-### Step 9 — Install JupyterLab and ipykernel
+A dropdown will appear at the top of the screen. Select **Python (env_project1)**.
 
-`ipykernel` is what connects your Conda environment to JupyterLab. Without it, JupyterLab won't see `env_project1` as an available kernel.
+This connects your notebook to the same Conda environment you've been working in.
 
-Install both:
+### Step 8 — Running Your Notebook in VS Code
 
-```bash
-conda install jupyterlab ipykernel
-```
+With your notebook open and `env_project1` selected as the kernel, you'll see the same cells you wrote in Part 3.
 
-Type `y` when prompted.
+Key notebook controls in VS Code:
 
-Register your environment as a Jupyter kernel:
+| Action | How |
+|--------|-----|
+| Run a cell | `Shift+Enter` or click ▷ next to the cell |
+| Run all cells | Click **Run All** in the top toolbar |
+| Clear output of a cell | Right-click the cell → **Clear Cell Output** |
+| Clear all outputs | Click **Clear All Outputs** in the top toolbar |
+| Restart kernel | Click **Restart** in the top toolbar |
+| Restart and run all | Click **Restart** → **Restart and Run All Cells** |
 
-```bash
-python -m ipykernel install --user --name env_project1 --display-name "Python (env_project1)"
-```
 
-### Step 10 — Run Your First `.ipynb` Notebook
+Run your notebook. Expected output in the first cell:
 
-Launch JupyterLab:
-
-```bash
-jupyter lab
-```
-
-JupyterLab will open in your browser automatically. If it doesn't, copy the URL from the terminal — it will look like:
-
-```
-http://localhost:8888/lab?token= ...... copy the entire line
-```
-
-and paste it into your browser.
-
-In JupyterLab:
-
-1. Click **File → New → Notebook**
-2. Select **Python (env_project1)** as the kernel
-3. In the first cell, type:
-
-```python
-import numpy as np
-
-a = np.array([1, 2, 3, 4, 5])
-print("Array:", a)
-print("Mean:", np.mean(a))
-print("Sum:", np.sum(a))
-```
-
-4. Press `Shift+Enter` to run the cell
-
-Expected output:
-
-```
+```text
 Array: [1 2 3 4 5]
 Mean: 3.0
 Sum: 15
 ```
 
-Same result as the `.py` script — but this time inside a notebook cell, with output directly below your code.
-
-To stop JupyterLab, go back to the terminal and press `Ctrl+C`.
-
-### Step 11 — Why Use an IDE Like VS Code?
-
-JupyterLab is a capable environment. For notebooks and interactive work, it works well on its own.
-
-But as your projects grow, you'll find yourself needing more:
-
-- **Git integration** — track changes, commit, and push to GitHub without leaving your editor
-- **Debugger** — step through code line by line when something breaks
-- **File management** — navigate your entire project, not just one notebook
-- **Built-in terminal** — run commands alongside your code
-- **Both `.py` and `.ipynb` in one place** — switch between scripts and notebooks seamlessly
-- **Extensions** — linting, formatting, autocomplete, and language support all in one place
-
-JupyterLab is purpose-built for notebooks and interactive computing — and it does that extremely well. An IDE like VS Code goes further by bringing your entire development workflow — code, terminal, Git, debugger, and notebooks — into a single environment. As your projects grow in complexity, having everything in one place makes a real difference.
-
-In Part 5, we'll set up VS Code and connect it to the environment we built here.
+Same result as Part 3 — the environment, the code, and the output are identical. The difference is you now have your terminal, file browser, Git, and debugger all in the same window.
 
 ---
 
@@ -383,17 +263,15 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 
 **What You've Done:**
 
-- Understood what packages and virtual environments are
-- Created Conda environment `env_project1`
-- Learned to list, deactivate, and delete Conda environments
-- Learned `conda install` vs `pip install` and set up `conda-forge`
-- Installed numpy
-- Understood the difference between `.py` and `.ipynb`
-- Ran your first Python code in both a script and a notebook
-- Set up JupyterLab
+- Installed VS Code on Windows (WSL) or Linux
+- Connected VS Code to your Ubuntu environment (WSL users)
+- Installed Python and Jupyter extensions
+- Opened `~/project_1` in VS Code from the terminal
+- Selected `env_project1` as your interpreter and kernel
+- Ran `first_script.py` and your notebook inside VS Code
 
-**Next:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
+**Next:** [Part 5 — Linux Essentials for HPC and Remote Servers](https://abhigyan-pro.github.io/Blogs/Part5.html)
 |
-**Previous:** [Part 3 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part3.html)
+**Previous:** [Part 3 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part3.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)
