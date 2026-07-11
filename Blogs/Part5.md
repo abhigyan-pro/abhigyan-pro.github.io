@@ -175,7 +175,7 @@ On HPC, use the module system to load software: `module avail`, `module load pyt
 - [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
 - [RIT Research Computing — SLURM Quick Start Tutorial](https://research-computing.git-pages.rit.edu/docs/slurm_quick_start_tutorial.html)
 
-**Next:** [Part 6 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part67.html)
+**Next:** [Part 6 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part6.html)
 |
 **Previous:** [Part 4 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part4.html)
 
