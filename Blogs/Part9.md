@@ -292,6 +292,6 @@ If you lack an NVIDIA GPU, install the CPU-only version:
 
 **Next:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
 |
-**Previous:** [Part 9 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
+**Previous:** [Part 8 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

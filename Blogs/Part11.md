@@ -149,6 +149,6 @@ Contributing involves a standard workflow[cite: 23]:
 - Practiced the fork-branch-PR workflow[cite: 23]
 - Established your public professional presence[cite: 23]
 
-**Previous:** [Part 11 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
+**Previous:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

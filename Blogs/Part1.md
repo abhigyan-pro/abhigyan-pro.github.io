@@ -51,7 +51,7 @@ By the end, you'll have:
 
 ## Content
 
-<details>
+<details markdown="1">
   <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
@@ -80,7 +80,7 @@ By the end, you'll have:
 
 ## Install WSL with Ubuntu
 
-<details>
+<details markdown="1">
   <summary><strong>💡 Expand for details</strong></summary>
 
 
@@ -170,7 +170,7 @@ By the end, you'll have:
 
 ## Install Miniconda (Same process for both WSL2 user and Native Linux user)
 
-<details>
+<details markdown="1">
   <summary><strong>💡 Expand for details</strong></summary>
 
   ### Step 8 — Download Miniconda
@@ -228,7 +228,7 @@ By the end, you'll have:
 
 ## Understanding Where Everything Lives
 
-<details>
+<details markdown="1">
   <summary><strong>💡 Expand for details</strong></summary>
 
   Before moving on, let's understand where your files are stored.
@@ -283,7 +283,6 @@ By the end, you'll have:
   Don't worry — the projects directory doesn't exist yet. We'll create it properly in a later article on Linux essentials for Python developers.
 
   For now, simply remember that your home directory (`~`) is the recommended place for your future projects.
-
 </details>
 
 ---
