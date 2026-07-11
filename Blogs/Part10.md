@@ -76,8 +76,8 @@ By the end, you'll have:
 
 ### Prerequisites
 
-- `~/project_1` set up with Git and GitHub ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html), [6](https://abhigyan-pro.github.io/Blogs/Part6.html), [7](https://abhigyan-pro.github.io/Blogs/Part7.html))
-- Project structure created ([Part 8](https://abhigyan-pro.github.io/Blogs/Part8.html))
+- `~/project_1` set up with Git and GitHub ([Part 5](https://abhigyan-pro.github.io/Blogs/Part5.html) and [Part 6](https://abhigyan-pro.github.io/Blogs/Part6.html))
+- Project structure created ([Part 7](https://abhigyan-pro.github.io/Blogs/Part8.html))
 - `env_project1` Conda environment ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
 ### Step 1 — Revisiting Project Structure
@@ -160,6 +160,6 @@ Docker is recommended when sharing with different operating systems, deploying t
 
 **Next:** [Part 11 — Contributing to Open Science](https://abhigyan-pro.github.io/Blogs/Part11.html)
 |
-**Previous:** [Part 9 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part10.html)
+**Previous:** [Part 9 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part9.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

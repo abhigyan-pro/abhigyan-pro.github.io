@@ -164,8 +164,8 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
 - Configured WSL library paths
 - Avoided system-level CUDA conflicts
 
-**Next:** [Part 9 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part10.html)
+**Next:** [Part 9 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part9.html)
 |
-**Previous:** [Part 7 — Project Organization and Managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
+**Previous:** [Part 7 — Project Organization and Managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part7.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

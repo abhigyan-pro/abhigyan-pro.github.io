@@ -75,7 +75,7 @@ By the end, you'll have:
 
 ### Prerequisites
 
-- GPU access verified ([Part 9](https://abhigyan-pro.github.io/Blogs/Part9.html))
+- GPU access verified ([Part 8](https://abhigyan-pro.github.io/Blogs/Part8.html))
 - Miniconda installed ([Part 1](https://abhigyan-pro.github.io/Blogs/Part1.html))
 - Know the maximum CUDA version your driver supports (run `nvidia-smi` if unsure).
 
@@ -303,8 +303,8 @@ If you lack an NVIDIA GPU, install the CPU-only version:
 - Installed via pip to bundle CUDA libraries without system-wide tools
 - Registered kernels and verified GPU performance via benchmarks
 
-**Next:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
+**Next:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part10.html)
 |
-**Previous:** [Part 9 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
+**Previous:** [Part 8 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part8.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

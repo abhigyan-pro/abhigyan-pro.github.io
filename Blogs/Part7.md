@@ -76,7 +76,7 @@ By the end, you'll have:
 
 ### Prerequisites
 
-- `~/project_1` set up with Git and GitHub ([Part 2, 5, 6](https://abhigyan-pro.github.io/Blogs/Part2.html))
+- `~/project_1` set up with Git and GitHub ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html), [Part 5](https://abhigyan-pro.github.io/Blogs/Part5.html), and [Part 6](https://abhigyan-pro.github.io/Blogs/Part6.html))
 
 ### Step 1 — Why Project Organization Matters
 
@@ -177,8 +177,8 @@ If your research involves scientific data, you'll likely encounter formats like 
 - Configured `.gitignore` and README best practices
 - Learned about storage tiers and scientific data formats
 
-**Next:** [Part 8 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
+**Next:** [Part 8 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part8.html)
 |
-**Previous:** [Part 6 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part7.html)
+**Previous:** [Part 6 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part6.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

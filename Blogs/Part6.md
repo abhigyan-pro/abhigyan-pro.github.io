@@ -78,7 +78,7 @@ By the end of this part, you'll have:
 ### Prerequisites
 
 - WSL2 or native Linux with Miniconda installed ([Part 1](https://abhigyan-pro.github.io/Blogs/Part1.html))
-- `~/project_1` folder with files created ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html) and [Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
+- `~/project_1` folder with files created ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html), [Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html), and [Part 5](https://abhigyan-pro.github.io/Blogs/5.html))
 - A GitHub account — we'll create one in Step 1
 
 ### Step 1 — Create a GitHub Account
