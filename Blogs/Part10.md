@@ -459,3 +459,7 @@ instead of `tensorflow[and-cuda]`.
 - Resolved the WSL library-path heads-up from Part 9, if you needed to — and scoped the fix to just the environment that needed it
 
 **Next:** [Part 11 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
+|
+**Previous:** [Part 9 — Enabling GPU Computing in WSL and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)

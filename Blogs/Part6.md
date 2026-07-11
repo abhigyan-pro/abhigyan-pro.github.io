@@ -473,3 +473,7 @@ You can practice SLURM locally on your own Ubuntu machine or WSL. This tutorial 
 When you do get HPC access, this is a solid beginner tutorial for using SLURM on a real cluster: [RIT Research Computing — SLURM Quick Start Tutorial](https://research-computing.git-pages.rit.edu/docs/slurm_quick_start_tutorial.html)
 
 **Next:** [Part 7 — Git and GitHub](https://abhigyan-pro.github.io/Blogs/Part7.html)
+|
+**Previous:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)

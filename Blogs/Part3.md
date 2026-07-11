@@ -294,3 +294,7 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 Software Carpentry has a free, beginner-friendly course that complements this part well: [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
 
 **Next:** [Part 4 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part4.html)
+|
+**Previous:** [Part 2 — Installing WSL2 with Ubuntu, and Miniconda](https://abhigyan-pro.github.io/Blogs/Part2.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)

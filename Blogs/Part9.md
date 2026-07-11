@@ -252,3 +252,7 @@ In Part 10, we'll use this number as an upper bound when installing PyTorch and 
 - Learned what to expect in Part 10 if TensorFlow doesn't find its GPU libraries right away — so it reads as a normal step, not an error
 
 **Next:** [Part 10 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part10.html)
+|
+**Previous:** [Part 8 — Project Organization and Managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)

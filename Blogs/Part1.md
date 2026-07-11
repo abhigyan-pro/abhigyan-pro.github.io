@@ -204,4 +204,8 @@ In the next article, we'll install:
 
 and verify that everything is working correctly before moving on.
 
-**Next:** [Part 2 — Installing WSL2 with Ubuntu, and Miniconda](https://abhigyan-pro.github.io/Blogs/Part2.html)
+**Next:** [Part 2  — Installing WSL2 with Ubuntu, and Miniconda](https://abhigyan-pro.github.io/Blogs/Part2.html)
+|
+**Previous:** [Preface — Building a Research Computing Environment](https://abhigyan-pro.github.io/Blogs/Preface.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)

@@ -405,3 +405,7 @@ These topics go deep. When you're ready to explore them, the following resources
 - [GitHub Docs](https://docs.github.com)
 
 **Next:** [Part 8 — Project Organization and managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
+|
+**Previous:** [Part 6 — Linux Essentials](https://abhigyan-pro.github.io/Blogs/Part6.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)

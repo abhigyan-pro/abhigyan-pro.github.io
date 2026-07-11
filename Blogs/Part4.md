@@ -393,3 +393,7 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 - Set up JupyterLab
 
 **Next:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
+|
+**Previous:** [Part 3 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part3.html)
+|
+**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)
