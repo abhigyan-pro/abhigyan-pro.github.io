@@ -254,5 +254,5 @@ In Part 10, we'll use this number as an upper bound when installing PyTorch and 
 **Next:** [Part 10 — Installing PyTorch and TensorFlow](https://abhigyan-pro.github.io/Blogs/Part10.html)
 |
 **Previous:** [Part 8 — Project Organization and Managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)
-|
-**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)
+
+[All Blogs](https://abhigyan-pro.github.io/#blogs)

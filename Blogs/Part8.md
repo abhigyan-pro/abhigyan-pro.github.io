@@ -316,5 +316,5 @@ If your research involves atmospheric or climate data specifically, Project Pyth
 **Next:** [Part 9 — Enabling GPU Computing in WSL and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
 |
 **Previous:** [Part 7 — Git and GitHub](https://abhigyan-pro.github.io/Blogs/Part7.html)
-|
-**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)
+
+[All Blogs](https://abhigyan-pro.github.io/#blogs)

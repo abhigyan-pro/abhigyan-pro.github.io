@@ -475,5 +475,5 @@ When you do get HPC access, this is a solid beginner tutorial for using SLURM on
 **Next:** [Part 7 — Git and GitHub](https://abhigyan-pro.github.io/Blogs/Part7.html)
 |
 **Previous:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
-|
-**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)
+
+[All Blogs](https://abhigyan-pro.github.io/#blogs)

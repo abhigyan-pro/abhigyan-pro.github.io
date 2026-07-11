@@ -269,5 +269,5 @@ Same result as Part 4 — the environment, the code, and the output are identica
 **Next:** [Part 6 — Linux Essentials](https://abhigyan-pro.github.io/Blogs/Part6.html)
 |
 **Previous:** [Part 4 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part4.html)
-|
-**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)
+
+[All Blogs](https://abhigyan-pro.github.io/#blogs)

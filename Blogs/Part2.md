@@ -288,5 +288,5 @@ You now have WSL2, Ubuntu, and Miniconda installed and ready to use.
 **Next:** [Part 3 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part3.html)
 |
 **Previous:** [Part 1 — Understanding the Modern Research Computing Stack](https://abhigyan-pro.github.io/Blogs/Part1.html)
-|
-**All Blogs** [Link](https://abhigyan-pro.github.io/#blogs)
+
+[All Blogs](https://abhigyan-pro.github.io/#blogs)
