@@ -1,10 +1,29 @@
-# Part 3 — Terminal Basics and File Navigation
+# Terminal Basics and File Navigation
+### Building a Research Computing Environment — Part 3 of 12
 
-*Building a Research Computing Environment — Part 3 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article sets Ubuntu as your default terminal, teaches the core navigation commands (`pwd`, `ls`, `cd`, `mkdir`, `cp`, `mv`), and establishes the code-vs-data convention you'll follow for the rest of the series: code lives in `/home`, data lives on your mounted Windows drives (`/mnt`). By the end, you'll have your first project folder created.
+
+---
 
 ## Objective
 
@@ -21,7 +40,9 @@ By the end, you'll have:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -35,18 +56,18 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - WSL2, Ubuntu, and Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 - Windows Terminal installed
 
----
-
-## Step 1 — Set Ubuntu as Default in Windows Terminal
+### Step 1 — Set Ubuntu as Default in Windows Terminal
 
 Right now, Windows Terminal opens PowerShell by default. We'll change that to Ubuntu so you don't have to switch manually every time.
 
@@ -59,17 +80,13 @@ Right now, Windows Terminal opens PowerShell by default. We'll change that to Ub
 
 From now on, every new Windows Terminal window opens Ubuntu directly.
 
----
-
-## Step 2 — Open a New Tab
+### Step 2 — Open a New Tab
 
 Click the `+` button in Windows Terminal.
 
 A new Ubuntu tab opens. You can run multiple tabs at the same time — useful when running a script in one tab while working in another.
 
----
-
-## Step 3 — Understanding the Terminal Prompt
+### Step 3 — Understanding the Terminal Prompt
 
 When Ubuntu opens, you'll see something like:
 
@@ -91,11 +108,9 @@ Additional side note:
 - The program running inside your terminal is called a **shell**. On Ubuntu, the default shell is **bash** (Bourne Again Shell). When you type a command and press Enter, bash is what reads and executes it.
 - You'll see "bash" mentioned often in documentation and tutorials — it simply means the command-line environment you're already using.
 
----
+### Step 4 — Basic Navigation
 
-## Step 4 — Basic Navigation
-
-### Where am I?
+#### Where am I?
 
 ```bash
 pwd
@@ -111,9 +126,7 @@ Output:
 
 This is your Linux home directory. Same as `~`. You saw this briefly in Part 2 — now we'll use it actively.
 
----
-
-### What's here?
+#### What's here?
 
 ```bash
 ls
@@ -127,17 +140,13 @@ ls -a
 
 Shows hidden files too — files starting with `.` are hidden by default. Your Conda configuration lives in one of these hidden files.
 
----
-
-### Create a folder
+#### Create a folder
 
 ```bash
 mkdir projects
 ```
 
----
-
-### Move into a folder
+#### Move into a folder
 
 ```bash
 cd projects
@@ -155,16 +164,13 @@ Go back to your home directory from anywhere:
 cd ~
 ```
 
----
-
-### Create a file
+#### Create a file
 
 ```bash
 touch file.txt
 ```
 
----
-### Copy a file
+#### Copy a file
 
 ```bash
 cp file.txt backup.txt
@@ -178,9 +184,7 @@ cp file.txt ~/Projects2/file.txt
 
 Copies into a folder. Assuming you created a folder Projects2 seperately.
 
----
-
-### Move or rename a file
+#### Move or rename a file
 
 ```bash
 mv file.txt ~/Projects2/file2.txt
@@ -194,9 +198,7 @@ mv old_name.txt new_name.txt
 
 Renames a file.
 
----
-
-## Step 5 — Where Code Lives and Where Data Lives
+### Step 5 — Where Code Lives and Where Data Lives
 
 In Part 2, we established that `/home/yourusername` is your Linux home and `/mnt/c`, `/mnt/d` etc. are your Windows drives mounted inside Linux.
 
@@ -213,9 +215,7 @@ Now we go one step further — this is the rule you'll follow throughout this se
 
 Think of it this way: **your Linux home is your workbench. Your Windows drives are your storage shelves.**
 
----
-
-## Step 6 — Create Your Project Structure
+### Step 6 — Create Your Project Structure
 
 Run these commands one by one:
 
@@ -243,9 +243,7 @@ Output:
 
 This is where all your code will live from now on. When we create Python environments and write scripts in the coming parts, everything starts here.
 
----
-
-## Step 7 — Verify Your Data Location
+### Step 7 — Verify Your Data Location
 
 **If you are on WSL2:** Your Windows drives are mounted inside Linux. Access them like this:
 
@@ -259,9 +257,7 @@ Replace `d` with whichever drive letter you use for storage.
 
 You don't need to create anything here. Just confirm you can access your storage location from the terminal.
 
----
-
-## Step 8 — Where Software Is Installed
+### Step 8 — Where Software Is Installed
 
 When you install software inside Ubuntu — including Miniconda and all Python packages — it lives inside Linux, not on your Windows drive.
 
@@ -275,7 +271,9 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
 
 - Set Ubuntu as the default in Windows Terminal
 - Learned to open new tabs
@@ -284,8 +282,7 @@ You never need to go there directly. But knowing it's inside Linux explains why 
 - Understood the code/data split: `/home` for code, `/mnt` for data
 - Created your `~/project_1` folder
 
-## Want to go deeper on Linux and terminal basics?
-Software Carpentry has a free, beginner-friendly course that complements this part well:
-[The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
+**Want to go deeper on Linux and terminal basics?**
+Software Carpentry has a free, beginner-friendly course that complements this part well: [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
 
 **Next:** [Part 4 — Managing Projects with Conda Environments](https://abhigyan-pro.github.io/Blogs/Part4.html)

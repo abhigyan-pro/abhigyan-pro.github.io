@@ -1,10 +1,29 @@
 # Understanding the Modern Research Computing Stack
+### Building a Research Computing Environment — Part 1 of 12
 
-*Building a Research Computing Environment — Part 1 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article maps out the development stack we'll build across the series — Windows, WSL2, Ubuntu, Miniconda, Conda environments, and VS Code — and explains why each layer is there before we install any of it. No installation happens in this article; that starts in Part 2.
+
+---
 
 ## Objective
 
@@ -23,7 +42,9 @@ By the end, you'll know:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -37,13 +58,13 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
-> **Think of this series as the roadmap and your AI assistant as your learning companion.**
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
----
+Think of this series as the roadmap and your AI assistant as your learning companion.
 
-## Why Not Just Install Python on Windows?
+### Why Not Just Install Python on Windows?
 
 If you're learning Python, installing Python directly on Windows is perfectly reasonable.
 
@@ -64,9 +85,7 @@ That doesn't mean Windows is a bad choice.
 
 Instead, we'll keep Windows while gradually learning Linux using WSL2.
 
----
-
-## The Development Stack
+### The Development Stack
 
 By the end of this series, your setup will look like this:
 
@@ -90,13 +109,9 @@ By the end of this series, your setup will look like this:
                                             Python
 ```
 
-Each layer has a different responsibility.
+Each layer has a different responsibility. Let's understand them one by one.
 
-Let's understand them one by one.
-
----
-
-## Windows
+### Windows
 
 Windows remains your primary operating system.
 
@@ -109,65 +124,43 @@ You'll continue using:
 
 Nothing changes here.
 
----
-
-## WSL2
+### WSL2
 
 Windows Subsystem for Linux (WSL2) lets Linux run directly inside Windows.
 
-### Why are we using it?
+**Why are we using it?**
 
-Many Python development tools and servers use Linux.
+Many Python development tools and servers use Linux. WSL2 allows us to learn and use Linux without replacing Windows or setting up a dual-boot system.
 
-WSL2 allows us to learn and use Linux without replacing Windows or setting up a dual-boot system.
-
----
-
-## Ubuntu
+### Ubuntu
 
 Ubuntu is the Linux operating system we'll install inside WSL2.
 
-### Why Ubuntu?
+**Why Ubuntu?**
 
-It's one of the most widely used Linux distributions and has excellent documentation and community support.
+It's one of the most widely used Linux distributions and has excellent documentation and community support. Many tutorials also assume Ubuntu.
 
-Many tutorials also assume Ubuntu.
-
----
-
-## Miniconda
+### Miniconda
 
 Miniconda provides Python and Conda.
 
-### Why Miniconda?
+**Why Miniconda?**
 
-Different projects often require different versions of Python and different packages.
+Different projects often require different versions of Python and different packages. Miniconda makes managing these environments straightforward.
 
-Miniconda makes managing these environments straightforward.
-
----
-
-## Conda Environments
+### Conda Environments
 
 Instead of installing everything into one Python installation, each project gets its own isolated environment.
 
-This keeps projects independent and reproducible.
+This keeps projects independent and reproducible. We'll learn how to create and manage environments later in the series.
 
-We'll learn how to create and manage environments later in the series.
-
----
-
-## VS Code
+### VS Code
 
 VS Code is the editor we'll use throughout this series.
 
-Although VS Code runs on Windows, it can connect directly to Ubuntu through WSL.
+Although VS Code runs on Windows, it can connect directly to Ubuntu through WSL. This gives us the convenience of a graphical editor while running our code inside Linux.
 
-This gives us the convenience of a graphical editor while running our code inside Linux.
-
----
-
-## Putting It All Together
+### Putting It All Together
 
 The workflow we'll build looks like this:
 
@@ -187,13 +180,11 @@ The workflow we'll build looks like this:
                    Develop & Execute Python Code
 ```
 
-Each component has a specific purpose.
-
-Together, they create a development environment that is widely used in software development, data science, machine learning, and scientific research.
+Each component has a specific purpose. Together, they create a development environment that is widely used in software development, data science, machine learning, and scientific research.
 
 ---
 
-## What's Next?
+## What's Next
 
 Now that you understand the overall development stack, it's time to build it.
 

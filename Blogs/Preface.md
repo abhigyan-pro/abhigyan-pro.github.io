@@ -1,7 +1,5 @@
-# Building a Research Computing Environment
-## A Practical Guide for Researchers and Scientists
-
----
+# Preface
+### Building a Research Computing Environment — A Practical Guide for Researchers and Scientists
 
 <p align="center">
   <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
@@ -19,19 +17,29 @@
   </a>
 </p>
 
-# Preface
-## "This series builds a research computing environment on Linux, using Python as the working language. If you're on Windows, Parts 2 and the first two steps of Part 3 walk you through setting up Ubuntu inside Windows using WSL2. Once that's done, everything from Step 3 of Part 3 onwards to Part 12 of the series is identical — whether you're on WSL2 or a native Linux system."
 ![Modern Research Computing Stack](../img/blog1.png)
 
+---
 
+## Quick Summary
 
-There are countless tutorials that show you how to install Python, WSL, Ubuntu, Miniconda, or VS Code.
+This series builds a complete research computing environment on Linux, using Python as the working language — covering WSL2, Ubuntu, Miniconda, VS Code, Jupyter, Git/GitHub, CUDA, and PyTorch/TensorFlow. Rather than a list of commands to copy and paste, each article explains *why* a tool is used and how it fits into the larger workflow, so you end up with an environment you actually understand. Windows users set up Ubuntu via WSL2 in Part 2 and the start of Part 3; from there, the rest of the series is identical for WSL2 and native Linux users alike.
 
-Many of them are excellent at helping you get started quickly.
+---
 
-However, as I learned Python and gradually moved into machine learning, scientific computing, and research, I often found myself asking practical questions that weren't always answered in one place.
+## Objective
 
-Questions like:
+This preface orients you before you begin: why this series exists, what practical questions it answers that most tutorials skip, what you'll have built by the end, how the series is organized part by part, and how to use an AI assistant to get unstuck along the way.
+
+---
+
+## Content
+
+### Why This Series Exists
+
+There are countless tutorials that show you how to install Python, WSL, Ubuntu, Miniconda, or VS Code. Many of them are excellent at helping you get started quickly.
+
+However, as I learned Python and gradually moved into machine learning, scientific computing, and research, I often found myself asking practical questions that weren't always answered in one place. Questions like:
 
 - Why are we using WSL?
 - Why Ubuntu?
@@ -42,17 +50,15 @@ Questions like:
 
 None of these questions are particularly difficult, but the answers are often scattered across documentation, videos, blog posts, and discussions. Much of this understanding is something developers gradually build through experience.
 
-This series is my attempt to bring those pieces together.
-
-Rather than simply showing commands to copy and paste, we'll build a modern Python development environment step by step while understanding the purpose of each tool and the workflow that connects them.
+This series is my attempt to bring those pieces together. Rather than simply showing commands to copy and paste, we'll build a modern Python development environment step by step while understanding the purpose of each tool and the workflow that connects them.
 
 > **The goal is simple:**
 >
-> **Build a Python development environment that you understand—not just one that works.**
+> **Build a Python development environment that you understand — not just one that works.**
 
-This series assumes **no prior programming or Linux experience**.
+### Who This Is For
 
-We'll begin with the fundamentals and gradually build the skills needed for:
+This series assumes **no prior programming or Linux experience**. We'll begin with the fundamentals and gradually build the skills needed for:
 
 - Python development
 - Data science
@@ -62,7 +68,7 @@ We'll begin with the fundamentals and gradually build the skills needed for:
 
 Each article has a single objective, allowing you to learn one concept at a time without feeling overwhelmed.
 
----
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -76,126 +82,48 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
-> **Think of this series as the roadmap and your AI assistant as your learning companion.**
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
----
+Think of this series as the roadmap and your AI assistant as your learning companion.
 
-# What You'll Build
+### What You'll Build
 
 By the end of this series, you'll have a modern Python development environment consisting of:
 
-- ✅ WSL2
-- ✅ Ubuntu
-- ✅ Miniconda
-- ✅ Conda Environments
-- ✅ VS Code
-- ✅ Jupyter
-- ✅ Git and GitHub
-- ✅ CUDA
-- ✅ PyTorch or TensorFlow
+- WSL2
+- Ubuntu
+- Miniconda
+- Conda Environments
+- VS Code
+- Jupyter
+- Git and GitHub
+- CUDA
+- PyTorch or TensorFlow
 
 More importantly, you'll understand **how these tools fit together** and **why they're commonly used**.
 
----
+### Series Roadmap
 
-# Series Roadmap
-
-| Part | Topic |
-|------|-------|
-| **Part 1** | Understanding the Modern Research Computing Stack |
-| **Part 2** | Building Your Research Computing Environment |
-| **Part 3** | Using Ubuntu on Windows |
-| **Part 4** | Managing Research Projects with Conda Environments |
-| **Part 5** | Setting Up VS Code for Research Computing |
-| **Part 6** | Linux Essentials for Researchers |
-| **Part 7** | Git and GitHub from WSL |
-| **Part 8** | Project Organization and Scientific Data |
-| **Part 9** | Enabling GPU Computing in WSL with CUDA |
-| **Part 10** | Installing PyTorch and TensorFlow |
-| **Part 11** | Building Reproducible Research Workflows |
-| **Part 12** | Contributing to Open Science |
+| Part | Topic | What You'll Learn |
+|------|-------|--------------------|
+| **Part 1** | Understanding the Modern Research Computing Stack | Understand the development environment before installing anything. |
+| **Part 2** | Building Your Research Computing Environment | Install WSL2, Ubuntu, and Miniconda. |
+| **Part 3** | Using Ubuntu on Windows | Become comfortable using the Linux terminal and filesystem. |
+| **Part 4** | Managing Research Projects with Conda Environments | Learn Python environments, packages, package managers, and Jupyter. |
+| **Part 5** | Setting Up VS Code for Research Computing | Connect VS Code to WSL and run your first Python program and notebook. |
+| **Part 6** | Linux Essentials for Researchers | Learn the Linux skills you'll use throughout your research journey. |
+| **Part 7** | Git and GitHub from WSL | Learn modern version control. |
+| **Part 8** | Project Organization and Scientific Data | Organize projects and work with common scientific data formats. |
+| **Part 9** | Enabling GPU Computing in WSL with CUDA | Prepare your environment for GPU computing. |
+| **Part 10** | Installing PyTorch and TensorFlow | Set up a deep learning environment. |
+| **Part 11** | Building Reproducible Research Workflows | Learn how to build projects that are easy to reproduce, share, and maintain. |
+| **Part 12** | Contributing to Open Science | Share your code, contribute to open-source projects, and make your work useful to the broader scientific community. |
 
 ---
 
-## Part 1 — Understanding the Modern Research Computing Stack
-
-Understand the development environment before installing anything.
-
----
-
-## Part 2 — Building Your Research Computing Environment
-
-Install WSL2, Ubuntu, and Miniconda.
-
----
-
-## Part 3 — Using Ubuntu on Windows
-
-Become comfortable using the Linux terminal and filesystem.
-
----
-
-## Part 4 — Managing Research Projects with Conda Environments
-
-Learn Python environments, packages, package managers, and Jupyter.
-
----
-
-## Part 5 — Setting Up VS Code for Research Computing
-
-Connect VS Code to WSL and run your first Python program and notebook.
-
----
-
-## Part 6 — Linux Essentials for Researchers
-
-Learn the Linux skills you'll use throughout your research journey.
-
----
-
-## Part 7 — Git and GitHub from WSL
-
-Learn modern version control.
-
----
-
-## Part 8 — Project Organization and Scientific Data
-
-Organize projects and work with common scientific data formats.
-
----
-
-## Part 9 — Enabling GPU Computing in WSL with CUDA
-
-Prepare your environment for GPU computing.
-
----
-
-## Part 10 — Installing PyTorch and TensorFlow
-
-Set up a deep learning environment.
-
----
-
-## Part 11 — Building Reproducible Research Workflows
-
-Learn how to build projects that are easy to reproduce, share, and maintain.
-
----
-
-## Part 12 — Contributing to Open Science
-
-Learn how to:
-
-- Share your code
-- Contribute to open-source projects
-- Make your work useful to the broader scientific community
-
----
-
-# Let's Get Started 🚀
+## What's Next
 
 In the first article, we'll understand the development stack we'll build throughout this series and why each component has an important role.
 

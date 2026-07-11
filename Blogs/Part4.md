@@ -1,10 +1,29 @@
-# Part 4 — Managing Projects with Conda Environments
+# Managing Projects with Conda Environments
+### Building a Research Computing Environment — Part 4 of 12
 
-*Building a Research Computing Environment — Part 4 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article creates an isolated Conda environment (`env_project1`), installs numpy through it, and explains when to use `conda install` vs `pip install`. You'll then run the same piece of Python code two ways — as a `.py` script and inside a JupyterLab `.ipynb` notebook — to see how the two workflows differ.
+
+---
 
 ## Objective
 
@@ -21,7 +40,9 @@ By the end, you'll have:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -35,18 +56,18 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 - `~/project_1` folder created ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
----
-
-## Step 1 — What Are Python Packages?
+### Step 1 — What Are Python Packages?
 
 Python by itself is minimal. Packages are collections of code written by others that you can use in your own projects.
 
@@ -58,9 +79,7 @@ For example:
 
 Instead of writing everything from scratch, you install a package and use it.
 
----
-
-## Step 2 — Why Virtual Environments?
+### Step 2 — Why Virtual Environments?
 
 Imagine two projects:
 - Project A needs numpy version 1.21
@@ -70,9 +89,7 @@ If you install both on the same Python, they conflict. Virtual environments solv
 
 With Miniconda, these are called **Conda environments**.
 
----
-
-## Step 3 — Create a Conda Environment
+### Step 3 — Create a Conda Environment
 
 Navigate to your project folder:
 
@@ -104,9 +121,7 @@ Your prompt will change from `(base)` to `(env_project1)`:
 
 This means you are now inside your isolated environment. Any package you install from this point goes into `env_project1` only — not into any other environment.
 
----
-
-## Step 4 — Managing Your Environments
+### Step 4 — Managing Your Environments
 
 Before we install anything, a few commands worth knowing now that you have your first environment.
 
@@ -147,9 +162,7 @@ conda env remove -n env_project1
 
 This permanently deletes the environment and all packages inside it. Don't run this now — we'll need `env_project1` for the rest of the series.
 
----
-
-## Step 5 — Installing Packages (also called Libraries)
+### Step 5 — Installing Packages (also called Libraries)
 
 Make sure `env_project1` is active before installing anything:
 
@@ -157,7 +170,7 @@ Make sure `env_project1` is active before installing anything:
 conda activate env_project1
 ```
 
-### `conda install` vs `pip install`
+#### `conda install` vs `pip install`
 
 There are two ways to install packages:
 
@@ -170,7 +183,7 @@ There are two ways to install packages:
 
 **Rule of thumb:** always try `conda install` first. Use `pip install` only if the package is not available through Conda.
 
-### The `conda-forge` Channel
+#### The `conda-forge` Channel
 
 Conda packages are hosted in **channels** — think of them as app stores. The default Conda channel has many packages, but `conda-forge` is a community-maintained channel with significantly more packages and more up-to-date versions.
 
@@ -183,7 +196,7 @@ conda config --set channel_priority strict
 
 You only need to do this once — it applies to all environments.
 
-### Install numpy
+#### Install numpy
 
 NumPy is a Python package that provides support for arrays and mathematical operations. It is one of the core libraries used in data science and scientific computing.
 
@@ -201,13 +214,11 @@ python -c "import numpy; print(numpy.__version__)"
 
 You should see a version number printed.
 
----
-
-## Step 6 — Two Ways to Write Python: `.py` and `.ipynb`
+### Step 6 — Two Ways to Write Python: `.py` and `.ipynb`
 
 Before writing any code, it helps to understand the two file types you'll use throughout this series.
 
-### `.py` — Python Script
+#### `.py` — Python Script
 
 A plain text file containing Python code. You run it from the terminal and it executes top to bottom.
 
@@ -216,7 +227,7 @@ Best for:
 - Reusable functions and modules
 - Code you want to run repeatedly without interaction
 
-### `.ipynb` — Jupyter Notebook
+#### `.ipynb` — Jupyter Notebook
 
 A notebook file where code, output, and text live together in cells. You run cells one at a time and see the output immediately below each cell.
 
@@ -227,9 +238,7 @@ Best for:
 
 Both are valid. Most research workflows use both — notebooks for exploration, scripts for automation.
 
----
-
-## Step 7 — Run Your First `.py` Script
+### Step 7 — Run Your First `.py` Script
 
 Make sure you are in `~/project_1` with `env_project1` active.
 
@@ -272,9 +281,7 @@ Mean: 3.0
 Sum: 15
 ```
 
----
-
-## Step 8 — What is Jupyter Notebook and JupyterLab?
+### Step 8 — What is Jupyter Notebook and JupyterLab?
 
 **Jupyter Notebook** is the original browser-based interface for `.ipynb` files. You write code in cells, run them one at a time, and see output immediately below.
 
@@ -282,9 +289,7 @@ Sum: 15
 
 For this series, we use **JupyterLab**.
 
----
-
-## Step 9 — Install JupyterLab and ipykernel
+### Step 9 — Install JupyterLab and ipykernel
 
 `ipykernel` is what connects your Conda environment to JupyterLab. Without it, JupyterLab won't see `env_project1` as an available kernel.
 
@@ -302,9 +307,7 @@ Register your environment as a Jupyter kernel:
 python -m ipykernel install --user --name env_project1 --display-name "Python (env_project1)"
 ```
 
----
-
-## Step 10 — Run Your First `.ipynb` Notebook
+### Step 10 — Run Your First `.ipynb` Notebook
 
 Launch JupyterLab:
 
@@ -349,9 +352,7 @@ Same result as the `.py` script — but this time inside a notebook cell, with o
 
 To stop JupyterLab, go back to the terminal and press `Ctrl+C`.
 
----
-
-## Step 11 — Why Use an IDE Like VS Code?
+### Step 11 — Why Use an IDE Like VS Code?
 
 JupyterLab is a capable environment. For notebooks and interactive work, it works well on its own.
 
@@ -370,7 +371,9 @@ In Part 5, we'll set up VS Code and connect it to the environment we built here.
 
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
 
 - Understood what packages and virtual environments are
 - Created Conda environment `env_project1`

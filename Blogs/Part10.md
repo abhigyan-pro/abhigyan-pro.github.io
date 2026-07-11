@@ -1,10 +1,29 @@
-# Part 10 — Installing PyTorch and TensorFlow
+# Installing PyTorch and TensorFlow
+### Building a Research Computing Environment — Part 10 of 12
 
-*Building a Research Computing Environment — Part 10 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article installs PyTorch and TensorFlow, each in its own dedicated Conda environment, using pip so both frameworks bundle their own CUDA and cuDNN libraries. You'll verify GPU detection for both, benchmark CPU vs GPU speed with a matrix multiplication test, and — if needed — resolve the WSL library-path issue flagged back in Part 9.
+
+---
 
 ## Objective
 
@@ -19,7 +38,9 @@ By the end, you'll have:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -33,11 +54,13 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - GPU access verified ([Part 9](https://abhigyan-pro.github.io/Blogs/Part9.html))
 - Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
@@ -51,9 +74,7 @@ Look at the top-right of the output, e.g. `CUDA Version: 13.2`. Note this number
 
 > **Why `nvidia-smi` and not `nvcc --version`?** In Part 9 we deliberately skipped installing a system CUDA Toolkit, so there's no `nvcc` on this machine — and that's fine. PyTorch and TensorFlow's GPU pip packages bring their own CUDA and cuDNN libraries with them. The number `nvidia-smi` reports isn't an installed toolkit version; it's the *maximum* CUDA version your driver can support. That's the ceiling we'll use below.
 
----
-
-## PyTorch vs TensorFlow — A Brief Overview
+### PyTorch vs TensorFlow — A Brief Overview
 
 Both are open-source deep learning frameworks. Both run on GPU. Both are widely used in research and industry.
 
@@ -63,27 +84,21 @@ Both are open-source deep learning frameworks. Both run on GPU. Both are widely 
 
 For most researchers starting out, PyTorch is where you'll spend most of your time. TensorFlow is worth knowing — you'll encounter it in existing codebases and production systems.
 
----
-
-## Why Two Separate Environments?
+### Why Two Separate Environments?
 
 PyTorch and TensorFlow can conflict when installed together in the same environment — they may require different versions of CUDA libraries, numpy, or other dependencies. Installing each in its own environment keeps them isolated and stable.
 
 This is exactly why Conda environments exist — one environment per framework, no conflicts.
 
----
-
-## Why We Use pip for Both Frameworks
+### Why We Use pip for Both Frameworks
 
 TensorFlow is only officially released to PyPI — the Python Package Index. The conda-forge version may lag behind or be missing features. For TensorFlow, pip is the correct and recommended install method.
 
 For PyTorch, we use pip too — it's the simplest method and, like TensorFlow's `[and-cuda]` option, bundles the required CUDA and cuDNN libraries automatically. Neither framework needs a system-wide CUDA Toolkit — that's why Part 9 didn't install one.
 
----
+### Section 1 — Installing PyTorch
 
-## Section 1 — Installing PyTorch
-
-### Step 1 — Create a Dedicated Environment
+#### Step 1 — Create a Dedicated Environment
 
 ```bash
 conda create -n env_pytorch python=3.11 pip
@@ -95,9 +110,7 @@ conda activate env_pytorch
 
 Your prompt will change to `(env_pytorch)`.
 
----
-
-### Step 2 — Get the Correct Install Command
+#### Step 2 — Get the Correct Install Command
 
 PyTorch provides an install command generator on their website that matches your CUDA version automatically.
 
@@ -117,9 +130,7 @@ Run the generated command, which will look like:
 pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu132
 ```
 
----
-
-### Step 3 — Register the Kernel
+#### Step 3 — Register the Kernel
 
 ```bash
 conda install ipykernel
@@ -131,9 +142,7 @@ python -m ipykernel install --user --name env_pytorch --display-name "Python (en
 
 You'll see this kernel available in JupyterLab and VS Code.
 
----
-
-### Step 4 — Verify PyTorch Installation
+#### Step 4 — Verify PyTorch Installation
 
 ```bash
 python -c "import torch; print(torch.__version__)"
@@ -155,11 +164,9 @@ If this prints `False`:
 2. Confirm `~/.bashrc` doesn't have a leftover `LD_LIBRARY_PATH=/usr/local/cuda/lib64` entry from an old system CUDA Toolkit install (see the note at the end of Part 9) — this can shadow the pip-installed libraries.
 3. If neither resolves it, the same library-path fix described in Section 2, Step 4 below (for TensorFlow) applies here too — just point it at PyTorch's bundled `nvidia` folder instead.
 
----
+### Section 2 — Installing TensorFlow
 
-## Section 2 — Installing TensorFlow
-
-### Step 1 — Create a Dedicated Environment
+#### Step 1 — Create a Dedicated Environment
 
 ```bash
 conda create -n env_tensorflow python=3.11 pip
@@ -171,9 +178,7 @@ conda activate env_tensorflow
 
 Your prompt will change to `(env_tensorflow)`.
 
----
-
-### Step 2 — Install TensorFlow
+#### Step 2 — Install TensorFlow
 
 TensorFlow's `[and-cuda]` option installs TensorFlow along with the CUDA and cuDNN libraries it needs — all in one command. This works on Linux and WSL2.
 
@@ -191,9 +196,7 @@ pip install tensorflow[and-cuda]
 
 This may take a few minutes — it's downloading TensorFlow and its CUDA dependencies together.
 
----
-
-### Step 3 — Confirm the CUDA Packages Actually Installed
+#### Step 3 — Confirm the CUDA Packages Actually Installed
 
 This step matters on **both WSL and native Linux** — it isn't OS-specific.
 
@@ -230,9 +233,7 @@ pip install "tensorflow[and-cuda]==2.21.*"
 
 Re-run `pip list | grep -i nvidia` afterward to confirm the packages are now present before continuing.
 
----
-
-### Step 4 — Register the Kernel
+#### Step 4 — Register the Kernel
 
 ```bash
 conda install ipykernel
@@ -242,9 +243,7 @@ conda install ipykernel
 python -m ipykernel install --user --name env_tensorflow --display-name "Python (env_tensorflow)"
 ```
 
----
-
-### Step 5 — Verify TensorFlow Installation, and the WSL Heads-Up From Part 9
+#### Step 5 — Verify TensorFlow Installation, and the WSL Heads-Up From Part 9
 
 ```bash
 python -c "import tensorflow as tf; print(tf.__version__)"
@@ -320,15 +319,13 @@ From now on, every time you activate `env_tensorflow`, this path is set automati
 2. Check `~/.bashrc` for a leftover `LD_LIBRARY_PATH=/usr/local/cuda/lib64` line from an older system CUDA Toolkit install (see the note at the end of Part 9) — this can conflict with the path you just set.
 3. Use the ChatAI prompt at the top of this article — paste your `nvidia-smi` output and the output of the GPU detection command — to troubleshoot further.
 
----
-
-## Section 3 — Verifying GPU Acceleration
+### Section 3 — Verifying GPU Acceleration
 
 Now let's confirm GPU acceleration is actually working — not just that the GPU is detected, but that it's running computations faster than the CPU.
 
 We'll do this with a simple matrix multiplication benchmark in both frameworks.
 
-### PyTorch Benchmark
+#### PyTorch Benchmark
 
 Activate the PyTorch environment:
 
@@ -378,9 +375,7 @@ python pytorch_project.py
 
 You should see the GPU completing the same operation significantly faster than the CPU. The exact speedup depends on your GPU.
 
----
-
-### TensorFlow Benchmark
+#### TensorFlow Benchmark
 
 Activate the TensorFlow environment:
 
@@ -427,9 +422,7 @@ Run the python file `tensorflow_project.py`
 python tensorflow_project.py
 ```
 
----
-
-## CPU-Only Users
+### CPU-Only Users
 
 If you don't have an NVIDIA GPU, you can still install both frameworks for CPU use. This guide covers CPU-only installation clearly:
 
@@ -445,7 +438,9 @@ instead of `tensorflow[and-cuda]`.
 
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
 
 - Understood when to use PyTorch vs TensorFlow
 - Created dedicated Conda environments for each framework

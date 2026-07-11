@@ -1,10 +1,29 @@
-# Part 7 — Git and GitHub
+# Git and GitHub
+### Building a Research Computing Environment — Part 7 of 12
 
-*Building a Research Computing Environment — Part 7 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article installs and configures Git, connects your machine to GitHub over SSH, and pushes `project_1` as your first repository. It closes with the everyday four-command Git workflow you'll use from here on, plus a map of what else Git and GitHub offer — branching, pull requests, forking, Issues, and Actions.
+
+---
 
 ## Objective
 
@@ -33,7 +52,9 @@ By the end, you'll have:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -47,27 +68,25 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 - `~/project_1` folder with files created ([Parts 3–5](https://abhigyan-pro.github.io/Blogs/Part3.html))
 - A GitHub account — we'll create one in Step 1
 
----
-
-## Step 1 — Create a GitHub Account
+### Step 1 — Create a GitHub Account
 
 Go to [https://github.com](https://github.com) and sign up for a free account.
 
 Choose your username carefully — it will be visible on every repository you create and every contribution you make. Many researchers use their real name or a close variation.
 
----
-
-## Step 2 — Install Git
+### Step 2 — Install Git
 
 Open your terminal and type:
 
@@ -87,9 +106,7 @@ git --version
 
 You should see a version number printed.
 
----
-
-## Step 3 — Configure Git
+### Step 3 — Configure Git
 
 Tell Git who you are. This information is attached to every commit you make.
 
@@ -115,9 +132,7 @@ Verify your configuration:
 git config --list
 ```
 
----
-
-## Step 4 — Generate an SSH Key for GitHub
+### Step 4 — Generate an SSH Key for GitHub
 
 In Part 6, we generated an SSH key to connect to remote servers. Here we generate a separate key specifically for GitHub — this is cleaner practice and keeps your keys organized.
 
@@ -145,9 +160,7 @@ Set correct permissions:
 chmod 600 ~/.ssh/id_ed25519_github
 ```
 
----
-
-## Step 5 — Add the SSH Key to GitHub
+### Step 5 — Add the SSH Key to GitHub
 
 Copy your public key:
 
@@ -165,9 +178,7 @@ Now add it to GitHub:
 4. Paste your public key into the **Key** field
 5. Click **Add SSH key**
 
----
-
-## Step 6 — Configure SSH to Use Your GitHub Key
+### Step 6 — Configure SSH to Use Your GitHub Key
 
 Tell SSH which key to use when connecting to GitHub:
 
@@ -198,9 +209,7 @@ You should see:
 Hi abhigyan! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
----
-
-## Step 7 — Create a Repository on GitHub
+### Step 7 — Create a Repository on GitHub
 
 1. Go to [https://github.com/new](https://github.com/new)
 2. Name it `project_1`
@@ -215,9 +224,7 @@ GitHub will create a repository with a default branch called `main`. Think of a 
 
 GitHub will show you a page with setup instructions. You don't need to follow those — we'll do it our way below.
 
----
-
-## Step 8 — Push `project_1` to GitHub
+### Step 8 — Push `project_1` to GitHub
 
 Navigate to your project folder:
 
@@ -287,11 +294,9 @@ The `-u` flag sets a permanent link between your local `main` branch and GitHub.
 
 Go to `https://github.com/yourusername/project_1` — you'll see your files there.
 
-## Congratulations, you just made your first commit to github!!
+**Congratulations, you just made your first commit to GitHub!!**
 
----
-
-## Step 9 — The Everyday Git Workflow
+### Step 9 — The Everyday Git Workflow
 
 From now on, every time you make changes to your project, this is the workflow:
 
@@ -327,9 +332,7 @@ git push
 
 That's it. Four commands you'll use every day.
 
----
-
-## Step 10 — Cloning a Repository
+### Step 10 — Cloning a Repository
 
 If you want to download someone else's project — or your own from a different machine:
 
@@ -339,9 +342,7 @@ git clone git@github.com:yourusername/project_1.git
 
 This creates a local copy of the repository with the full history included.
 
----
-
-## Step 11 — What Else Exists in Git and GitHub
+### Step 11 — What Else Exists in Git and GitHub
 
 You now know enough to use Git for your own projects. But Git and GitHub have much more — here's the map so you know what's out there when you need it.
 
@@ -372,18 +373,12 @@ git pull
 git log --oneline
 ```
 
-## Additonal Resources and Self Study Materials
-
-These topics go deep. When you're ready to explore them, the following resources are excellent starting points:
-
-- [Project Pythia](https://foundations.projectpythia.org/foundations/getting-started-github/)
-- [Version Control with Git — Software Carpentry](https://swcarpentry.github.io/git-novice/) — a beginner-friendly full course on Git fundamentals
-- [Git Documentation](https://git-scm.com/doc)
-- [GitHub Docs](https://docs.github.com)
-
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
+
 - Installed and configured Git
 - Created a GitHub account
 - Generated an SSH key for GitHub and connected it
@@ -391,5 +386,14 @@ These topics go deep. When you're ready to explore them, the following resources
 - Pushed `project_1` to GitHub
 - Learned the everyday Git workflow
 - Got a map of what else Git and GitHub can do
+
+**Additional Resources and Self Study Materials:**
+
+These topics go deep. When you're ready to explore them, the following resources are excellent starting points:
+
+- [Project Pythia](https://foundations.projectpythia.org/foundations/getting-started-github/)
+- [Version Control with Git — Software Carpentry](https://swcarpentry.github.io/git-novice/) — a beginner-friendly full course on Git fundamentals
+- [Git Documentation](https://git-scm.com/doc)
+- [GitHub Docs](https://docs.github.com)
 
 **Next:** [Part 8 — Project Organization and managing Scientific Data](https://abhigyan-pro.github.io/Blogs/Part8.html)

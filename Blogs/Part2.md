@@ -1,10 +1,29 @@
 # Installing WSL2 with Ubuntu, and Miniconda
+### Building a Research Computing Environment — Part 2 of 12
 
-*Building a Research Computing Environment — Part 2 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article installs the foundation of the stack — WSL2, Ubuntu 24.04, and Miniconda — step by step from a fresh Windows 11 machine, then verifies each piece is working. It closes by explaining where your Linux files, Windows drives, and future projects actually live.
+
+---
 
 ## Objective
 
@@ -17,7 +36,11 @@ By the end, you'll have:
 - Miniconda installed.
 - A working Ubuntu terminal ready for development.
 
-## Using This Article
+---
+
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -31,17 +54,19 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
+
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
 Think of this series as the roadmap and your AI assistant as your learning companion.
 
-## Prerequisites
+### Prerequisites
 
 - Windows 11
 - Administrator access
 - Internet connection
 
-## Step 1 — Open Windows Terminal
+### Step 1 — Open Windows Terminal
 
 1. Open the **Start Menu**.
 2. Search for **Windows Terminal**.
@@ -51,7 +76,7 @@ Think of this series as the roadmap and your AI assistant as your learning compa
 
 A Windows Terminal window should now open.
 
-## Step 2 — View Available Linux Distributions
+### Step 2 — View Available Linux Distributions
 
 Run:
 
@@ -63,7 +88,7 @@ Choose the Ubuntu version you'd like to install.
 
 For this series, we'll use: `Ubuntu-24.04`
 
-## Step 3 — Install Ubuntu
+### Step 3 — Install Ubuntu
 
 Run:
 
@@ -79,7 +104,7 @@ Windows will:
 
 Restart your computer if prompted.
 
-## Step 4 — Launch Ubuntu
+### Step 4 — Launch Ubuntu
 
 Open Ubuntu from the Start Menu.
 
@@ -91,7 +116,7 @@ wsl -d Ubuntu-24.04
 
 The first launch may take a minute.
 
-## Step 5 — Create Your Linux User
+### Step 5 — Create Your Linux User
 
 Ubuntu will ask you to create:
 
@@ -104,7 +129,7 @@ While typing your password, nothing will appear on the screen. This is normal.
 
 Press Enter after typing the password.
 
-## Step 6 — Update Ubuntu
+### Step 6 — Update Ubuntu
 
 Run:
 
@@ -120,7 +145,7 @@ sudo apt upgrade -y
 
 Ubuntu may ask for the password you created.
 
-## Step 7 — Install Basic Utilities
+### Step 7 — Install Basic Utilities
 
 Run:
 
@@ -130,7 +155,7 @@ sudo apt install -y wget curl git build-essential ca-certificates
 
 These utilities are commonly required by development tools.
 
-## Step 8 — Download Miniconda
+### Step 8 — Download Miniconda
 
 Move to your home directory:
 
@@ -144,7 +169,7 @@ Download Miniconda:
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
-## Step 9 — Install Miniconda
+### Step 9 — Install Miniconda
 
 Run:
 
@@ -159,13 +184,13 @@ During installation:
 3. Press Enter to use the default installation location.
 4. When asked to initialize Miniconda, type `yes`.
 
-## Step 10 — Restart Ubuntu
+### Step 10 — Restart Ubuntu
 
 Close Ubuntu. Open it again.
 
 You should now see `(base)` at the beginning of the terminal prompt.
 
-## Step 11 — Verify the Installation
+### Step 11 — Verify the Installation
 
 Run:
 
@@ -187,11 +212,11 @@ pip --version
 
 Each command should display a version number.
 
-## Understanding Where Everything Lives
+### Understanding Where Everything Lives
 
 Before moving on, let's understand where your files are stored.
 
-### Your Home Directory
+#### Your Home Directory
 
 Your Linux home directory is:
 
@@ -213,7 +238,7 @@ To see your current location:
 pwd
 ```
 
-### Windows Drives
+#### Windows Drives
 
 Inside Ubuntu, your Windows drives appear under `/mnt`:
 
@@ -223,7 +248,7 @@ Inside Ubuntu, your Windows drives appear under `/mnt`:
 | D:\ | /mnt/d |
 | E:\ | /mnt/e |
 
-### Where Is Miniconda?
+#### Where Is Miniconda?
 
 By default, Miniconda is installed in:
 
@@ -231,7 +256,7 @@ By default, Miniconda is installed in:
 ~/miniconda3
 ```
 
-### Where Should You Keep Projects?
+#### Where Should You Keep Projects?
 
 Although you can work inside `/mnt/c` or `/mnt/d`, it's generally recommended to keep Python projects inside your Linux home directory.
 
@@ -246,14 +271,10 @@ Don't worry — the projects directory doesn't exist yet. We'll create it proper
 
 For now, simply remember that your home directory (`~`) is the recommended place for your future projects.
 
-## Verification
+---
 
-You now have:
+## What's Next
 
-- WSL2
-- Ubuntu
-- Miniconda
-
-installed and ready to use.
+You now have WSL2, Ubuntu, and Miniconda installed and ready to use.
 
 **Next:** [Part 3 — Terminal Basics and File Navigation](https://abhigyan-pro.github.io/Blogs/Part3.html)

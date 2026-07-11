@@ -1,10 +1,29 @@
-# Part 8 — Project Organization and managing Scientific Data
+# Project Organization and Managing Scientific Data
+### Building a Research Computing Environment — Part 8 of 12
 
-*Building a Research Computing Environment — Part 8 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article establishes a reusable project structure for research code, sets the rule that raw data is never modified, and separates data storage from code storage entirely. It also covers naming conventions, writing a README, what belongs on GitHub versus what doesn't, and where research data can live — locally, in the cloud, or published with a citable DOI.
+
+---
 
 ## Objective
 
@@ -22,7 +41,9 @@ By the end, you'll have:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -36,17 +57,17 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - `~/project_1` set up with Git and GitHub ([Parts 3–7](https://abhigyan-pro.github.io/Blogs/Part3.html))
 
----
-
-## Step 1 — Why Project Organization Matters
+### Step 1 — Why Project Organization Matters
 
 Imagine coming back to a project after six months. Files named `script_final_v3_FINAL.py`. Data mixed in with code. No README. No idea which script to run first.
 
@@ -54,9 +75,7 @@ This is more common than it should be — especially in research, where the pres
 
 Good organization costs almost nothing upfront and saves enormous time later — when you're collaborating, when you're writing up results, when someone asks to reproduce your work.
 
----
-
-## Step 2 — A Standard Project Structure
+### Step 2 — A Standard Project Structure
 
 Here is a structure that works for most research projects:
 
@@ -96,9 +115,7 @@ Verify:
 find . -type d
 ```
 
----
-
-## Step 3 — The Raw Data Rule
+### Step 3 — The Raw Data Rule
 
 One rule that will save you repeatedly:
 
@@ -108,9 +125,7 @@ Your raw data folder is read-only in practice — you load from it, you never wr
 
 Why? Because if something goes wrong in your processing — and it will — you can always go back to the original. If you've overwritten it, it's gone.
 
----
-
-## Step 4 — Where Data Lives
+### Step 4 — Where Data Lives
 
 In Part 3, we established the split:
 
@@ -146,9 +161,7 @@ Replace `d` with your actual drive letter.
 
 Your scripts in `~/project_1/scripts/` read from `/mnt/d/datasets/project_1/raw/` and write cleaned data to `/mnt/d/datasets/project_1/processed/`. Results and figures go into `~/project_1/results/`.
 
----
-
-## Step 5 — Naming Conventions
+### Step 5 — Naming Conventions
 
 Good names make projects navigable without opening files.
 
@@ -168,9 +181,7 @@ Good names make projects navigable without opening files.
 - Number them to show order: `01_explore_data.ipynb`, `02_clean_data.ipynb`
 - This makes the workflow clear to anyone reading your project
 
----
-
-## Step 6 — README.md
+### Step 6 — README.md
 
 A README is the front door of your project. Anyone — including your future self — should be able to open it and understand what the project is and how to use it.
 
@@ -203,9 +214,7 @@ cd ~/project_1
 nano README.md
 ```
 
----
-
-## Step 7 — What Goes on GitHub and What Doesn't
+### Step 7 — What Goes on GitHub and What Doesn't
 
 GitHub is for code — not data. This is a common mistake researchers make early on.
 
@@ -239,13 +248,11 @@ results/outputs/
 *.grib
 ```
 
----
-
-## Step 8 — Storage Recommendations
+### Step 8 — Storage Recommendations
 
 As a researcher, your data lives in multiple places for different reasons.
 
-### Local Storage
+#### Local Storage
 
 Your primary working storage — fast, always available, no internet needed.
 
@@ -254,7 +261,7 @@ Your primary working storage — fast, always available, no internet needed.
 
 Limitation: if your drive fails, data is gone. Always have a backup.
 
-### Cloud Storage
+#### Cloud Storage
 
 **Google Drive**
 Good for: sharing data with collaborators, backing up processed datasets, storing documents alongside data.
@@ -271,9 +278,7 @@ Free, open, and specifically designed for research data.
 
 We'll cover Zenodo in more depth in Part 12 when we discuss Open Science.
 
----
-
-## Step 9 — Domain-Specific File Formats
+### Step 9 — Domain-Specific File Formats
 
 If your research involves scientific data, you'll likely encounter formats like:
 
@@ -283,12 +288,13 @@ If your research involves scientific data, you'll likely encounter formats like:
 
 These formats require specific Python libraries (`xarray`, `h5py`, `cfgrib`) and have their own conventions. They are beyond the scope of this series — but a dedicated guide covering these formats and their libraries is planned for a future series.
 
-If your research involves atmospheric or climate data specifically, Project Pythia is an excellent free resource covering Python workflows for geoscience:
-[Project Pythia](https://projectpythia.org)
+If your research involves atmospheric or climate data specifically, Project Pythia is an excellent free resource covering Python workflows for geoscience: [Project Pythia](https://projectpythia.org)
 
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
 
 - Built a standard project structure for research
 - Understood why data lives separately from code

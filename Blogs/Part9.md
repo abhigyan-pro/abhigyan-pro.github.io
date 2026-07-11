@@ -1,10 +1,29 @@
-# Part 9 — Enabling GPU Computing in WSL and Linux with CUDA
+# Enabling GPU Computing in WSL and Linux with CUDA
+### Building a Research Computing Environment — Part 9 of 12
 
-*Building a Research Computing Environment — Part 9 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article installs and verifies NVIDIA drivers so your GPU is accessible from Ubuntu — one path for WSL users, one for native Linux users — and deliberately skips a system-wide CUDA Toolkit install to avoid conflicts with the pip-bundled CUDA libraries Part 10 will install. It closes with a heads-up on one extra step TensorFlow on WSL sometimes needs, so it doesn't read as an error when it happens.
+
+---
 
 ## Objective
 
@@ -26,13 +45,17 @@ By the end, you'll have:
 - No conflicting CUDA installs to trip you up later
 - A heads-up on one extra step Part 10 may ask you to do — so it doesn't feel like something went wrong when it happens
 
-## Why GPU Matters for Research and ML
+---
+
+## Content
+
+### Why GPU Matters for Research and ML
 
 A CPU (your computer's main processor) is designed to handle a few complex tasks at a time. A GPU was originally built for graphics — rendering thousands of pixels simultaneously. That same ability to run thousands of small operations in parallel makes GPUs exceptionally powerful for machine learning, numerical simulations, and scientific computing.
 
 Training a deep learning model that takes days on a CPU can take hours on a GPU. For researchers working with large datasets or complex models, GPU access is not a luxury — it's a practical necessity.
 
-## Using This Article
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -46,15 +69,19 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: "I am following [link]. In Step X it says to run [command] — explain what each part does."
+To go deeper on any step:
 
-## Prerequisites
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
+
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - WSL2 and Ubuntu installed [Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html), or native Linux
 - Miniconda and env_project1 set up [Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html)
 - An NVIDIA GPU
 
-## How GPU Access Works: WSL vs Native Linux
+### How GPU Access Works: WSL vs Native Linux
 
 Before touching anything, it helps to understand how GPU access works differently on WSL and native Linux — and a design decision this article makes for both.
 
@@ -66,9 +93,9 @@ Before touching anything, it helps to understand how GPU access works differentl
 
 Once your driver is verified, everything from Part 10 onwards is identical for both WSL and native Linux.
 
-## WSL Users
+### WSL Users
 
-### Step 1 — Install or Update NVIDIA Drivers on Windows
+#### Step 1 — Install or Update NVIDIA Drivers on Windows
 
 CUDA support on WSL comes entirely from your Windows NVIDIA driver. If your driver is up to date, WSL already has what it needs.
 
@@ -86,7 +113,7 @@ Update to the latest driver:
 4. During installation select Express Installation
 5. Restart your computer after installation
 
-### Step 2 — Verify GPU Access Inside WSL
+#### Step 2 — Verify GPU Access Inside WSL
 
 Open your Ubuntu terminal and run:
 
@@ -112,7 +139,7 @@ If you get `command not found`, your driver may need updating — go back to Ste
 
 **About the CUDA Version shown here:** this is the *maximum* CUDA version your driver supports — not a toolkit you've installed. In Part 10, when you install PyTorch and TensorFlow's GPU-enabled pip packages, you'll want to make sure the CUDA version those packages target is at or below this number.
 
-### Step 3 — Set the WSL GPU Library Path
+#### Step 3 — Set the WSL GPU Library Path
 
 WSL exposes the GPU driver interface through a small set of libraries that live outside your Ubuntu filesystem, at `/usr/lib/wsl/lib`. PyTorch and TensorFlow's pip packages don't know to look there by default, so we add it to your library path once, here.
 
@@ -136,7 +163,7 @@ source ~/.bashrc
 
 That's it for driver-level setup. Before you move on, read the heads-up below — it'll save you a confusing moment in Part 10.
 
-### Step 4 — A Heads-Up About Part 10 (read this before moving on)
+#### Step 4 — A Heads-Up About Part 10 (read this before moving on)
 
 In Part 10, you'll install TensorFlow with:
 
@@ -154,9 +181,9 @@ If you hit this, it isn't a driver problem, and it isn't something you misconfig
 
 Skip to [Before You Proceed to Part 10](#before-you-proceed-to-part-10).
 
-## Native Linux Users
+### Native Linux Users
 
-### Step 1 — Install NVIDIA Drivers
+#### Step 1 — Install NVIDIA Drivers
 
 On native Linux, driver installation varies depending on your GPU model, Linux distribution, and desktop environment. A single set of commands that works for everyone doesn't exist here.
 
@@ -170,7 +197,7 @@ For a beginner-friendly walkthrough specific to Ubuntu, this guide is widely rec
 
 You only need the **driver** here — not the CUDA Toolkit. As with WSL, PyTorch and TensorFlow's GPU pip packages in Part 10 bundle their own CUDA and cuDNN libraries, so a separate system-wide toolkit isn't necessary unless you specifically plan to compile custom CUDA C++ code with `nvcc`.
 
-### Step 2 — Verify GPU Access
+#### Step 2 — Verify GPU Access
 
 Once the driver is installed, verify it:
 
@@ -182,7 +209,7 @@ This should print your GPU name, driver version, and supported CUDA version with
 
 Native Linux installs are generally less prone to the pip-bundled library discovery issue described above, since there's no WSL translation layer involved — but if you do see an empty GPU list in Part 10, the same fix applies.
 
-## Before You Proceed to Part 10
+### Before You Proceed to Part 10
 
 This section applies to everyone — WSL and native Linux users.
 
@@ -202,7 +229,11 @@ In Part 10, we'll use this number as an upper bound when installing PyTorch and 
 
 **A quick note if you've followed older tutorials:** many guides (including an earlier version of this one) have you install the CUDA Toolkit via `apt` and export `LD_LIBRARY_PATH=/usr/local/cuda/lib64`. If you've done this in the past, it's worth checking your `~/.bashrc` for those lines and removing them — they can silently conflict with the pip-installed CUDA libraries PyTorch and TensorFlow bring in during Part 10, causing GPU detection to fail with errors like `Cannot dlopen some GPU libraries` even when everything else is set up correctly.
 
-## What You've Done
+---
+
+## What's Next
+
+**What You've Done:**
 
 - Understood why GPU matters for research and ML
 - Understood how GPU access differs between WSL and native Linux

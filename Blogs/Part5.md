@@ -1,10 +1,29 @@
-# Part 5 — Setting Up VS Code
+# Setting Up VS Code
+### Building a Research Computing Environment — Part 5 of 12
 
-*Building a Research Computing Environment — Part 5 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+This article installs VS Code, connects it to your Ubuntu environment (via Remote WSL on Windows, or natively on Linux), and wires up the Python and Jupyter extensions. You'll then select `env_project1` as your interpreter and kernel, and run both `first_script.py` and your notebook from Part 4 directly inside VS Code — one place for terminal, Git, debugger, scripts, and notebooks.
+
+---
 
 ## Objective
 
@@ -19,7 +38,9 @@ By the end, you'll have:
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -33,20 +54,20 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - WSL2 or native Linux with Miniconda installed ([Part 2](https://abhigyan-pro.github.io/Blogs/Part2.html))
 - `~/project_1` with `env_project1`, `first_script.py`, and a `.ipynb` notebook ([Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
 
----
+### Step 1 — Installing VS Code
 
-## Step 1 — Installing VS Code
-
-### Windows (WSL) Users
+#### Windows (WSL) Users
 
 Go to [https://code.visualstudio.com/](https://code.visualstudio.com/) and click **Download for Windows**.
 
@@ -72,9 +93,7 @@ code --version
 
 You should see a version number. If you get `command not found`, close the terminal completely, reopen it, and try again.
 
----
-
-### Native Linux Users
+#### Native Linux Users
 
 Open your terminal and run these commands one by one:
 
@@ -114,9 +133,7 @@ code --version
 
 You should see a version number printed.
 
----
-
-## Step 2 — Installing the Remote WSL Extension
+### Step 2 — Installing the Remote WSL Extension
 
 > **Windows (WSL) users only. Native Linux users skip to Step 3.**
 
@@ -127,9 +144,7 @@ The Remote WSL extension allows VS Code running on Windows to connect to your Ub
 3. Search for **Remote - WSL**
 4. Click **Install**
 
----
-
-## Step 3 — Installing Python and Jupyter Extensions
+### Step 3 — Installing Python and Jupyter Extensions
 
 Open VS Code. Press `Ctrl+Shift+X` to open the Extensions panel.
 
@@ -142,9 +157,7 @@ These give VS Code the ability to:
 - Run `.py` scripts with a selected Conda interpreter
 - Run `.ipynb` notebooks with a selected Conda kernel
 
----
-
-## Step 4 — Opening Your Project in VS Code
+### Step 4 — Opening Your Project in VS Code
 
 Activate your environment and navigate to your project folder in the terminal:
 
@@ -168,9 +181,7 @@ code .
 
 From this point, everything is identical for both.
 
----
-
-## Step 5 — Selecting a Conda Interpreter for `.py` Files
+### Step 5 — Selecting a Conda Interpreter for `.py` Files
 
 VS Code needs to know which Python environment to use when running `.py` files.
 
@@ -181,9 +192,7 @@ VS Code needs to know which Python environment to use when running `.py` files.
 
 VS Code will now use `env_project1` when running any `.py` file in this project.
 
----
-
-## Step 6 — Running `first_script.py`
+### Step 6 — Running `first_script.py`
 
 In the VS Code file browser on the left, click on `first_script.py` to open it.
 
@@ -201,9 +210,7 @@ Sum: 15
 
 Same output as Part 4 — but now running directly inside VS Code.
 
----
-
-## Step 7 — Selecting a Jupyter Kernel for `.ipynb` Files
+### Step 7 — Selecting a Jupyter Kernel for `.ipynb` Files
 
 In the VS Code file browser on the left, click on your `.ipynb` notebook to open it.
 
@@ -213,9 +220,7 @@ A dropdown will appear at the top of the screen. Select **Python (env_project1)*
 
 This connects your notebook to the same Conda environment you've been working in.
 
----
-
-## Step 8 — Running Your Notebook in VS Code
+### Step 8 — Running Your Notebook in VS Code
 
 With your notebook open and `env_project1` selected as the kernel, you'll see the same cells you wrote in Part 4.
 
@@ -242,7 +247,9 @@ Same result as Part 4 — the environment, the code, and the output are identica
 
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
 
 - Installed VS Code on Windows (WSL) or Linux
 - Connected VS Code to your Ubuntu environment (WSL users)

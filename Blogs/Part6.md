@@ -1,10 +1,29 @@
-# Part 6 — Linux Essentials
+# Linux Essentials
+### Building a Research Computing Environment — Part 6 of 12
 
-*Building a Research Computing Environment — Part 6 of 12*
+<p align="center">
+  <a href="https://www.linkedin.com/in/abhigyan-chakraborty/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="LinkedIn">
+    <img src="../img/linkedin.svg" alt="LinkedIn" width="24" height="24">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://abhigyan-pro.github.io/"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Website">
+    <img src="../img/website.svg" alt="Website" width="24" height="24">
+  </a>
+</p>
 
 ---
 
-Socials: [LinkedIN](https://www.linkedin.com/in/abhigyan-chakraborty/) [Website](https://abhigyan-pro.github.io/)
+## Quick Summary
+
+Unlike Parts 2–5, this article is a map, not a build. It covers directory organization, file management, permissions, installing system software with `apt`, environment variables, SSH, and the basics of HPC clusters and SLURM job submission — the concepts researchers need once they move beyond their local machine to remote servers and shared computing environments.
+
+---
 
 ## Objective
 
@@ -18,7 +37,9 @@ That's what this part does. You won't build a complete setup here. You'll learn 
 
 ---
 
-## Using This Article
+## Content
+
+### Getting Unstuck
 
 If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -32,18 +53,18 @@ If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) wi
 >
 > Help me troubleshoot.
 
-To go deeper on any step: *"I am following [link]. In Step X it says to run [command] — explain what each part does."*
+To go deeper on any step:
 
----
+> "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
-## Prerequisites
+Think of this series as the roadmap and your AI assistant as your learning companion.
+
+### Prerequisites
 
 - Comfortable with the terminal ([Part 3](https://abhigyan-pro.github.io/Blogs/Part3.html))
 - `~/project_1` with `env_project1` set up ([Part 4](https://abhigyan-pro.github.io/Blogs/Part4.html))
 
----
-
-## Section 1 — Creating and Organizing Directories
+### Section 1 — Creating and Organizing Directories
 
 You already know `mkdir`, `cd`, and `ls` from Part 3. Here's how to use them for real project organization.
 
@@ -66,9 +87,7 @@ find ~/project_1 -type d
 
 This prints every directory inside `project_1` — useful for verifying your structure at a glance.
 
----
-
-## Section 2 — Managing Files
+### Section 2 — Managing Files
 
 Beyond `cp` and `mv` from Part 3, a few more tools you'll use regularly:
 
@@ -110,8 +129,7 @@ du -sh ~/project_1/
 
 Useful when working with large datasets to see how much space your project is using.
 
----
-### Terminal Text Editors
+#### Terminal Text Editors
 
 In Part 4, we used `nano` to write our first script. Here's what that actually is and how it fits in.
 
@@ -128,9 +146,7 @@ In Part 4, we used `nano` to write our first script. Here's what that actually i
 
 On HPC systems, you'll often have no choice but to use a terminal editor — VS Code won't be available. Knowing `nano` is enough to get by.
 
----
-
-## Section 3 — File Permissions
+### Section 3 — File Permissions
 
 Every file and folder in Linux has permissions that control who can read, write, or execute it.
 
@@ -172,9 +188,7 @@ Restricts a file so only you can read it — required for SSH keys to work (cove
 
 For now, the key takeaway is: **permissions control access, and some tools will refuse to work if permissions are wrong.**
 
----
-
-## Section 4 — Installing Software with `apt`
+### Section 4 — Installing Software with `apt`
 
 In Part 4, you installed Python packages with `conda` and `pip`. Those install packages inside your Python environment.
 
@@ -206,9 +220,7 @@ Installs C, C++, and Fortran compilers. On HPC systems, some scientific software
 | `conda` | Python packages | Default for Python packages |
 | `pip` | Python packages | Package not available via conda |
 
----
-
-## Section 5 — Environment Variables
+### Section 5 — Environment Variables
 
 Remember from Part 3 — bash is the shell running inside your terminal. Every time you open a terminal, bash starts fresh with a set of named values already configured — things like where your home directory is, who you are, and where to find programs. These are called **environment variables**.
 
@@ -270,13 +282,11 @@ source ~/.bashrc
 
 `source` tells bash to re-read and apply `.bashrc` right now, without needing to close and reopen the terminal.
 
----
-
-## Section 6 — SSH: Connecting to Remote Machines
+### Section 6 — SSH: Connecting to Remote Machines
 
 SSH (Secure Shell) lets you connect to and control a remote machine from your terminal — as if you were sitting in front of it.
 
-### Generate an SSH Key Pair
+#### Generate an SSH Key Pair
 
 SSH keys are more secure than passwords. You generate a pair — a private key (stays on your machine) and a public key (you give to the remote server).
 
@@ -301,7 +311,7 @@ Set correct permissions on your private key:
 chmod 600 ~/.ssh/id_ed25519
 ```
 
-### Connect to a Remote Server
+#### Connect to a Remote Server
 
 ```bash
 ssh username@server_address
@@ -315,7 +325,7 @@ ssh abhigyan@login.university.edu
 
 The first time you connect, you'll be asked to confirm the server's identity. Type `yes`.
 
-### Copy Your Public Key to the Server
+#### Copy Your Public Key to the Server
 
 ```bash
 ssh-copy-id username@server_address
@@ -323,7 +333,7 @@ ssh-copy-id username@server_address
 
 After this, you can connect without typing a password every time.
 
-### Transfer Files
+#### Transfer Files
 
 Copy a file **to** a remote server:
 
@@ -349,9 +359,7 @@ For large transfers, `rsync` is more efficient — it only transfers files that 
 rsync -avz ~/project_1/ username@server_address:~/project_1/
 ```
 
----
-
-## Section 7 — HPC Systems: What They Are and How They Work
+### Section 7 — HPC Systems: What They Are and How They Work
 
 A personal computer runs one or a few programs at a time. An HPC (High Performance Computing) cluster is hundreds or thousands of computers connected together — allowing researchers to run jobs that would take weeks on a laptop in hours.
 
@@ -368,9 +376,7 @@ When you connect to an HPC, you land on a **login node** — a shared gateway ma
 
 The most widely used scheduler is **SLURM**.
 
----
-
-## Section 8 — SLURM: Submitting Jobs
+### Section 8 — SLURM: Submitting Jobs
 
 A SLURM job script is a shell script with special `#SBATCH` lines that tell SLURM what resources your job needs.
 
@@ -404,7 +410,7 @@ Other useful SLURM commands:
 | `scancel job_id` | Cancel a job |
 | `sinfo` | See available partitions and nodes |
 
-### Software Modules on HPC
+#### Software Modules on HPC
 
 HPC systems don't let you install software with `apt`. Instead, they use a **module system** to manage software — multiple versions of the same tool can coexist, and you load only what you need.
 
@@ -434,24 +440,11 @@ Removes it.
 
 On many HPC systems you'll still use Conda inside your job scripts — load a base Python module first, then activate your Conda environment.
 
-## Further reading:
-For a more comprehensive Linux command reference, Software Carpentry's Unix Shell course covers these topics in depth with exercises:
-[The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
-
-
-### Don't Have HPC Access Yet?
-
-You can practice SLURM locally on your own Ubuntu machine or WSL. This tutorial walks through setting up a single-node SLURM instance:
-
-[How to set up SLURM on Ubuntu for single-node scheduling](https://drtailor.medium.com/how-to-setup-slurm-on-ubuntu-20-04-for-single-node-work-scheduling-6cc909574365)
-
-When you do get HPC access, this is a solid beginner tutorial for using SLURM on a real cluster:
-
-[RIT Research Computing — SLURM Quick Start Tutorial](https://research-computing.git-pages.rit.edu/docs/slurm_quick_start_tutorial.html)
-
 ---
 
-## What You've Done
+## What's Next
+
+**What You've Done:**
 
 - Organized directories with `mkdir -p`
 - Managed files with `rm`, `cat`, `less`, `du`
@@ -462,5 +455,13 @@ When you do get HPC access, this is a solid beginner tutorial for using SLURM on
 - Transferred files with `scp` and `rsync`
 - Understood what HPC systems are and how they differ from local machines
 - Learned SLURM job submission and software modules
+
+**Further reading:**
+For a more comprehensive Linux command reference, Software Carpentry's Unix Shell course covers these topics in depth with exercises: [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
+
+**Don't have HPC access yet?**
+You can practice SLURM locally on your own Ubuntu machine or WSL. This tutorial walks through setting up a single-node SLURM instance: [How to set up SLURM on Ubuntu for single-node scheduling](https://drtailor.medium.com/how-to-setup-slurm-on-ubuntu-20-04-for-single-node-work-scheduling-6cc909574365)
+
+When you do get HPC access, this is a solid beginner tutorial for using SLURM on a real cluster: [RIT Research Computing — SLURM Quick Start Tutorial](https://research-computing.git-pages.rit.edu/docs/slurm_quick_start_tutorial.html)
 
 **Next:** [Part 7 — Git and GitHub](https://abhigyan-pro.github.io/Blogs/Part7.html)
