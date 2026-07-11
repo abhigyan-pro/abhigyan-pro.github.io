@@ -76,8 +76,8 @@ By the end, you'll understand:
 
 ### Prerequisites
 
-- Git and GitHub set up ([Part 7](https://abhigyan-pro.github.io/Blogs/Part7.html))
-- Project organized and documented ([Parts 8 and 11](https://abhigyan-pro.github.io/Blogs/Part11.html))
+- Git and GitHub set up ([Part 6](https://abhigyan-pro.github.io/Blogs/Part6.html))
+- Project organized and documented ([Parts 7](https://abhigyan-pro.github.io/Blogs/Part7.html) and [Part 11](https://abhigyan-pro.github.io/Blogs/Part11.html))
 
 ### Section 1 — What is Open Science?
 
