@@ -51,8 +51,10 @@ By the end, you'll have:
 
 ## Content
 
-<details>
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -71,6 +73,7 @@ By the end, you'll have:
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
+
 </details>
 
 ### Prerequisites

@@ -48,8 +48,10 @@ By the end, you'll have:
 
 ## Content
 
-<details>
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -67,6 +69,7 @@ By the end, you'll have:
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
+
 </details>
 
 ### Prerequisites
@@ -172,8 +175,8 @@ On HPC, use the module system to load software: `module avail`, `module load pyt
 - [The Unix Shell — Software Carpentry](https://swcarpentry.github.io/shell-novice/)
 - [RIT Research Computing — SLURM Quick Start Tutorial](https://research-computing.git-pages.rit.edu/docs/slurm_quick_start_tutorial.html)
 
-**Next:** [Part 6 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part7.html)
+**Next:** [Part 7 — Git and GitHub for Reproducible Research](https://abhigyan-pro.github.io/Blogs/Part7.html)
 |
-**Previous:** [Part 4 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
+**Previous:** [Part 5 — Setting Up VS Code](https://abhigyan-pro.github.io/Blogs/Part5.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

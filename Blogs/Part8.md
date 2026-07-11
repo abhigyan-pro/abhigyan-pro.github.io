@@ -48,8 +48,10 @@ By the end, you'll have:
 
 ## Content
 
-<details>
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -67,6 +69,7 @@ By the end, you'll have:
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
+
 </details>
 
 ### Why GPU Matters for Research and ML
@@ -88,10 +91,12 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
 # NVIDIA GPU drivers installation
 ## For WSL2 Users
 
-<details>
-  <summary><strong>💡Expand for details </strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡Expand for details </strong>
+  </summary>
 
-  #### Step 1 — Install or Update NVIDIA Drivers on Windows
+#### Step 1 — Install or Update NVIDIA Drivers on Windows
   CUDA support on WSL is powered by your Windows NVIDIA driver, which acts as a bridge between the hardware and your Linux environment. If your driver is outdated, WSL may fail to detect your GPU.
 
   **1. Identify your GPU:** Not sure which card you have? Open **Task Manager** (`Ctrl+Shift+Esc`), go to the **Performance** tab, and click **GPU** on the left. The name of your card is in the top-right corner.
@@ -106,21 +111,21 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
 
   **4. Finalize:** **Restart your computer.** This step is mandatory for the new driver to properly initialize the communication layer between Windows and WSL.
 
-  #### Step 2 — Verify GPU Access Inside WSL
+#### Step 2 — Verify GPU Access Inside WSL
   Open your Ubuntu terminal and run:
   ```bash
   nvidia-smi
   ```
   If you see a table showing your GPU name, driver, and CUDA version, you are set. If `command not found`, update your Windows driver.
 
-  #### Step 3 — Set the WSL GPU Library Path
+#### Step 3 — Set the WSL GPU Library Path
   WSL exposes GPU driver interfaces via `/usr/lib/wsl/lib`. Open your `.bashrc` (`nano ~/.bashrc`) and add:
   ```bash
   export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
   ```
   Save (`Ctrl+X`, `Y`, `Enter`) and run `source ~/.bashrc`.
 
-  #### Step 4 — A Heads-Up About Part 10
+#### Step 4 — A Heads-Up About Part 10
   When installing TensorFlow in Part 10 (`pip install tensorflow[and-cuda]`), it is normal for it to occasionally fail to locate libraries on WSL. This is an issue with library discovery, not your driver. We will fix this in Part 10 with a scoped `LD_LIBRARY_PATH` export.
 
 </details>
@@ -129,18 +134,20 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
 
 ## Native Linux Users
 
-<details>
-  <summary><strong>💡Expand for details </strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡Expand for details </strong>
+  </summary>
 
-  #### Step 1 — Install NVIDIA Drivers
+#### Step 1 — Install NVIDIA Drivers
   Follow NVIDIA's [official installation guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/). You only need the **driver**—the next part will handle the specific CUDA libraries.
 
-  #### Step 2 — Verify GPU Access
+#### Step 2 — Verify GPU Access
   Run `nvidia-smi`. You should see your GPU name and version without errors.
 
   ---
 
-  ### Before You Proceed to Part 10
+### Before You Proceed to Part 10
   Run `nvidia-smi` and note the maximum supported **CUDA Version** (e.g., `12.x`). Use this as an upper bound when installing PyTorch and TensorFlow.
 
   **Warning:** Check `~/.bashrc` for old `LD_LIBRARY_PATH=/usr/local/cuda/lib64` entries and remove them; they conflict with pip-installed CUDA libraries.

@@ -49,8 +49,10 @@ By the end, you'll understand:
 
 ## Content
 
-<details>
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt[cite: 23]:
 
@@ -69,6 +71,7 @@ By the end, you'll understand:
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."[cite: 23]
 
   Think of this series as the roadmap and your AI assistant as your learning companion[cite: 23].
+
 </details>
 
 ### Prerequisites
@@ -149,6 +152,6 @@ Contributing involves a standard workflow[cite: 23]:
 - Practiced the fork-branch-PR workflow[cite: 23]
 - Established your public professional presence[cite: 23]
 
-**Previous:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
+**Previous:** [Part 11 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

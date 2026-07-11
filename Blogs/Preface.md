@@ -132,8 +132,10 @@ Develop & Execute Python Code
 
 Each component has a specific purpose. Together, they create a development environment that is widely used in software development, data science, machine learning, and scientific research.
 
-<details>
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -152,6 +154,7 @@ Each component has a specific purpose. Together, they create a development envir
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
+
 </details>
 
 ### Series Roadmap

@@ -48,8 +48,10 @@ By the end, you'll have:
 
 ## Content
 
-<details>
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -68,6 +70,7 @@ By the end, you'll have:
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
+
 </details>
 
 ### Prerequisites
@@ -89,16 +92,18 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
 
 ## Section 1 — Installing PyTorch
 
-<details>
-  <summary><strong>💡Expand for details</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡Expand for details</strong>
+  </summary>
 
-  #### Step 1 — Create a Dedicated Environment
+#### Step 1 — Create a Dedicated Environment
   ```bash
   conda create -n env_pytorch python=3.11 pip
   conda activate env_pytorch
   ```
 
-  #### Step 2 — Get the Correct Install Command
+#### Step 2 — Get the Correct Install Command
   Visit [pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) and generate your command using the **Pip** package option and your `nvidia-smi` reported CUDA version.
 
   Run the generated command (example):
@@ -106,13 +111,13 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
   pip3 install torch torchvision --index-url [https://download.pytorch.org/whl/cu132](https://download.pytorch.org/whl/cu132)
   ```
 
-  #### Step 3 — Register the Kernel
+#### Step 3 — Register the Kernel
   ```bash
   conda install ipykernel
   python -m ipykernel install --user --name env_pytorch --display-name "Python (env_pytorch)"
   ```
 
-  #### Step 4 — Verify PyTorch Installation
+#### Step 4 — Verify PyTorch Installation
   Verify version: `python -c "import torch; print(torch.__version__)"`.
   Verify GPU: `python -c "import torch; print(torch.cuda.is_available())"`.
 
@@ -122,36 +127,38 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
 
 ## Section 2 — Installing TensorFlow
 
-<details>
-  <summary><strong>💡Expand for details</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡Expand for details</strong>
+  </summary>
 
-  #### Step 1 — Create a Dedicated Environment
+#### Step 1 — Create a Dedicated Environment
   ```bash
   conda create -n env_tensorflow python=3.11 pip
   conda activate env_tensorflow
   ```
 
-  #### Step 2 — Install TensorFlow
+#### Step 2 — Install TensorFlow
   Ensure pip is current, then install with GPU support:
   ```bash
   pip install --upgrade pip
   pip install tensorflow[and-cuda]
   ```
 
-  #### Step 3 — Confirm the CUDA Packages
+#### Step 3 — Confirm the CUDA Packages
   Ensure the NVIDIA packages landed:
   ```bash
   pip list | grep -i nvidia
   ```
   If empty, reinstall using `pip install --force-reinstall "tensorflow[and-cuda]"` or pin to a specific version if needed.
 
-  #### Step 4 — Register the Kernel
+#### Step 4 — Register the Kernel
   ```bash
   conda install ipykernel
   python -m ipykernel install --user --name env_tensorflow --display-name "Python (env_tensorflow)"
   ```
 
-  #### Step 5 — Verify Installation and WSL Pathing
+#### Step 5 — Verify Installation and WSL Pathing
   Verify: `python -c "import tensorflow as tf; print(tf.__version__)"`.
   GPU Check: `python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"`.
 
@@ -192,8 +199,10 @@ Create and run these files to compare CPU vs GPU performance.
 
 ## **PyTorch Benchmark (`pytorch_project.py`)**:
 
-<details>
-  <summary><strong>💡Expand for details</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡Expand for details</strong>
+  </summary>
 
   In Terminal:
   ```bash
@@ -229,14 +238,17 @@ Create and run these files to compare CPU vs GPU performance.
   ```bash
   python pytorch_project.py
   ```
+
 </details>
 
 ---
 
 ## **TensorFlow Benchmark (`tensorflow_project.py`)**:
 
-<details>
-  <summary><strong>💡Expand for details</strong></summary>
+<details markdown="1">
+  <summary>
+  <strong>💡Expand for details</strong>
+  </summary>
 
   In Terminal:
   ```bash
@@ -272,6 +284,7 @@ Create and run these files to compare CPU vs GPU performance.
   ```bash
   python tensorflow_project.py
   ```
+
 </details>
 
 ---
@@ -292,6 +305,6 @@ If you lack an NVIDIA GPU, install the CPU-only version:
 
 **Next:** [Part 10 — Building Reproducible Research Workflows](https://abhigyan-pro.github.io/Blogs/Part11.html)
 |
-**Previous:** [Part 8 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
+**Previous:** [Part 9 — Enabling GPU Computing in WSL2 and Linux with CUDA](https://abhigyan-pro.github.io/Blogs/Part9.html)
 
 [All Blogs](https://abhigyan-pro.github.io/#blogs)

@@ -1,0 +1,649 @@
+diff --git a/Blogs/Part1.md b/Blogs/Part1.md
+index 2f502d3..3e72d1d 100644
+--- a/Blogs/Part1.md
++++ b/Blogs/Part1.md
+@@ -51,8 +51,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -70,6 +72,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+@@ -80,11 +83,13 @@ By the end, you'll have:
+ 
+ ## Install WSL with Ubuntu
+ 
+-<details>
+-  <summary><strong>💡 Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Expand for details</strong>
++  </summary>
+ 
+ 
+-  ### Step 1 — Open Windows Terminal
++### Step 1 — Open Windows Terminal
+ 
+   1. Open the **Start Menu**.
+   2. Search for **Windows Terminal**.
+@@ -94,7 +99,7 @@ By the end, you'll have:
+ 
+   A Windows Terminal window should now open.
+ 
+-  ### Step 2 — View Available Linux Distributions
++### Step 2 — View Available Linux Distributions
+ 
+   Run:
+   ```bash
+@@ -105,7 +110,7 @@ By the end, you'll have:
+ 
+   For this series, we'll use: `Ubuntu-24.04`
+ 
+-  ### Step 3 — Install Ubuntu
++### Step 3 — Install Ubuntu
+ 
+   Run:
+   ```bash
+@@ -119,7 +124,7 @@ By the end, you'll have:
+ 
+   Restart your computer if prompted.
+ 
+-  ### Step 4 — Launch Ubuntu
++### Step 4 — Launch Ubuntu
+ 
+   Open Ubuntu from the Start Menu.
+ 
+@@ -130,7 +135,7 @@ By the end, you'll have:
+ 
+   The first launch may take a minute.
+ 
+-  ### Step 5 — Create Your Linux User
++### Step 5 — Create Your Linux User
+ 
+   Ubuntu will ask you to create:
+   - A username
+@@ -142,7 +147,7 @@ By the end, you'll have:
+ 
+   Press Enter after typing the password.
+ 
+-  ### Step 6 — Update Ubuntu
++### Step 6 — Update Ubuntu
+ 
+   Run:
+   ```bash
+@@ -156,7 +161,7 @@ By the end, you'll have:
+ 
+   Ubuntu may ask for the password you created.
+ 
+-  ### Step 7 — Install Basic Utilities
++### Step 7 — Install Basic Utilities
+ 
+   Run:
+   ```bash
+@@ -170,10 +175,12 @@ By the end, you'll have:
+ 
+ ## Install Miniconda (Same process for both WSL2 user and Native Linux user)
+ 
+-<details>
+-  <summary><strong>💡 Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Expand for details</strong>
++  </summary>
+ 
+-  ### Step 8 — Download Miniconda
++### Step 8 — Download Miniconda
+ 
+   Move to your home directory:
+   ```bash
+@@ -185,7 +192,7 @@ By the end, you'll have:
+   wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
+   ```
+ 
+-  ### Step 9 — Install Miniconda
++### Step 9 — Install Miniconda
+ 
+   Run:
+   ```bash
+@@ -198,13 +205,13 @@ By the end, you'll have:
+   3. Press Enter to use the default installation location.
+   4. When asked to initialize Miniconda, type `yes`.
+ 
+-  ### Step 10 — Restart Ubuntu
++### Step 10 — Restart Ubuntu
+ 
+   Close Ubuntu. Open it again.
+ 
+   You should now see `(base)` at the beginning of the terminal prompt.
+ 
+-  ### Step 11 — Verify the Installation
++### Step 11 — Verify the Installation
+ 
+   Run:
+   ```bash
+@@ -228,12 +235,14 @@ By the end, you'll have:
+ 
+ ## Understanding Where Everything Lives
+ 
+-<details>
+-  <summary><strong>💡 Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Expand for details</strong>
++  </summary>
+ 
+   Before moving on, let's understand where your files are stored.
+ 
+-  #### Your Home Directory
++#### Your Home Directory
+ 
+   Your Linux home directory is:
+   ```text
+@@ -252,7 +261,7 @@ By the end, you'll have:
+   pwd
+   ```
+ 
+-  #### Windows Drives
++#### Windows Drives
+ 
+   Inside Ubuntu, your Windows drives appear under `/mnt`:
+ 
+@@ -263,14 +272,14 @@ By the end, you'll have:
+   | E:\ | /mnt/e |
+ 
+ 
+-  #### Where Is Miniconda?
++#### Where Is Miniconda?
+ 
+   By default, Miniconda is installed in:
+   ```text
+   ~/miniconda3
+   ```
+ 
+-  #### Where Should You Keep Projects?
++#### Where Should You Keep Projects?
+ 
+   Although you can work inside `/mnt/c` or `/mnt/d`, it's generally recommended to keep Python projects inside your Linux home directory.
+ 
+diff --git a/Blogs/Part10.md b/Blogs/Part10.md
+index ab6360e..3d28179 100644
+--- a/Blogs/Part10.md
++++ b/Blogs/Part10.md
+@@ -49,8 +49,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -69,6 +71,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part11.md b/Blogs/Part11.md
+index 6b2b67e..f58635a 100644
+--- a/Blogs/Part11.md
++++ b/Blogs/Part11.md
+@@ -49,8 +49,10 @@ By the end, you'll understand:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt[cite: 23]:
+ 
+@@ -69,6 +71,7 @@ By the end, you'll understand:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."[cite: 23]
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion[cite: 23].
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part2.md b/Blogs/Part2.md
+index 3fb8234..fed4697 100644
+--- a/Blogs/Part2.md
++++ b/Blogs/Part2.md
+@@ -51,8 +51,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -71,6 +73,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part3.md b/Blogs/Part3.md
+index a5c84c7..4534cbb 100644
+--- a/Blogs/Part3.md
++++ b/Blogs/Part3.md
+@@ -51,8 +51,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -71,6 +73,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part4.md b/Blogs/Part4.md
+index f94d633..a8f42f0 100644
+--- a/Blogs/Part4.md
++++ b/Blogs/Part4.md
+@@ -49,8 +49,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -69,6 +71,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part5.md b/Blogs/Part5.md
+index de571de..d12653c 100644
+--- a/Blogs/Part5.md
++++ b/Blogs/Part5.md
+@@ -48,8 +48,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -67,6 +69,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part6.md b/Blogs/Part6.md
+index a5ea508..0c02a58 100644
+--- a/Blogs/Part6.md
++++ b/Blogs/Part6.md
+@@ -50,8 +50,10 @@ By the end of this part, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -70,6 +72,7 @@ By the end of this part, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part7.md b/Blogs/Part7.md
+index 9b0252d..4d0e354 100644
+--- a/Blogs/Part7.md
++++ b/Blogs/Part7.md
+@@ -49,8 +49,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -69,6 +71,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+diff --git a/Blogs/Part8.md b/Blogs/Part8.md
+index d473a59..fd64957 100644
+--- a/Blogs/Part8.md
++++ b/Blogs/Part8.md
+@@ -48,8 +48,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -67,6 +69,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Why GPU Matters for Research and ML
+@@ -88,10 +91,12 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
+ # NVIDIA GPU drivers installation
+ ## For WSL2 Users
+ 
+-<details>
+-  <summary><strong>💡Expand for details </strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡Expand for details </strong>
++  </summary>
+ 
+-  #### Step 1 — Install or Update NVIDIA Drivers on Windows
++#### Step 1 — Install or Update NVIDIA Drivers on Windows
+   CUDA support on WSL is powered by your Windows NVIDIA driver, which acts as a bridge between the hardware and your Linux environment. If your driver is outdated, WSL may fail to detect your GPU.
+ 
+   **1. Identify your GPU:** Not sure which card you have? Open **Task Manager** (`Ctrl+Shift+Esc`), go to the **Performance** tab, and click **GPU** on the left. The name of your card is in the top-right corner.
+@@ -106,21 +111,21 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
+ 
+   **4. Finalize:** **Restart your computer.** This step is mandatory for the new driver to properly initialize the communication layer between Windows and WSL.
+ 
+-  #### Step 2 — Verify GPU Access Inside WSL
++#### Step 2 — Verify GPU Access Inside WSL
+   Open your Ubuntu terminal and run:
+   ```bash
+   nvidia-smi
+   ```
+   If you see a table showing your GPU name, driver, and CUDA version, you are set. If `command not found`, update your Windows driver.
+ 
+-  #### Step 3 — Set the WSL GPU Library Path
++#### Step 3 — Set the WSL GPU Library Path
+   WSL exposes GPU driver interfaces via `/usr/lib/wsl/lib`. Open your `.bashrc` (`nano ~/.bashrc`) and add:
+   ```bash
+   export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+   ```
+   Save (`Ctrl+X`, `Y`, `Enter`) and run `source ~/.bashrc`.
+ 
+-  #### Step 4 — A Heads-Up About Part 10
++#### Step 4 — A Heads-Up About Part 10
+   When installing TensorFlow in Part 10 (`pip install tensorflow[and-cuda]`), it is normal for it to occasionally fail to locate libraries on WSL. This is an issue with library discovery, not your driver. We will fix this in Part 10 with a scoped `LD_LIBRARY_PATH` export.
+ 
+ </details>
+@@ -129,18 +134,20 @@ GPUs run thousands of small operations in parallel, making them exceptionally po
+ 
+ ## Native Linux Users
+ 
+-<details>
+-  <summary><strong>💡Expand for details </strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡Expand for details </strong>
++  </summary>
+ 
+-  #### Step 1 — Install NVIDIA Drivers
++#### Step 1 — Install NVIDIA Drivers
+   Follow NVIDIA's [official installation guide](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/). You only need the **driver**—the next part will handle the specific CUDA libraries.
+ 
+-  #### Step 2 — Verify GPU Access
++#### Step 2 — Verify GPU Access
+   Run `nvidia-smi`. You should see your GPU name and version without errors.
+ 
+   ---
+ 
+-  ### Before You Proceed to Part 10
++### Before You Proceed to Part 10
+   Run `nvidia-smi` and note the maximum supported **CUDA Version** (e.g., `12.x`). Use this as an upper bound when installing PyTorch and TensorFlow.
+ 
+   **Warning:** Check `~/.bashrc` for old `LD_LIBRARY_PATH=/usr/local/cuda/lib64` entries and remove them; they conflict with pip-installed CUDA libraries.
+diff --git a/Blogs/Part9.md b/Blogs/Part9.md
+index 01e1070..6fbbdc2 100644
+--- a/Blogs/Part9.md
++++ b/Blogs/Part9.md
+@@ -48,8 +48,10 @@ By the end, you'll have:
+ 
+ ## Content
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -68,6 +70,7 @@ By the end, you'll have:
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Prerequisites
+@@ -89,16 +92,18 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
+ 
+ ## Section 1 — Installing PyTorch
+ 
+-<details>
+-  <summary><strong>💡Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡Expand for details</strong>
++  </summary>
+ 
+-  #### Step 1 — Create a Dedicated Environment
++#### Step 1 — Create a Dedicated Environment
+   ```bash
+   conda create -n env_pytorch python=3.11 pip
+   conda activate env_pytorch
+   ```
+ 
+-  #### Step 2 — Get the Correct Install Command
++#### Step 2 — Get the Correct Install Command
+   Visit [pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) and generate your command using the **Pip** package option and your `nvidia-smi` reported CUDA version.
+ 
+   Run the generated command (example):
+@@ -106,13 +111,13 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
+   pip3 install torch torchvision --index-url [https://download.pytorch.org/whl/cu132](https://download.pytorch.org/whl/cu132)
+   ```
+ 
+-  #### Step 3 — Register the Kernel
++#### Step 3 — Register the Kernel
+   ```bash
+   conda install ipykernel
+   python -m ipykernel install --user --name env_pytorch --display-name "Python (env_pytorch)"
+   ```
+ 
+-  #### Step 4 — Verify PyTorch Installation
++#### Step 4 — Verify PyTorch Installation
+   Verify version: `python -c "import torch; print(torch.__version__)"`.
+   Verify GPU: `python -c "import torch; print(torch.cuda.is_available())"`.
+ 
+@@ -122,36 +127,38 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
+ 
+ ## Section 2 — Installing TensorFlow
+ 
+-<details>
+-  <summary><strong>💡Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡Expand for details</strong>
++  </summary>
+ 
+-  #### Step 1 — Create a Dedicated Environment
++#### Step 1 — Create a Dedicated Environment
+   ```bash
+   conda create -n env_tensorflow python=3.11 pip
+   conda activate env_tensorflow
+   ```
+ 
+-  #### Step 2 — Install TensorFlow
++#### Step 2 — Install TensorFlow
+   Ensure pip is current, then install with GPU support:
+   ```bash
+   pip install --upgrade pip
+   pip install tensorflow[and-cuda]
+   ```
+ 
+-  #### Step 3 — Confirm the CUDA Packages
++#### Step 3 — Confirm the CUDA Packages
+   Ensure the NVIDIA packages landed:
+   ```bash
+   pip list | grep -i nvidia
+   ```
+   If empty, reinstall using `pip install --force-reinstall "tensorflow[and-cuda]"` or pin to a specific version if needed.
+ 
+-  #### Step 4 — Register the Kernel
++#### Step 4 — Register the Kernel
+   ```bash
+   conda install ipykernel
+   python -m ipykernel install --user --name env_tensorflow --display-name "Python (env_tensorflow)"
+   ```
+ 
+-  #### Step 5 — Verify Installation and WSL Pathing
++#### Step 5 — Verify Installation and WSL Pathing
+   Verify: `python -c "import tensorflow as tf; print(tf.__version__)"`.
+   GPU Check: `python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"`.
+ 
+@@ -192,8 +199,10 @@ Create and run these files to compare CPU vs GPU performance.
+ 
+ ## **PyTorch Benchmark (`pytorch_project.py`)**:
+ 
+-<details>
+-  <summary><strong>💡Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡Expand for details</strong>
++  </summary>
+ 
+   In Terminal:
+   ```bash
+@@ -229,14 +238,17 @@ Create and run these files to compare CPU vs GPU performance.
+   ```bash
+   python pytorch_project.py
+   ```
++
+ </details>
+ 
+ ---
+ 
+ ## **TensorFlow Benchmark (`tensorflow_project.py`)**:
+ 
+-<details>
+-  <summary><strong>💡Expand for details</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡Expand for details</strong>
++  </summary>
+ 
+   In Terminal:
+   ```bash
+@@ -272,6 +284,7 @@ Create and run these files to compare CPU vs GPU performance.
+   ```bash
+   python tensorflow_project.py
+   ```
++
+ </details>
+ 
+ ---
+diff --git a/Blogs/Preface.md b/Blogs/Preface.md
+index 8ffc3d4..d8240a2 100644
+--- a/Blogs/Preface.md
++++ b/Blogs/Preface.md
+@@ -132,8 +132,10 @@ Develop & Execute Python Code
+ 
+ Each component has a specific purpose. Together, they create a development environment that is widely used in software development, data science, machine learning, and scientific research.
+ 
+-<details>
+-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
++<details markdown="1">
++  <summary>
++  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
++  </summary>
+   
+   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+ 
+@@ -152,6 +154,7 @@ Each component has a specific purpose. Together, they create a development envir
+   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+ 
+   Think of this series as the roadmap and your AI assistant as your learning companion.
++
+ </details>
+ 
+ ### Series Roadmap

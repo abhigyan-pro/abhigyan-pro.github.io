@@ -52,7 +52,9 @@ By the end, you'll have:
 ## Content
 
 <details markdown="1">
-  <summary><strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong></summary>
+  <summary>
+  <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
+  </summary>
   
   If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
 
@@ -70,6 +72,7 @@ By the end, you'll have:
   > "I am following [link]. In Step X it says to run [command] — explain what each part does."
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
+
 </details>
 
 ### Prerequisites
@@ -81,10 +84,12 @@ By the end, you'll have:
 ## Install WSL with Ubuntu
 
 <details markdown="1">
-  <summary><strong>💡 Expand for details</strong></summary>
+  <summary>
+  <strong>💡 Expand for details</strong>
+  </summary>
 
 
-  ### Step 1 — Open Windows Terminal
+### Step 1 — Open Windows Terminal
 
   1. Open the **Start Menu**.
   2. Search for **Windows Terminal**.
@@ -94,7 +99,7 @@ By the end, you'll have:
 
   A Windows Terminal window should now open.
 
-  ### Step 2 — View Available Linux Distributions
+### Step 2 — View Available Linux Distributions
 
   Run:
   ```bash
@@ -105,7 +110,7 @@ By the end, you'll have:
 
   For this series, we'll use: `Ubuntu-24.04`
 
-  ### Step 3 — Install Ubuntu
+### Step 3 — Install Ubuntu
 
   Run:
   ```bash
@@ -119,7 +124,7 @@ By the end, you'll have:
 
   Restart your computer if prompted.
 
-  ### Step 4 — Launch Ubuntu
+### Step 4 — Launch Ubuntu
 
   Open Ubuntu from the Start Menu.
 
@@ -130,7 +135,7 @@ By the end, you'll have:
 
   The first launch may take a minute.
 
-  ### Step 5 — Create Your Linux User
+### Step 5 — Create Your Linux User
 
   Ubuntu will ask you to create:
   - A username
@@ -142,7 +147,7 @@ By the end, you'll have:
 
   Press Enter after typing the password.
 
-  ### Step 6 — Update Ubuntu
+### Step 6 — Update Ubuntu
 
   Run:
   ```bash
@@ -156,7 +161,7 @@ By the end, you'll have:
 
   Ubuntu may ask for the password you created.
 
-  ### Step 7 — Install Basic Utilities
+### Step 7 — Install Basic Utilities
 
   Run:
   ```bash
@@ -171,9 +176,11 @@ By the end, you'll have:
 ## Install Miniconda (Same process for both WSL2 user and Native Linux user)
 
 <details markdown="1">
-  <summary><strong>💡 Expand for details</strong></summary>
+  <summary>
+  <strong>💡 Expand for details</strong>
+  </summary>
 
-  ### Step 8 — Download Miniconda
+### Step 8 — Download Miniconda
 
   Move to your home directory:
   ```bash
@@ -185,7 +192,7 @@ By the end, you'll have:
   wget [https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh](https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh)
   ```
 
-  ### Step 9 — Install Miniconda
+### Step 9 — Install Miniconda
 
   Run:
   ```bash
@@ -198,13 +205,13 @@ By the end, you'll have:
   3. Press Enter to use the default installation location.
   4. When asked to initialize Miniconda, type `yes`.
 
-  ### Step 10 — Restart Ubuntu
+### Step 10 — Restart Ubuntu
 
   Close Ubuntu. Open it again.
 
   You should now see `(base)` at the beginning of the terminal prompt.
 
-  ### Step 11 — Verify the Installation
+### Step 11 — Verify the Installation
 
   Run:
   ```bash
@@ -229,11 +236,13 @@ By the end, you'll have:
 ## Understanding Where Everything Lives
 
 <details markdown="1">
-  <summary><strong>💡 Expand for details</strong></summary>
+  <summary>
+  <strong>💡 Expand for details</strong>
+  </summary>
 
   Before moving on, let's understand where your files are stored.
 
-  #### Your Home Directory
+#### Your Home Directory
 
   Your Linux home directory is:
   ```text
@@ -252,7 +261,7 @@ By the end, you'll have:
   pwd
   ```
 
-  #### Windows Drives
+#### Windows Drives
 
   Inside Ubuntu, your Windows drives appear under `/mnt`:
 
@@ -263,14 +272,14 @@ By the end, you'll have:
   | E:\ | /mnt/e |
 
 
-  #### Where Is Miniconda?
+#### Where Is Miniconda?
 
   By default, Miniconda is installed in:
   ```text
   ~/miniconda3
   ```
 
-  #### Where Should You Keep Projects?
+#### Where Should You Keep Projects?
 
   Although you can work inside `/mnt/c` or `/mnt/d`, it's generally recommended to keep Python projects inside your Linux home directory.
 
@@ -283,6 +292,7 @@ By the end, you'll have:
   Don't worry — the projects directory doesn't exist yet. We'll create it properly in a later article on Linux essentials for Python developers.
 
   For now, simply remember that your home directory (`~`) is the recommended place for your future projects.
+
 </details>
 
 ---
