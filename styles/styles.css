@@ -1049,4 +1049,79 @@ section {
     font-weight: 500;
 }
 
+/* Credential Rows (Awards & Grants / Roles of Responsibility / Recognition) */
+.credentials-list {
+    margin-bottom: 3.5rem;
+}
+
+.credential-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 2rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--color-grey-5);
+}
+
+.credential-row:first-child {
+    padding-top: 0;
+}
+
+.credential-row:last-child {
+    border-bottom: none;
+}
+
+.credential-row .cred-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    padding-top: 0.2rem;
+}
+
+.credential-row .cred-content h5 {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: var(--color-grey-1);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.credential-row .cred-content h5 i {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+    width: 1em;
+    text-align: center;
+}
+
+.credential-row .cred-content .cred-sub {
+    display: block;
+    font-size: 0.88rem;
+    color: var(--color-grey-2);
+    opacity: 0.7;
+    margin-bottom: 0.4rem;
+}
+
+.credential-row .cred-content p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-grey-2);
+    opacity: 0.85;
+}
+
+.credential-row .cred-content p a {
+    color: var(--color-secondary);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+    .credential-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
 /*# sourceMappingURL=styles.css.map */

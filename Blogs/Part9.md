@@ -166,12 +166,17 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
   1. Find the location: `pip show nvidia-cudnn-cu12`.
   2. Identify the `nvidia` path: `/home/<user>/miniconda3/envs/env_tensorflow/lib/python3.11/site-packages/nvidia`.
   3. Apply the library path fix and make it permanent for this environment only.** Rather than adding this to `~/.bashrc` (which would apply it globally, even to environments that don't need it), scope it to `env_tensorflow` using conda's activation hooks:
+  4. Run each of the following line seperately
 
   ```bash
   mkdir -p $(conda info --base)/envs/env_tensorflow/etc/conda/activate.d
+
   cat > $(conda info --base)/envs/env_tensorflow/etc/conda/activate.d/env_vars.sh << 'EOF'
+
   NVIDIA_BASE=/home/<your-user>/miniconda3/envs/env_tensorflow/lib/python3.11/site-packages/nvidia
+
   export LD_LIBRARY_PATH=$(find "$NVIDIA_BASE" -maxdepth 2 -type d -name lib | tr '\n' ':')$LD_LIBRARY_PATH
+
   EOF
   ```
   Then reactivate the environment to pick it up:
