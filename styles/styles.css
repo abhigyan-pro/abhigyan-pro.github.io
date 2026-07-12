@@ -1126,4 +1126,17 @@ section {
     }
 }
 
+/* Footer Fix */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5; /* Keeps it above content, but below your nav dots (z-index: 10) */
+    background-color: var(--color-primary); /* Ensures content doesn't bleed through */
+    padding: 1rem 0 !important; /* Forces the padding you want */
+}
+
+
+
 /*# sourceMappingURL=styles.css.map */
