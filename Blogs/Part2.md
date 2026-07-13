@@ -56,21 +56,35 @@ By the end, you'll have:
   <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
   </summary>
   
-  If you get stuck at any step, use a ChatAI (Claude, ChatGPT, Gemini, or Grok) with this prompt:
+  AI tools (like Claude, Gemini, or ChatGPT) give the best troubleshooting advice when they have the exact text of the tutorial. To ensure the AI understands what you are trying to build, we will give it the actual file.
 
-  > I am following this article: [paste this article's link]
-  >
-  > I am on Step [X].
-  >
-  > I did: [describe what you did]
-  >
-  > I got: [paste the exact error or describe what happened]
-  >
-  > Help me troubleshoot.
+  **1. Download the tutorial file**
+  * Click this link: [Part2.md on GitHub](https://github.com/abhigyan-pro/abhigyan-pro.github.io/blob/main/Blogs/Part2.md)
+  * Look near the top-right corner of the text box on that page.
+  * Click the **Download raw file** button (it looks like a downward arrow ⬇️).
 
-  To go deeper on any step:
+  **2. Upload it to your AI**
+  * Open your AI tool (ChatGPT, Claude, Gemini, etc.).
+  * Click the **paperclip (📎)** or **plus (➕)** icon next to the text box to upload the file (or simply drag and drop `Part2.md` into the chat).
 
-  > "I am following [link]. In Step X it says to run [command] — explain what each part does."
+  **3. Ask for Help**
+  Copy and paste this exact prompt into the chat along with your file:
+
+  > I have attached the markdown file for the tutorial I am following. Please read it so you understand the specific environment I am trying to build.
+  >
+  > I need help with the following:
+  >
+  > **Step [X]:** [paste exact step text from the blog]
+  >
+  > **Command I ran:** [paste exact command]
+  >
+  > **What happened:** [paste full output/error — if the terminal was truly blank, say so explicitly]
+  >
+  > Please help me troubleshoot and fix this error. You can use your general knowledge to solve the problem, but your solution MUST align with the architecture and tools taught in the attached file. Do not suggest alternative setups that contradict the tutorial. Once fixed, tell me what to do next in the article.
+
+  **To go deeper on a step before you run a command:**
+
+  > I have attached the `Part2.md` file. Look at Step [X] and explain exactly what the command does and why we are doing it before I run it.
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
 
