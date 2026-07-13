@@ -132,6 +132,8 @@ Develop & Execute Python Code
 
 Each component has a specific purpose. Together, they create a development environment that is widely used in software development, data science, machine learning, and scientific research.
 
+---
+
 <details markdown="1">
   <summary>
   <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
