@@ -88,7 +88,7 @@ By the end, you'll have:
 
   Think of this series as the roadmap and your AI assistant as your learning companion.
 
-</details>>
+</details>
 
 ### Prerequisites
 
