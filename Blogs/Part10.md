@@ -57,7 +57,7 @@ By the end, you'll have:
   AI tools (like Claude, Grok, Gemini, or ChatGPT) give the best troubleshooting advice when they have the exact text of the tutorial. To ensure the AI understands what you are trying to build, we will give it the actual file.
 
   **1. Download the tutorial file**
-  * Click this link: [Part10.md on GitHub](https://github.com/abhigyan-pro/abhigyan-pro.github.io/blob/main/Blogs/Part10.md)
+  * Open this link in a new tab: [Part10.md on GitHub](https://github.com/abhigyan-pro/abhigyan-pro.github.io/blob/main/Blogs/Part10.md)
   * Look near the top-right corner of the text box on that page.
   * Click the **Download raw file** button (it looks like a downward arrow ⬇️).
 
