@@ -53,7 +53,7 @@ By the end, you'll have:
   <strong>💡 Getting Unstuck (Expand for AI Troubleshooting Prompts)</strong>
   </summary>
   
-  AI tools (like Claude, Gemini, or ChatGPT) give the best troubleshooting advice when they have the exact text of the tutorial. To ensure the AI understands what you are trying to build, we will give it the actual file.
+  AI tools (like Claude, Grok, Gemini, or ChatGPT) give the best troubleshooting advice when they have the exact text of the tutorial. To ensure the AI understands what you are trying to build, we will give it the actual file.
 
   **1. Download the tutorial file**
   * Click this link: [Part9.md on GitHub](https://github.com/abhigyan-pro/abhigyan-pro.github.io/blob/main/Blogs/Part9.md)
