@@ -1126,6 +1126,43 @@ section {
     }
 }
 
+/* MEGHA Research Group logo icon (used alongside social icons on Home/Contact) */
+.lab-logo-link {
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+.lab-logo-link:hover {
+  transform: scale(1.08);
+}
+.lab-logo-link img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-grey-5);
+  box-shadow: var(--box-shadow-1);
+}
+
+/* MEGHA Research Group inline icon (used within the About paragraph) */
+.lab-icon-inline {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  transition: all 0.3s ease-in-out;
+}
+.lab-icon-inline:hover {
+  transform: scale(1.08);
+}
+.lab-icon-inline img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-grey-5);
+  vertical-align: middle;
+}
+
 /* Footer Fix */
 footer {
     position: fixed;
