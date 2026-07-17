@@ -59,12 +59,13 @@ There are countless tutorials that show you how to install Python, WSL, Ubuntu, 
 
 However, as I learned Python and gradually moved into machine learning, scientific computing, and research, I often found myself asking practical questions that weren't always answered in one place. Questions like:
 
-*   Why are we using WSL?
-*   Why Ubuntu?
-*   Why Miniconda instead of installing Python directly?
-*   Where are my files actually stored?
-*   Where should I keep my projects?
-*   How do all these tools fit together?
+*   How do I use Linux while staying on Windows?
+*   Why does everyone use Linux? What are Bash, the shell, and the terminal?
+*   What exactly are Python environments, and why is my code suddenly throwing compatibility errors?
+*   Why isn't my GPU being used?
+*   Git and GitHub seem important... where do I even begin?
+*   What is SSH, and how do I connect to remote servers or HPC clusters?
+*   What's a good way to organize and manage research projects?
 
 None of these questions are particularly difficult, but the answers are often scattered across documentation, videos, blog posts, and discussions. Much of this understanding is something developers gradually build through experience.
 
