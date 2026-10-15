@@ -48,7 +48,7 @@ export const publicationGroups = [
           'NeurIPS 2026 · Tackling Climate Change with Machine Learning Workshop',
         status: 'Accepted',
         note: '*Equal contribution (co-first authors)',
-        href: 'https://www.climatechange.ai/events/neurips2026',
+        // href: 'https://www.climatechange.ai/events/neurips2026',
       },
       {
         authors: 'Chakraborty, A., Arulraj, M., & Upadhyaya, S.',
