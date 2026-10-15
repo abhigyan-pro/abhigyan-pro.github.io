@@ -5,10 +5,10 @@
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.55;
 }
 
 /* A touch brighter on dark backgrounds where it reads best. */
 :global(html[data-theme='dark']) .canvas {
-  opacity: 0.6;
+  opacity: 0.65;
 }
