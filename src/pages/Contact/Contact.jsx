@@ -2,20 +2,11 @@ import { useState } from 'react'
 import Container from '../../components/ui/Container.jsx'
 import Section from '../../components/ui/Section.jsx'
 import PageHeader from '../../components/ui/PageHeader.jsx'
-import Button from '../../components/ui/Button.jsx'
 import Icon from '../../components/ui/Icon.jsx'
 import SocialLinks from '../../components/ui/SocialLinks.jsx'
 import NeuralBackground from '../../components/Home/NeuralBackground.jsx'
 import { profile, socials } from '../../data/profile.js'
 import styles from './Contact.module.css'
-
-function DownloadIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-    </svg>
-  )
-}
 
 // Google Maps embed (keyless) + a human-readable map link.
 const MAP_QUERY = 'IIT Hyderabad, Kandi, Sangareddy, Telangana 502284'
@@ -105,12 +96,6 @@ export default function Contact() {
           <div className={styles.connect}>
             <h2 className={styles.connectTitle}>Connect with me</h2>
             <SocialLinks items={socials} size="lg" />
-            <div className={styles.cv}>
-              <Button href={profile.cvUrl} variant="primary">
-                <DownloadIcon />
-                Download CV
-              </Button>
-            </div>
           </div>
         </Container>
       </Section>

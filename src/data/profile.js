@@ -18,8 +18,7 @@ export const profile = {
     'Understanding comes before prediction, and curiosity comes before understanding.',
   bio: 'I explore the why and how of aerosol–cloud–meteorology–precipitation interactions using machine learning and Explainable AI to support better weather and climate policy.',
   heroImage: '/img/hero.jpeg',
-  cvUrl:
-    'https://drive.google.com/file/d/1OXEkQg863aqgytOe9cFcdec1Ro8dLIK3/view?usp=drive_link',
+  cvUrl: '/CV.pdf',
   location: 'IIT Hyderabad, Sangareddy, Telangana-502284',
   email: 'ce23resch12001@iith.ac.in',
 }

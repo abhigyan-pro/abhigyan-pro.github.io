@@ -6,16 +6,8 @@ import NeuralBackground from '../../components/Home/NeuralBackground.jsx'
 import { profile, socials, highlights, spotlight } from '../../data/profile.js'
 import styles from './Home.module.css'
 
-function DownloadIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-    </svg>
-  )
-}
-
 export default function Home() {
-  const { headline, tagline, heroImage, cvUrl, affiliation } = profile
+  const { headline, tagline, heroImage, affiliation } = profile
 
   return (
     <div className={styles.home}>
@@ -41,12 +33,11 @@ export default function Home() {
             <p className={styles.tagline}>{tagline}</p>
 
             <div className={styles.actions}>
-              <Button href={cvUrl} variant="primary">
-                <DownloadIcon />
-                Download CV
+              <Button to="/publications" variant="primary">
+                View my work
               </Button>
-              <Link to="/publications" className={styles.ghost}>
-                View my work <span aria-hidden="true">›</span>
+              <Link to="/contact" className={styles.ghost}>
+                Get in touch <span aria-hidden="true">›</span>
               </Link>
             </div>
 

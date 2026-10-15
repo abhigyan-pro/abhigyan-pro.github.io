@@ -7,6 +7,7 @@ import Blogs from './pages/Blogs/Blogs.jsx'
 import Publications from './pages/Publications/Publications.jsx'
 import Gallery from './pages/Gallery/Gallery.jsx'
 import Contact from './pages/Contact/Contact.jsx'
+import CV from './pages/CV/CV.jsx'
 
 // Blog posts pull in react-markdown + highlight.js, so load them on demand
 // to keep the main bundle small.
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/publications" element={<Publications />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
+        <Route path="/cv" element={<CV />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

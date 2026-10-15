@@ -10,6 +10,7 @@ const links = [
   { to: '/publications', label: 'Publications' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/contact', label: 'Contact' },
+  { to: '/cv', label: 'CV' },
 ]
 
 export default function Navbar() {
