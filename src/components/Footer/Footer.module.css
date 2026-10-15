@@ -1,0 +1,35 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: var(--space-8) 0;
+  background-color: var(--bg);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.copy,
+.license {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.01em;
+}
+
+.license a {
+  color: var(--text-tertiary);
+}
+
+.license a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .inner {
+    justify-content: center;
+    text-align: center;
+  }
+}

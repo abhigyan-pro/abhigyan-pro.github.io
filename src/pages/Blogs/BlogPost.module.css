@@ -1,0 +1,134 @@
+.article {
+  padding: var(--space-16) 0 var(--space-24);
+}
+
+.inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-10);
+  transition: color 0.2s var(--ease);
+}
+
+.back:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ---------- Article header ---------- */
+.header {
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--border);
+}
+
+.label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: clamp(2rem, 4.5vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  margin-bottom: var(--space-5);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+}
+
+.dot {
+  color: var(--text-tertiary);
+}
+
+/* ---------- Social footer ---------- */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-16);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--border);
+}
+
+.followLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.missing {
+  color: var(--text-secondary);
+}
+
+/* Prev / next pager */
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-10);
+}
+
+.pagerLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface);
+  color: inherit;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.pagerLink:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.pagerNext {
+  text-align: right;
+}
+
+.pagerDir {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.pagerTitle {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .pager {
+    grid-template-columns: 1fr;
+  }
+  .pagerNext {
+    text-align: left;
+  }
+}

@@ -1,0 +1,49 @@
+.list {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border-radius: 50%;
+  transition: color 0.25s var(--ease), transform 0.25s var(--ease),
+    background-color 0.25s var(--ease);
+}
+
+.link:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.link svg {
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* Sizes */
+.md .link {
+  width: 26px;
+  height: 26px;
+}
+
+.lg .link {
+  width: 30px;
+  height: 30px;
+}
+
+.sm .link {
+  width: 20px;
+  height: 20px;
+}

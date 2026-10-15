@@ -1,0 +1,20 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--text);
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.toggle:hover {
+  background-color: var(--surface-2);
+  color: var(--accent);
+}
+
+.toggle svg {
+  width: 18px;
+  height: 18px;
+}

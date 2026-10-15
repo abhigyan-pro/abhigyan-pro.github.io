@@ -1,0 +1,40 @@
+.wrap {
+  margin-bottom: var(--space-12);
+}
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start {
+  text-align: left;
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  margin-top: var(--space-4);
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 60ch;
+}
+
+.center .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}

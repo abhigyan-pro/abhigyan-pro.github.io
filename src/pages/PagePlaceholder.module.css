@@ -1,0 +1,35 @@
+.wrap {
+  min-height: calc(100vh - var(--nav-height) - 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-24) 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-4);
+}
+
+.blurb {
+  font-size: 1.1875rem;
+  color: var(--text-secondary);
+  max-width: 48ch;
+}

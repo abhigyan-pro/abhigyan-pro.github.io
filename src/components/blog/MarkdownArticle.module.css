@@ -1,0 +1,242 @@
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  overflow-wrap: break-word;
+}
+
+/* Headings */
+.prose :global(h1),
+.prose :global(h2),
+.prose :global(h3),
+.prose :global(h4) {
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+.prose :global(h1) {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  margin: 0 0 var(--space-4);
+}
+
+.prose :global(h2) {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: var(--space-12) 0 var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+}
+
+.prose :global(h3) {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: var(--space-8) 0 var(--space-3);
+}
+
+.prose :global(h4) {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: var(--space-6) 0 var(--space-2);
+}
+
+/* Body */
+.prose :global(p) {
+  margin: 0 0 var(--space-5);
+}
+
+.prose :global(a) {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.prose :global(a:hover) {
+  text-decoration: underline;
+}
+
+.prose :global(strong) {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Lists */
+.prose :global(ul),
+.prose :global(ol) {
+  margin: 0 0 var(--space-5);
+  padding-left: 1.4rem;
+}
+
+.prose :global(ul) {
+  list-style: disc;
+}
+
+.prose :global(ol) {
+  list-style: decimal;
+}
+
+.prose :global(li) {
+  margin-bottom: var(--space-2);
+}
+
+.prose :global(li)::marker {
+  color: var(--text-tertiary);
+}
+
+/* Images */
+.prose :global(img) {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: var(--space-10) 0;
+}
+
+/* Inline images (small icons inside paragraphs) stay inline and unstyled. */
+.prose :global(p img) {
+  display: inline-block;
+  margin: 0 0.15rem;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+/*
+  The "Follow me" icons are monochrome SVGs loaded via <img>, so their
+  currentColor resolves to black and they disappear on the dark background.
+  They're the only images wrapped in <a>, so invert just those in dark mode.
+*/
+:global(html[data-theme='dark']) .prose :global(a img) {
+  filter: invert(1) brightness(1.8);
+}
+
+/* Inline code */
+.prose :global(code) {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background-color: var(--surface-2);
+  color: var(--text);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+/* Code blocks are rendered by the CodeBlock component (language bar + copy). */
+
+/* Blockquote */
+.prose :global(blockquote) {
+  margin: var(--space-6) 0;
+  padding: var(--space-2) var(--space-6);
+  border-left: 3px solid var(--accent);
+  color: var(--text-secondary);
+  background-color: var(--surface-2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.prose :global(blockquote p):last-child {
+  margin-bottom: 0;
+}
+
+/* Collapsible callouts (<details> / <summary>) — e.g. "Getting Unstuck" */
+.prose :global(details) {
+  margin: var(--space-8) 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+  border-radius: var(--radius-md);
+  background-color: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  overflow: hidden;
+  transition: border-color 0.25s var(--ease);
+}
+
+.prose :global(details[open]) {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.prose :global(summary) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-6);
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+  font-weight: 600;
+  user-select: none;
+  transition: background-color 0.25s var(--ease);
+}
+
+.prose :global(summary)::-webkit-details-marker {
+  display: none;
+}
+
+.prose :global(summary):hover {
+  background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.prose :global(summary strong) {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Chevron pushed to the right, rotates when open */
+.prose :global(summary)::after {
+  content: '';
+  margin-left: auto;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  transform: rotate(45deg);
+  transition: transform 0.3s var(--ease);
+}
+
+.prose :global(details[open] summary)::after {
+  transform: rotate(-135deg);
+}
+
+/* Body of an open callout: inset every element from the border */
+.prose :global(details[open] summary) {
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+}
+
+.prose :global(details) > :global(*:not(summary)) {
+  margin-left: var(--space-6);
+  margin-right: var(--space-6);
+}
+
+.prose :global(details) > :global(summary + *) {
+  margin-top: var(--space-6);
+}
+
+.prose :global(details) > :global(*:last-child) {
+  margin-bottom: var(--space-6);
+}
+
+/* Horizontal rule */
+.prose :global(hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: var(--space-10) 0;
+}
+
+/* Tables */
+.prose :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-6) 0;
+  font-size: 0.95rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose :global(th),
+.prose :global(td) {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+}
+
+.prose :global(th) {
+  background-color: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+}

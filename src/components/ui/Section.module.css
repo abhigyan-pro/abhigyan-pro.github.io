@@ -1,0 +1,20 @@
+.section {
+  padding: var(--space-24) 0;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+@media (max-width: 734px) {
+  .section {
+    padding: var(--space-16) 0;
+  }
+}
