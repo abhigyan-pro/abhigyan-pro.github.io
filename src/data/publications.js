@@ -38,6 +38,17 @@ export const publicationGroups = [
     heading: 'Peer-Reviewed Conference Proceedings',
     items: [
       {
+        authors: 'Sarawagi, A.*, Chakraborty, A.*, & Upadhyaya, S. A.',
+        year: '2026',
+        title:
+          'Sharpening Precipitation Nowcasts with Deep Learning: Architecture-Dependent Effects of Loss Functions',
+        venue:
+          'NeurIPS 2026 · Tackling Climate Change with Machine Learning Workshop',
+        status: 'Accepted',
+        note: '*Equal contribution (co-first authors)',
+        href: 'https://www.climatechange.ai/events/neurips2026',
+      },
+      {
         authors: 'Chakraborty, A., Arulraj, M., & Upadhyaya, S.',
         year: '2026',
         title:
@@ -67,6 +78,7 @@ export const publicationGroups = [
         year: '2025',
         title: 'Flash Drought Forecasting for Central India Using Long Short-Term Memory',
         venue: '2025 IEEE India Geoscience and Remote Sensing Symposium (InGARSS)',
+        href: 'https://doi.org/10.1109/InGARSS67683.2025.11583970',
       },
       {
         authors: 'Chakraborty, A., Kumar, B., & Upadhyaya, S.',
@@ -81,6 +93,7 @@ export const publicationGroups = [
         year: '2024',
         title: 'Enhancing River Discharge Forecasting With Multivariate LSTM',
         venue: '2024 IEEE India Geoscience and Remote Sensing Symposium (InGARSS)',
+        href: 'https://doi.org/10.1109/InGARSS61818.2024.10984172',
       },
     ],
   },

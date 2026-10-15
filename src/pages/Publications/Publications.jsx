@@ -42,6 +42,7 @@ function PublicationItem({ item }) {
           <Authors text={item.authors} /> ({item.year})
         </p>
         <p className={styles.itemVenue}>{item.venue}</p>
+        {item.note && <p className={styles.itemNote}>{item.note}</p>}
       </div>
       <div className={styles.itemAside}>
         {item.status && (

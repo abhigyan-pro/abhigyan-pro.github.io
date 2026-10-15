@@ -76,6 +76,13 @@
   line-height: 1.4;
 }
 
+.itemNote {
+  margin-top: var(--space-2);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
 /* ---------- Aside: status + link ---------- */
 .itemAside {
   flex-shrink: 0;
