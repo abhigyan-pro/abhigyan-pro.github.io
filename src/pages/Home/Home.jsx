@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Container from '../../components/ui/Container.jsx'
 import Button from '../../components/ui/Button.jsx'
 import SocialLinks from '../../components/ui/SocialLinks.jsx'
+import NeuralBackground from '../../components/Home/NeuralBackground.jsx'
 import { profile, socials, highlights, spotlight } from '../../data/profile.js'
 import styles from './Home.module.css'
 
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
+      <NeuralBackground />
       <div className={styles.bgGlow} aria-hidden="true" />
       <Container>
         <div className={styles.hero}>

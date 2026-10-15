@@ -1,0 +1,14 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* A touch brighter on dark backgrounds where it reads best. */
+:global(html[data-theme='dark']) .canvas {
+  opacity: 0.6;
+}
