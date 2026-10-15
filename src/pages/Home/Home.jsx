@@ -36,9 +36,9 @@ export default function Home() {
               <Button to="/publications" variant="primary">
                 View my work
               </Button>
-              <Link to="/contact" className={styles.ghost}>
+              {/* <Link to="/contact" className={styles.ghost}>
                 Get in touch <span aria-hidden="true">›</span>
-              </Link>
+              </Link> */}
             </div>
 
             {/* Highlights strip */}
