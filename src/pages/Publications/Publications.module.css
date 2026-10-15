@@ -111,10 +111,66 @@
   transform: translateX(4px);
 }
 
+/* ---------- Google Scholar CTA ---------- */
+.scholar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  margin-top: var(--space-16);
+  padding: var(--space-8);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 10%, var(--surface)),
+    var(--surface)
+  );
+}
+
+.scholarText {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.scholarIcon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.scholarTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.scholarSub {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 52ch;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 734px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .scholar {
+    flex-direction: column;
+    align-items: flex-start;
     gap: var(--space-6);
   }
 }
