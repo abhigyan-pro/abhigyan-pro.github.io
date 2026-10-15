@@ -1,5 +1,5 @@
 // Central profile content. Shared across Home, About, and Contact pages.
-import { publications } from './publications.js'
+import { publishedCount } from './publications.js'
 
 export const profile = {
   name: 'Abhigyan Chakraborty',
@@ -29,7 +29,7 @@ export const profile = {
 // paper in publications.js updates this automatically. The other counts are
 // manual — edit the numbers below when you have new ones.
 export const highlights = [
-  { value: String(publications.length), label: 'Publications' },
+  { value: String(publishedCount), label: 'Publications' },
   { value: '3', label: 'Conferences' },
   { value: '2', label: 'Summer Schools' },
   { value: '3', label: 'Travel Grants' },
