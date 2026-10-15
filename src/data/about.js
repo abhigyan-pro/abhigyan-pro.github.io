@@ -2,7 +2,7 @@
 
 export const about = {
   paragraphs: [
-    'I am a third-year Ph.D. candidate at IIT Hyderabad, working with Dr. Shruti Upadhyaya in the Department of Civil Engineering and the MEGHA Research Group. My work focuses on aerosol–cloud–meteorology–precipitation interactions, integrating Unsupervised Learning, Explainable AI, and High-Performance Computing to investigate rainfall and extreme weather.',
+    'I am a fourth-year Ph.D. candidate at IIT Hyderabad, working with Dr. Shruti Upadhyaya in the Department of Civil Engineering and the MEGHA Research Group. My work focuses on aerosol–cloud–meteorology–precipitation interactions, integrating Unsupervised Learning, Explainable AI, and High-Performance Computing to investigate rainfall and extreme weather.',
     'Previously, I worked at the North Eastern Space Applications Centre (NESAC), where I developed hydrological models for flood early warning systems. I am passionate about building interpretable, data-driven solutions that advance weather and climate science.',
   ],
   lab: {
