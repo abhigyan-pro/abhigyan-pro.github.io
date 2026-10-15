@@ -24,6 +24,7 @@ export const publicationGroups = [
         title:
           'Prediction of non-carcinogenic health risk using Hybrid Monte Carlo–machine learning approach',
         venue: 'Human and Ecological Risk Assessment',
+        href: 'https://doi.org/10.1080/10807039.2023.2188417',
       },
       {
         authors: 'Mallik, S., Chakraborty, A., Mishra, U., & Paul, N.',
@@ -31,6 +32,7 @@ export const publicationGroups = [
         title:
           'Prediction of irrigation water suitability using geospatial computing approach: a case study of Agartala city, India',
         venue: 'Environmental Science and Pollution Research',
+        href: 'https://doi.org/10.1007/s11356-022-21232-8',
       },
     ],
   },
