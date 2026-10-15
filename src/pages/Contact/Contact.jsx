@@ -5,6 +5,7 @@ import PageHeader from '../../components/ui/PageHeader.jsx'
 import Button from '../../components/ui/Button.jsx'
 import Icon from '../../components/ui/Icon.jsx'
 import SocialLinks from '../../components/ui/SocialLinks.jsx'
+import NeuralBackground from '../../components/Home/NeuralBackground.jsx'
 import { profile, socials } from '../../data/profile.js'
 import styles from './Contact.module.css'
 
@@ -36,6 +37,7 @@ export default function Contact() {
 
   return (
     <div className={styles.page}>
+      <NeuralBackground showy />
       <div className={styles.glowA} aria-hidden="true" />
       <div className={styles.glowB} aria-hidden="true" />
       <div className={styles.content}>

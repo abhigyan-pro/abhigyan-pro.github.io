@@ -4,8 +4,8 @@ import styles from './NeuralBackground.module.css'
 // Hero background that adapts to the theme:
 //   dark  -> drifting "neural network" of connected nodes
 //   light -> slowly spinning spiral galaxy
-// Accent-tinted, sized to its parent, and static under reduced-motion.
-export default function NeuralBackground() {
+// `showy` turns up density, brightness, and speed for a bolder look.
+export default function NeuralBackground({ showy = false }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -15,7 +15,21 @@ export default function NeuralBackground() {
     const ctx = canvas.getContext('2d')
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const MAX_DIST = 135
+    const MAX_DIST = showy ? 160 : 135
+
+    // Intensity-dependent tuning.
+    const F = {
+      neuralDiv: showy ? 15000 : 22000,
+      neuralVel: showy ? 0.42 : 0.22,
+      lineAlpha: showy ? 0.5 : 0.32,
+      nodeR: showy ? 2.1 : 1.6,
+      galaxyDiv: showy ? 2200 : 3200,
+      galaxyCap: showy ? 650 : 420,
+      starAlphaScale: showy ? 0.7 : 0.5,
+      starAlphaBase: showy ? 0.2 : 0.12,
+      rot: showy ? 0.002 : 0.0009,
+      glowAlpha: showy ? 0.26 : 0.16,
+    }
 
     const getMode = () =>
       document.documentElement.getAttribute('data-theme') === 'dark'
@@ -25,39 +39,59 @@ export default function NeuralBackground() {
     let mode = getMode()
     let width = 0
     let height = 0
-    let nodes = [] // neural
-    let stars = [] // galaxy
+    let nodes = []
+    let stars = []
     let rot = 0
     let raf = 0
 
     function build() {
       if (mode === 'neural') {
-        const count = Math.min(70, Math.max(22, Math.round((width * height) / 22000)))
+        const count = Math.min(110, Math.max(22, Math.round((width * height) / F.neuralDiv)))
         nodes = Array.from({ length: count }, () => ({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.22,
-          vy: (Math.random() - 0.5) * 0.22,
+          vx: (Math.random() - 0.5) * F.neuralVel,
+          vy: (Math.random() - 0.5) * F.neuralVel,
         }))
       } else {
-        const maxR = Math.hypot(width, height) * 0.46
-        const ARMS = 3
-        const WIND = 3.2 // how tightly arms wind
-        const count = Math.min(420, Math.max(160, Math.round((width * height) / 3200)))
-        stars = Array.from({ length: count }, () => {
-          const t = Math.pow(Math.random(), 0.7) // bias slightly outward
-          const arm = Math.floor(Math.random() * ARMS)
-          const angle =
-            arm * ((2 * Math.PI) / ARMS) +
-            t * WIND +
-            (Math.random() - 0.5) * 0.5
-          return {
-            radius: t * maxR,
-            angle,
-            size: Math.random() * 1.3 + 0.4,
-            alpha: (1 - t) * 0.5 + 0.12,
+        const maxR = Math.min(
+          Math.hypot(width, height) * 0.46,
+          Math.min(width, height) * 0.72,
+        )
+        const ARMS = 2
+        const WIND = 3.6
+        // crude gaussian in roughly [-1, 1]
+        const gauss = () =>
+          (Math.random() + Math.random() + Math.random() - 1.5) / 1.5
+        const count = Math.min(
+          F.galaxyCap,
+          Math.max(240, Math.round((width * height) / F.galaxyDiv)),
+        )
+        stars = []
+        for (let i = 0; i < count; i++) {
+          if (Math.random() < 0.34) {
+            // dense central bulge
+            const r = Math.abs(gauss()) * maxR * 0.13
+            stars.push({
+              radius: r,
+              angle: Math.random() * Math.PI * 2,
+              size: Math.random() * 1.1 + 0.7,
+              alpha: 0.42 + Math.random() * 0.3,
+            })
+          } else {
+            // spiral-arm star with scatter that grows outward
+            const arm = Math.floor(Math.random() * ARMS)
+            const u = Math.pow(Math.random(), 0.85)
+            const angle =
+              arm * ((2 * Math.PI) / ARMS) + u * WIND + gauss() * 0.22 * (0.35 + u)
+            stars.push({
+              radius: u * maxR + gauss() * maxR * 0.025,
+              angle,
+              size: Math.random() * 1.1 + 0.35,
+              alpha: (1 - u) * F.starAlphaScale + F.starAlphaBase,
+            })
           }
-        })
+        }
       }
     }
 
@@ -78,7 +112,7 @@ export default function NeuralBackground() {
           const b = nodes[j]
           const d = Math.hypot(a.x - b.x, a.y - b.y)
           if (d < MAX_DIST) {
-            ctx.strokeStyle = `rgba(${C}, ${(1 - d / MAX_DIST) * 0.32})`
+            ctx.strokeStyle = `rgba(${C}, ${(1 - d / MAX_DIST) * F.lineAlpha})`
             ctx.lineWidth = 1
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
@@ -88,22 +122,24 @@ export default function NeuralBackground() {
         }
       }
       for (const n of nodes) {
-        ctx.fillStyle = `rgba(${C}, 0.85)`
+        ctx.fillStyle = `rgba(${C}, 0.9)`
         ctx.beginPath()
-        ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2)
+        ctx.arc(n.x, n.y, F.nodeR, 0, Math.PI * 2)
         ctx.fill()
       }
     }
 
     function drawGalaxy() {
       const cx = width / 2
-      const cy = height / 2
-      const C = '46, 60, 140' // indigo, reads on near-white
+      const cy = height * 0.42 // sit the galaxy centre a bit above middle
+      const C = '46, 60, 140'
 
-      // Soft core glow
-      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, height * 0.28)
-      glow.addColorStop(0, 'rgba(90, 110, 220, 0.16)')
-      glow.addColorStop(1, 'rgba(90, 110, 220, 0)')
+      // Soft dark core shading so the bulge reads as a dense center on white.
+      const R = Math.min(width, height) * 0.3
+      const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, R)
+      glow.addColorStop(0, `rgba(60, 72, 150, ${F.glowAlpha})`)
+      glow.addColorStop(0.5, `rgba(60, 72, 150, ${F.glowAlpha * 0.4})`)
+      glow.addColorStop(1, 'rgba(60, 72, 150, 0)')
       ctx.fillStyle = glow
       ctx.fillRect(0, 0, width, height)
 
@@ -133,7 +169,7 @@ export default function NeuralBackground() {
           if (n.y <= 0 || n.y >= height) n.vy *= -1
         }
       } else {
-        rot += 0.0009 // slow spin
+        rot += F.rot
       }
       draw()
       raf = requestAnimationFrame(step)
@@ -146,7 +182,6 @@ export default function NeuralBackground() {
     const ro = new ResizeObserver(resize)
     ro.observe(parent)
 
-    // Swap effect when the theme changes.
     const mo = new MutationObserver(() => {
       const next = getMode()
       if (next !== mode) {
@@ -166,7 +201,13 @@ export default function NeuralBackground() {
       ro.disconnect()
       mo.disconnect()
     }
-  }, [])
+  }, [showy])
 
-  return <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
+  return (
+    <canvas
+      ref={canvasRef}
+      className={`${styles.canvas} ${showy ? styles.showy : ''}`}
+      aria-hidden="true"
+    />
+  )
 }
