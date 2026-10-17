@@ -4,8 +4,19 @@ import styles from './NeuralBackground.module.css'
 // Hero background that adapts to the theme:
 //   dark  -> drifting "neural network" of connected nodes
 //   light -> slowly spinning spiral galaxy
-// `showy` turns up density, brightness, and speed for a bolder look.
-export default function NeuralBackground({ showy = false }) {
+//
+// Intensity can be set per-mode:
+//   showy        -> shorthand: both modes bold
+//   showyGalaxy  -> bold galaxy (light)
+//   showyNeural  -> bold neural (dark)
+//   neuralSpeed / galaxySpeed -> motion multipliers
+export default function NeuralBackground({
+  showy = false,
+  showyGalaxy = showy,
+  showyNeural = showy,
+  neuralSpeed = 1,
+  galaxySpeed = 1,
+}) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -15,28 +26,44 @@ export default function NeuralBackground({ showy = false }) {
     const ctx = canvas.getContext('2d')
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    const MAX_DIST = showy ? 160 : 135
 
-    // Intensity-dependent tuning.
-    const F = {
-      neuralDiv: showy ? 15000 : 22000,
-      neuralVel: showy ? 0.42 : 0.22,
-      lineAlpha: showy ? 0.5 : 0.32,
-      nodeR: showy ? 2.1 : 1.6,
-      galaxyDiv: showy ? 2200 : 3200,
-      galaxyCap: showy ? 650 : 420,
-      starAlphaScale: showy ? 0.7 : 0.5,
-      starAlphaBase: showy ? 0.2 : 0.12,
-      rot: showy ? 0.002 : 0.0009,
-      glowAlpha: showy ? 0.26 : 0.16,
-    }
+    const makeF = (sy) =>
+      sy
+        ? {
+            neuralDiv: 15000,
+            neuralVel: 0.42,
+            lineAlpha: 0.5,
+            nodeR: 2.1,
+            maxDist: 160,
+            galaxyDiv: 2200,
+            galaxyCap: 650,
+            starAlphaScale: 0.7,
+            starAlphaBase: 0.2,
+            rot: 0.002,
+            glowAlpha: 0.26,
+          }
+        : {
+            neuralDiv: 22000,
+            neuralVel: 0.22,
+            lineAlpha: 0.32,
+            nodeR: 1.6,
+            maxDist: 135,
+            galaxyDiv: 3200,
+            galaxyCap: 420,
+            starAlphaScale: 0.5,
+            starAlphaBase: 0.12,
+            rot: 0.0009,
+            glowAlpha: 0.16,
+          }
 
     const getMode = () =>
       document.documentElement.getAttribute('data-theme') === 'dark'
         ? 'neural'
         : 'galaxy'
+    const curShowy = () => (mode === 'neural' ? showyNeural : showyGalaxy)
 
     let mode = getMode()
+    let F = makeF(curShowy())
     let width = 0
     let height = 0
     let nodes = []
@@ -44,14 +71,26 @@ export default function NeuralBackground({ showy = false }) {
     let rot = 0
     let raf = 0
 
+    function applyOpacity() {
+      canvas.style.opacity =
+        mode === 'neural'
+          ? showyNeural
+            ? 0.9
+            : 0.65
+          : showyGalaxy
+            ? 0.85
+            : 0.55
+    }
+
     function build() {
+      F = makeF(curShowy())
       if (mode === 'neural') {
         const count = Math.min(110, Math.max(22, Math.round((width * height) / F.neuralDiv)))
         nodes = Array.from({ length: count }, () => ({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * F.neuralVel,
-          vy: (Math.random() - 0.5) * F.neuralVel,
+          vx: (Math.random() - 0.5) * F.neuralVel * neuralSpeed,
+          vy: (Math.random() - 0.5) * F.neuralVel * neuralSpeed,
         }))
       } else {
         const maxR = Math.min(
@@ -60,7 +99,6 @@ export default function NeuralBackground({ showy = false }) {
         )
         const ARMS = 2
         const WIND = 3.6
-        // crude gaussian in roughly [-1, 1]
         const gauss = () =>
           (Math.random() + Math.random() + Math.random() - 1.5) / 1.5
         const count = Math.min(
@@ -70,7 +108,6 @@ export default function NeuralBackground({ showy = false }) {
         stars = []
         for (let i = 0; i < count; i++) {
           if (Math.random() < 0.34) {
-            // dense central bulge
             const r = Math.abs(gauss()) * maxR * 0.13
             stars.push({
               radius: r,
@@ -79,7 +116,6 @@ export default function NeuralBackground({ showy = false }) {
               alpha: 0.42 + Math.random() * 0.3,
             })
           } else {
-            // spiral-arm star with scatter that grows outward
             const arm = Math.floor(Math.random() * ARMS)
             const u = Math.pow(Math.random(), 0.85)
             const angle =
@@ -111,8 +147,8 @@ export default function NeuralBackground({ showy = false }) {
         for (let j = i + 1; j < nodes.length; j++) {
           const b = nodes[j]
           const d = Math.hypot(a.x - b.x, a.y - b.y)
-          if (d < MAX_DIST) {
-            ctx.strokeStyle = `rgba(${C}, ${(1 - d / MAX_DIST) * F.lineAlpha})`
+          if (d < F.maxDist) {
+            ctx.strokeStyle = `rgba(${C}, ${(1 - d / F.maxDist) * F.lineAlpha})`
             ctx.lineWidth = 1
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
@@ -131,10 +167,9 @@ export default function NeuralBackground({ showy = false }) {
 
     function drawGalaxy() {
       const cx = width / 2
-      const cy = height * 0.42 // sit the galaxy centre a bit above middle
+      const cy = height * 0.42
       const C = '46, 60, 140'
 
-      // Soft dark core shading so the bulge reads as a dense center on white.
       const R = Math.min(width, height) * 0.3
       const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, R)
       glow.addColorStop(0, `rgba(60, 72, 150, ${F.glowAlpha})`)
@@ -169,13 +204,14 @@ export default function NeuralBackground({ showy = false }) {
           if (n.y <= 0 || n.y >= height) n.vy *= -1
         }
       } else {
-        rot += F.rot
+        rot += F.rot * galaxySpeed
       }
       draw()
       raf = requestAnimationFrame(step)
     }
 
     resize()
+    applyOpacity()
     if (reduce) draw()
     else raf = requestAnimationFrame(step)
 
@@ -188,6 +224,7 @@ export default function NeuralBackground({ showy = false }) {
         mode = next
         rot = 0
         build()
+        applyOpacity()
         if (reduce) draw()
       }
     })
@@ -201,13 +238,7 @@ export default function NeuralBackground({ showy = false }) {
       ro.disconnect()
       mo.disconnect()
     }
-  }, [showy])
+  }, [showy, showyGalaxy, showyNeural, neuralSpeed, galaxySpeed])
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className={`${styles.canvas} ${showy ? styles.showy : ''}`}
-      aria-hidden="true"
-    />
-  )
+  return <canvas ref={canvasRef} className={styles.canvas} aria-hidden="true" />
 }

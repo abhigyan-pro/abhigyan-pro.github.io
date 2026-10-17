@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div className={styles.home}>
-      <NeuralBackground />
+      <NeuralBackground showyGalaxy neuralSpeed={1.8} />
       <div className={styles.bgGlow} aria-hidden="true" />
       <Container>
         <div className={styles.hero}>

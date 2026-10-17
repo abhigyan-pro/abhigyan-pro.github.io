@@ -62,7 +62,6 @@ export default function About() {
       <div className={styles.glowB} aria-hidden="true" />
       <div className={styles.content}>
       <PageHeader
-        eyebrow="Get to know me"
         title="About me"
         subtitle="Researcher at the intersection of atmospheric science, machine learning, and high-performance computing."
       />
@@ -112,7 +111,7 @@ export default function About() {
       {/* Timeline */}
       <Section className={styles.block}>
         <Container>
-          <SectionHeading eyebrow="Journey" title="My timeline" />
+          <SectionHeading title="My timeline" />
           <ol className={styles.timeline}>
             {timeline.map((item, i) => (
               <TimelineItem key={i} item={item} />
@@ -124,10 +123,7 @@ export default function About() {
       {/* Awards */}
       <Section className={styles.block}>
         <Container>
-          <SectionHeading
-            eyebrow="Recognition"
-            title="Awards, grants & features"
-          />
+          <SectionHeading title="Awards, grants & features" />
           <div className={styles.credGrid}>
             {awards.map((item, i) => (
               <CredentialCard key={i} item={item} />
@@ -139,10 +135,7 @@ export default function About() {
       {/* Roles */}
       <Section className={styles.block}>
         <Container>
-          <SectionHeading
-            eyebrow="Service"
-            title="Roles of responsibility"
-          />
+          <SectionHeading title="Roles of responsibility" />
           <div className={styles.credGrid}>
             {roles.map((item, i) => (
               <CredentialCard key={i} item={item} />

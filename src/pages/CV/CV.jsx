@@ -1,6 +1,7 @@
 import Container from '../../components/ui/Container.jsx'
 import PageHeader from '../../components/ui/PageHeader.jsx'
 import Button from '../../components/ui/Button.jsx'
+import NeuralBackground from '../../components/Home/NeuralBackground.jsx'
 import { profile } from '../../data/profile.js'
 import styles from './CV.module.css'
 
@@ -14,9 +15,10 @@ function DownloadIcon() {
 
 export default function CV() {
   return (
-    <>
+    <div className={styles.page}>
+      <NeuralBackground showy />
+      <div className={styles.content}>
       <PageHeader
-        eyebrow="Curriculum Vitae"
         title="My CV"
         subtitle="Read my full CV below, or download the PDF."
       />
@@ -47,6 +49,7 @@ export default function CV() {
           </p>
         </Container>
       </section>
-    </>
+      </div>
+    </div>
   )
 }

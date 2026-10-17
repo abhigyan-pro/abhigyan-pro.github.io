@@ -35,7 +35,6 @@ export default function Blogs() {
   return (
     <>
       <PageHeader
-        eyebrow="Writing"
         title="Blogs"
         subtitle="Tutorials, research insights, and computational workflows — from building a reproducible research environment to notes from the field."
       />

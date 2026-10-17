@@ -33,7 +33,6 @@ export default function Contact() {
       <div className={styles.glowB} aria-hidden="true" />
       <div className={styles.content}>
       <PageHeader
-        eyebrow="Say hello"
         title="Get in touch"
         subtitle="Open to research collaborations, talks, and conversations about atmospheric science, machine learning, and open science."
       />

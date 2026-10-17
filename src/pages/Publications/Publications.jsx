@@ -69,7 +69,6 @@ export default function Publications() {
   return (
     <>
       <PageHeader
-        eyebrow="Research"
         title="Publications"
         subtitle="Peer-reviewed journal articles, conference proceedings, and work in progress across precipitation science, remote sensing, and Explainable AI."
       />

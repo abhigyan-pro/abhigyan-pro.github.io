@@ -78,7 +78,6 @@ export default function Gallery() {
   return (
     <>
       <PageHeader
-        eyebrow="Moments"
         title="Gallery"
         subtitle="Conferences, summer schools, and workshops — the people, places, and ideas behind the research."
       />
