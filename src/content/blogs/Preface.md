@@ -143,7 +143,7 @@ Each component has a specific purpose. Together, they create a development envir
   AI tools (like Claude, Grok, Gemini, or ChatGPT) give the best troubleshooting advice when they have the exact text of the tutorial. To ensure the AI understands what you are trying to build, we will give it the actual file.
 
   **1. Download the tutorial file**
-  * Open this link in a new tab: [Preface.md on GitHub](https://github.com/abhigyan-pro/abhigyan-pro.github.io/blob/main/Blogs/Preface.md)
+  * Open this link in a new tab: [Preface.md on GitHub](https://github.com/abhigyan-pro/abhigyan-pro.github.io/blob/main/src/content/blogs/Preface.md)
   * Look near the top-right corner of the text box on that page.
   * Click the **Download raw file** button (it looks like a downward arrow ⬇️).
 
