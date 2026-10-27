@@ -146,6 +146,16 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
   <strong>💡Expand for details</strong>
   </summary>
 
+  **Already have TensorFlow in an existing environment?** You don't need a new one. Activate it and check:
+  ```bash
+  pip show tensorflow
+  pip list | grep -i nvidia
+  ```
+  - If TensorFlow is listed **and** the NVIDIA list shows the `-cu12` packages (cudnn, cublas, cufft, etc.), skip to Step 4 (or Step 5 if its kernel is already registered).
+  - If TensorFlow is listed but the NVIDIA list is empty, run Step 2 inside your environment.
+
+  Wherever this section says `env_tensorflow`, use your environment's name. Note that Step 2 may upgrade or downgrade packages (e.g. numpy) that other code in that environment depends on.
+
 #### Step 1 — Create a Dedicated Environment
   ```bash
   conda create -n env_tensorflow python=3.11 pip
@@ -176,31 +186,68 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
   Verify: `python -c "import tensorflow as tf; print(tf.__version__)"`.
   GPU Check: `python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"`.
 
-  *If empty on WSL or Linux, fix the library path:* 
-  1. Find the location: `pip show nvidia-cudnn-cu12`.
-  2. Identify the `nvidia` path: `/home/<user>/miniconda3/envs/env_tensorflow/lib/python3.11/site-packages/nvidia`.
-  3. Apply the library path fix and make it permanent for this environment only.** Rather than adding this to `~/.bashrc` (which would apply it globally, even to environments that don't need it), scope it to `env_tensorflow` using conda's activation hooks:
-  4. Run each of the following line seperately
+  *If the GPU list is empty (`[]`) on WSL or Linux*, TensorFlow can't find the NVIDIA libraries pip installed. We'll fix this with two conda hooks: one adds the NVIDIA library paths when you activate this environment, and one restores the original path when you leave it. Unlike adding the path to `~/.bashrc`, this affects only this environment, so it won't interfere with others such as `env_pytorch`.
 
+  Run each command separately, **in the same terminal**, with your TensorFlow environment active. Nothing needs editing: the commands work out your conda location, environment name and Python version automatically.
+
+  **1. Locate the NVIDIA library folders:**
   ```bash
-  mkdir -p $(conda info --base)/envs/env_tensorflow/etc/conda/activate.d
-
-  cat > $(conda info --base)/envs/env_tensorflow/etc/conda/activate.d/env_vars.sh << 'EOF'
-
-  NVIDIA_BASE=/home/<your-user>/miniconda3/envs/env_tensorflow/lib/python3.11/site-packages/nvidia
-
-  export LD_LIBRARY_PATH=$(find "$NVIDIA_BASE" -maxdepth 2 -type d -name lib | tr '\n' ':')$LD_LIBRARY_PATH
-
-  EOF
+  NVIDIA_BASE=$(python -c "import site; print(site.getsitepackages()[0])")/nvidia
   ```
-  Then reactivate the environment to pick it up:
+  ```bash
+  find "$NVIDIA_BASE" -maxdepth 2 -type d -name lib
+  ```
+  You should see several folders ending in `/lib` (cudnn, cublas, cufft, …). If nothing appears, go back to Step 3.
 
+  **2. Create the hook folder:**
+  ```bash
+  mkdir -p "$CONDA_PREFIX/etc/conda/activate.d"
+  ```
+
+  **3. Write the activate hook (three commands, one at a time):**
+  ```bash
+  echo "NVIDIA_BASE=$NVIDIA_BASE" > "$CONDA_PREFIX/etc/conda/activate.d/env_vars.sh"
+  ```
+  ```bash
+  echo 'export _OLD_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"' >> "$CONDA_PREFIX/etc/conda/activate.d/env_vars.sh"
+  ```
+  ```bash
+  echo 'export LD_LIBRARY_PATH=$(find "$NVIDIA_BASE" -maxdepth 2 -type d -name lib | paste -sd ":")${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}' >> "$CONDA_PREFIX/etc/conda/activate.d/env_vars.sh"
+  ```
+
+  **4. Write the matching deactivate hook**, so the NVIDIA paths are removed when you leave this environment (otherwise they can interfere with other environments, e.g. `env_pytorch`):
+  ```bash
+  mkdir -p "$CONDA_PREFIX/etc/conda/deactivate.d"
+  ```
+  ```bash
+  echo 'export LD_LIBRARY_PATH="$_OLD_LD_LIBRARY_PATH"' > "$CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh"
+  ```
+  ```bash
+  echo 'unset _OLD_LD_LIBRARY_PATH' >> "$CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh"
+  ```
+
+  **5. Check both files:**
+  ```bash
+  cat "$CONDA_PREFIX/etc/conda/activate.d/env_vars.sh"
+  cat "$CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh"
+  ```
+  The first should have three lines (`NVIDIA_BASE=...`, `export _OLD_LD_LIBRARY_PATH=...`, `export LD_LIBRARY_PATH=...`); the second, two lines (`export LD_LIBRARY_PATH=...`, `unset _OLD_LD_LIBRARY_PATH`).
+
+  **6. Reactivate the environment (use your environment's name) and re-check:**
   ```bash
   conda deactivate
+  ```
+  ```bash
+  echo $LD_LIBRARY_PATH
+  ```
+  This should no longer show any `nvidia` paths. Then:
+  ```bash
   conda activate env_tensorflow
+  echo $LD_LIBRARY_PATH
+  python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
   ```
 
-  From now on, every time you activate `env_tensorflow`, this path is set automatically — no need to repeat the fix.
+  From now on, every time you activate this environment, the path is set automatically, and it is removed again when you deactivate or switch to another environment.
 
   **If you're still seeing an empty list after this:**
 
