@@ -188,6 +188,8 @@ We use `pip` because it installs the latest versions directly from PyPI and bund
 
   *If the GPU list is empty (`[]`) on WSL or Linux*, TensorFlow can't find the NVIDIA libraries pip installed. We'll fix this with two conda hooks: one adds the NVIDIA library paths when you activate this environment, and one restores the original path when you leave it. Unlike adding the path to `~/.bashrc`, this affects only this environment, so it won't interfere with others such as `env_pytorch`.
 
+  **In plain terms:** pip placed the GPU libraries inside your environment's own folder, but TensorFlow doesn't know to look there. The steps below leave an automatic "note" that points it to those libraries whenever this environment is active — and tidies the note away when you switch to another environment, so nothing leaks across. You don't have to understand every line; just run them in order.
+
   Run each command separately, **in the same terminal**, with your TensorFlow environment active. Nothing needs editing: the commands work out your conda location, environment name and Python version automatically.
 
   **1. Locate the NVIDIA library folders:**
