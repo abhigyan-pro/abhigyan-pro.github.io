@@ -10,6 +10,8 @@ export default function Layout({ children }) {
   // Scroll to top on every route change (expected for multi-page navigation).
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' })
+    // Count the SPA pageview in GoatCounter (route changes aren't auto-tracked).
+    window.goatcounter?.count?.({ path: pathname + window.location.search })
   }, [pathname])
 
   return (
