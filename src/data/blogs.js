@@ -104,7 +104,7 @@ export const posts = [
     title: 'Downloading GPM DPR Data',
     description:
       'Download a spatially and temporally subset GPM DPR Level-2 dataset with Harmony and earthaccess, then validate the NetCDF files for download completeness and read integrity.',
-    image: '/img/blog2.png',
+    image: '/img/Download_Validate.png',
   },
 ]
 
@@ -133,7 +133,7 @@ export const seriesList = [
     kicker: 'New Series',
     description:
       'Practical guides for finding, downloading, and validating scientific datasets — starting with NASA GPM DPR precipitation radar.',
-    cover: '/img/blog2.png',
+    cover: '/img/Download_Validate.png',
     postSlugs: ['gpm-dpr'],
   },
 ]
