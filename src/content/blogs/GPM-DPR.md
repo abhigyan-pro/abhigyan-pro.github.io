@@ -260,10 +260,12 @@ print("\nProcessing completed!")
 expected_urls = list(client.result_urls(job_id))
 print("Expected result files:", len(expected_urls))
 
-download_futures = client.download_all(
-    job_id,
-    directory=str(output_dir),
-    overwrite=True,
+download_futures = list(
+    client.download_all(
+        job_id,
+        directory=str(output_dir),
+        overwrite=True,
+    )
 )
 
 downloaded_files = []
